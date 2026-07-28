@@ -44,7 +44,7 @@ export default async function ProductPage({ params }: Props) {
   const related = getRelatedProducts(slug);
 
   return (
-    <div className="bg-white pb-20 pt-10 md:pb-28 md:pt-14">
+    <div className="bg-white pb-20 pt-24 md:pb-28 md:pt-28">
       <Container>
         <nav className="mb-8 text-sm text-muted">
           <Link href="/productos" className="hover:text-navy">

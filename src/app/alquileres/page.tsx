@@ -23,7 +23,7 @@ const hrefs: Record<string, string> = {
 
 export default function AlquileresPage() {
   return (
-    <div className="bg-white pb-20 pt-12 md:pb-28 md:pt-16">
+    <div className="bg-white pb-20 pt-24 md:pb-28 md:pt-28">
       <Container>
         <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
           Alquileres
