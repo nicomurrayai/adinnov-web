@@ -1,114 +1,107 @@
 import Image from "next/image";
 import Link from "next/link";
-import { site } from "@content/site";
+import { productFamilies, site } from "@content/site";
 import { Container } from "../ui/Container";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-navy text-white">
-      <Container className="grid gap-12 py-16 md:grid-cols-12 md:py-20">
-        <div className="md:col-span-5">
-          <Image
-            src="/brand/logo.png"
-            alt="Adinnov"
-            width={140}
-            height={40}
-            className="h-9 w-auto brightness-0 invert"
-          />
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
-            {site.description}
-          </p>
-          <p className="mt-4 text-sm text-white/55">Membrillar 74, Ciudad de Buenos Aires</p>
-        </div>
-
-        <div className="md:col-span-3">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/45">
-            Navegación
-          </p>
-          <ul className="mt-4 space-y-2.5">
-            {site.nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="text-sm text-white/75 transition-colors hover:text-white"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="md:col-span-4">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-white/45">
-            Contacto
-          </p>
-          <ul className="mt-4 space-y-2.5 text-sm text-white/75">
-            <li>
-              <a href={`mailto:${site.email}`} className="hover:text-white">
-                {site.email}
-              </a>
-            </li>
-            {site.phones.map((p) => (
-              <li key={p.href}>
-                <a href={p.href} className="hover:text-white">
-                  {p.display}
-                </a>
-              </li>
-            ))}
-            <li>
-              <a
-                href={site.whatsapp[0].href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white"
-              >
-                WhatsApp
-              </a>
-            </li>
-          </ul>
-
-          <div className="mt-8 flex flex-wrap items-center gap-6">
-            {site.partners.map((p) => (
-              <a
-                key={p.name}
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="opacity-70 transition-opacity hover:opacity-100"
-              >
-                <Image
-                  src={p.image}
-                  alt={p.name}
-                  width={80}
-                  height={32}
-                  className="h-7 w-auto object-contain brightness-0 invert"
-                />
-              </a>
-            ))}
+    <footer className="bg-navy text-white">
+      <Container className="py-16 md:py-24">
+        <div className="grid gap-12 border-b border-white/15 pb-14 lg:grid-cols-12 lg:pb-20">
+          <div className="lg:col-span-5">
+            <Image
+              src="/brand/logo.svg"
+              alt="Adinnov"
+              width={164}
+              height={60}
+              className="h-12 w-auto brightness-0 invert"
+            />
+            <h2 className="font-display mt-10 max-w-lg text-balance text-[clamp(2.4rem,4vw,4.5rem)] font-medium leading-[0.94] tracking-[-0.045em]">
+              Hablemos de tu próximo espacio digital.
+            </h2>
+            <Link
+              href="/contacto"
+              className="mt-8 inline-flex min-h-12 items-center gap-5 rounded-[var(--radius-sm)] bg-signal px-5 text-xs font-semibold uppercase tracking-[0.1em] transition-colors hover:bg-white hover:text-navy"
+            >
+              Cotizar un proyecto
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
+
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-7 lg:grid-cols-3">
+            <div>
+              <p className="eyebrow text-white/60">Navegación</p>
+              <ul className="mt-5 space-y-3">
+                {site.nav.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="text-sm text-white/68 transition-colors hover:text-white">
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link href="/contacto" className="text-sm text-white/68 transition-colors hover:text-white">
+                    Contacto
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="eyebrow text-white/60">Soluciones</p>
+              <ul className="mt-5 space-y-3">
+                {productFamilies.map((family) => (
+                  <li key={family.id}>
+                    <Link
+                      href={family.href}
+                      prefetch={false}
+                      className="text-sm text-white/68 transition-colors hover:text-white"
+                    >
+                      {family.shortTitle}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="eyebrow text-white/60">Contacto</p>
+              <address className="mt-5 space-y-3 text-sm not-italic leading-6 text-white/68">
+                <p>{site.address}</p>
+                <p>
+                  <a href={`mailto:${site.email}`} className="hover:text-white">
+                    {site.email}
+                  </a>
+                </p>
+                {site.phones.map((phone) => (
+                  <p key={phone.href}>
+                    <a href={phone.href} className="hover:text-white">
+                      {phone.display}
+                    </a>
+                  </p>
+                ))}
+              </address>
+
+              <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2 text-xs uppercase tracking-[0.08em] text-white/55">
+                <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  Instagram
+                </a>
+                <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  LinkedIn
+                </a>
+                <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                  YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-5 pt-6 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Adinnov. Todos los derechos reservados.</p>
+          <p>Cartelería digital · Buenos Aires, Argentina</p>
         </div>
       </Container>
-
-      <div className="border-t border-white/10">
-        <Container className="flex flex-col gap-3 py-5 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Adinnov. Todos los derechos reservados.</p>
-          <div className="flex gap-5">
-            <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white/80">
-              Instagram
-            </a>
-            <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white/80">
-              LinkedIn
-            </a>
-            <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white/80">
-              Facebook
-            </a>
-            <a href={site.social.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-white/80">
-              YouTube
-            </a>
-          </div>
-        </Container>
-      </div>
     </footer>
   );
 }

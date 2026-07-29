@@ -1,40 +1,84 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Container } from "../../components/ui/Container";
-import { ProductFilters, ProductGrid } from "../../components/products/ProductGrid";
-import { filterProducts, getCategory } from "../../lib/content";
-
-type Props = {
-  searchParams: Promise<{ categoria?: string; q?: string }>;
-};
+import { ProductGrid } from "../../components/products/ProductGrid";
+import { CatalogPreload } from "../../components/products/CatalogPreload";
+import { getCatalogProducts } from "../../lib/content";
 
 export const metadata: Metadata = {
-  title: "Productos",
+  title: "Productos de cartelería digital",
   description:
-    "Catálogo de tótems, pantallas LED, pizarras interactivas, kioscos y software de cartelería digital Adinnov.",
+    "Explorá el catálogo de tótems, pantallas profesionales, LED, pizarras interactivas, kioscos y software de Adinnov.",
+  alternates: { canonical: "/productos" },
+  openGraph: {
+    title: "Productos de cartelería digital | Adinnov",
+    description:
+      "Equipos y soluciones de cartelería digital para proyectos corporativos, retail, educación y eventos.",
+    url: "/productos",
+  },
 };
 
-export default async function ProductosPage({ searchParams }: Props) {
-  const params = await searchParams;
-  const category = params.categoria;
-  const products = filterProducts({ category, q: params.q });
-  const cat = category ? getCategory(category) : null;
+function CatalogFallback() {
+  return (
+    <div
+      className="grid animate-pulse gap-10 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-14"
+      aria-label="Cargando catálogo"
+      role="status"
+    >
+      <div className="space-y-4">
+        <div className="h-3 w-24 bg-surface-2" />
+        <div className="h-12 w-full bg-surface" />
+        <div className="mt-8 h-px w-full bg-border" />
+        {Array.from({ length: 5 }).map((_, index) => (
+          <div key={index} className="h-10 w-full bg-surface" />
+        ))}
+      </div>
+      <div>
+        <div className="h-10 border-b border-border" />
+        <div className="mt-8 grid gap-7 sm:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div key={index}>
+              <div className="aspect-[4/3] bg-surface" />
+              <div className="mt-4 h-3 w-20 bg-surface-2" />
+              <div className="mt-3 h-6 w-4/5 bg-surface" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function ProductosPage() {
+  const products = getCatalogProducts();
+  const firstMedia = products[0]?.media[0];
 
   return (
-    <div className="bg-white pb-20 pt-24 md:pb-28 md:pt-28">
+    <div className="bg-background pb-24 pt-28 md:pb-32 md:pt-36">
+      {firstMedia?.type === "image" ? (
+        <CatalogPreload src={firstMedia.src} alt={firstMedia.alt} />
+      ) : null}
       <Container>
-        <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
-          Catálogo
-        </p>
-        <h1 className="mt-3 font-[family-name:var(--font-outfit)] text-4xl font-medium tracking-tight text-navy md:text-5xl">
-          {cat?.name ?? "Productos"}
-        </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-          {cat?.description ??
-            "Fabricación propia y soluciones de marcas líderes para venta y alquiler."}
-        </p>
-        <div className="mt-10">
-          <ProductFilters active={category} />
-          <ProductGrid products={products} />
+        <header className="grid gap-8 border-b border-border pb-12 md:grid-cols-[minmax(0,1.35fr)_minmax(16rem,0.65fr)] md:items-end md:pb-16">
+          <div>
+            <p className="font-mono text-[0.68rem] font-medium uppercase tracking-[0.2em] text-accent">
+              Catálogo / {products.length.toString().padStart(2, "0")} equipos
+            </p>
+            <h1 className="mt-5 max-w-4xl text-balance font-display text-5xl font-medium leading-[0.96] tracking-[-0.045em] text-foreground sm:text-6xl lg:text-7xl">
+              Tecnología elegida para cada espacio.
+            </h1>
+          </div>
+          <p className="max-w-xl text-base leading-7 text-muted md:pb-1">
+            Combinamos fabricación propia, hardware profesional y software para
+            resolver proyectos de comunicación, interacción y autogestión.
+            Filtrá por contexto o contanos qué necesitás.
+          </p>
+        </header>
+
+        <div className="pt-10 md:pt-14">
+          <Suspense fallback={<CatalogFallback />}>
+            <ProductGrid products={products} />
+          </Suspense>
         </div>
       </Container>
     </div>

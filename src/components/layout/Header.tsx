@@ -2,270 +2,358 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { site } from "@content/site";
-import { megaMenuColumns } from "@content/megaMenu";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { productFamilies, site } from "@content/site";
 import { Container } from "../ui/Container";
 
-function ChevronDown({ open }: { open: boolean }) {
+function Chevron({ open }: { open: boolean }) {
   return (
     <svg
-      viewBox="0 0 12 12"
-      fill="none"
       aria-hidden="true"
-      className={`h-3 w-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+      viewBox="0 0 14 14"
+      fill="none"
+      className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
     >
-      <path
-        d="M2.5 4.5L6 8l3.5-3.5"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="m3 5 4 4 4-4" stroke="currentColor" strokeWidth="1.4" />
     </svg>
   );
 }
 
-function ArrowRight() {
+function MenuIcon({ open }: { open: boolean }) {
   return (
-    <svg
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-      className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
-    >
-      <path
-        d="M3 8h10M9 4l4 4-4 4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+    <span aria-hidden="true" className="relative block h-4 w-5">
+      <span
+        className={`absolute left-0 top-1 block h-px w-5 bg-current transition-transform duration-300 ${open ? "translate-y-[3px] rotate-45" : ""}`}
       />
-    </svg>
+      <span
+        className={`absolute bottom-1 left-0 block h-px w-5 bg-current transition-transform duration-300 ${open ? "-translate-y-[3px] -rotate-45" : ""}`}
+      />
+    </span>
   );
+}
+
+function isCurrent(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
 }
 
 export function Header() {
-  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const productButtonRef = useRef<HTMLButtonElement>(null);
+  const productsPanelRef = useRef<HTMLDivElement>(null);
+  const mobileButtonRef = useRef<HTMLButtonElement>(null);
+  const mobilePanelRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handlePointerDown(event: PointerEvent) {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setProductsOpen(false);
+        setMobileOpen(false);
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+
+      if (mobileOpen) {
+        setMobileOpen(false);
+        mobileButtonRef.current?.focus();
+        return;
+      }
+
+      if (productsOpen) {
+        setProductsOpen(false);
+        productButtonRef.current?.focus();
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mobileOpen, productsOpen]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const closeMobileMenu = (event: MediaQueryListEvent | MediaQueryList) => {
+      if (event.matches) setMobileOpen(false);
+    };
+    closeMobileMenu(desktop);
+    desktop.addEventListener("change", closeMobileMenu);
+    return () => desktop.removeEventListener("change", closeMobileMenu);
+  }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const panel = mobilePanelRef.current;
+    const panelFocusables = Array.from(
+      panel?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ) ?? [],
+    );
+    const focusables = [mobileButtonRef.current, ...panelFocusables].filter(
+      (element): element is HTMLElement => Boolean(element),
+    );
+
+    function trapFocus(event: KeyboardEvent) {
+      if (event.key !== "Tab" || !focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    const focusScope = headerRef.current;
+    focusScope?.addEventListener("keydown", trapFocus);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      focusScope?.removeEventListener("keydown", trapFocus);
+    };
+  }, [mobileOpen]);
+
+  function focusFirstProduct() {
+    const firstLink = productsPanelRef.current?.querySelector<HTMLAnchorElement>("a[href]");
+    firstLink?.focus();
+  }
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 bg-transparent pt-3 md:pt-4">
-      <Container className="max-w-7xl">
-        <div
-          className="pointer-events-auto overflow-hidden rounded-2xl border border-border/60 bg-white/75 shadow-lg shadow-navy/5 backdrop-blur-xl"
-          onMouseLeave={() => setProductsOpen(false)}
-        >
-          <div className="flex h-14 items-center justify-between px-4 md:h-16 md:px-6">
-            <Link href="/" className="relative z-10 flex items-center gap-3">
+    <header ref={headerRef} className="fixed inset-x-0 top-0 z-50">
+      <div className="border-b border-border bg-paper/95 backdrop-blur-xl">
+        <Container>
+          <div className="relative flex h-[4.75rem] items-center justify-between">
+            <Link
+              href="/"
+              aria-label="Adinnov, ir al inicio"
+              className="relative z-10 flex shrink-0 items-center"
+              onClick={() => {
+                setProductsOpen(false);
+                setMobileOpen(false);
+              }}
+            >
               <Image
-                src="/brand/logo.png"
+                src="/brand/logo.svg"
                 alt="Adinnov"
-                width={140}
-                height={40}
-                className="h-8 w-auto md:h-9"
-                priority
+                width={192}
+                height={70}
+                loading="eager"
+                fetchPriority="high"
+                className="h-[4.25rem] w-auto"
               />
             </Link>
 
-            <nav className="hidden items-center gap-7 xl:gap-8 lg:flex">
-              <Link
-                href="/productos"
-                className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors ${
-                  productsOpen ? "text-navy" : "text-navy/80 hover:text-navy"
-                }`}
-                onMouseEnter={() => setProductsOpen(true)}
-                aria-expanded={productsOpen}
-                aria-controls="productos-megamenu"
-              >
-                Productos
-                <ChevronDown open={productsOpen} />
-              </Link>
-              {site.nav
-                .filter(
-                  (item) =>
-                    item.href !== "/productos" &&
-                    item.href !== "/contacto" &&
-                    item.href !== "/#verticales",
-                )
-                .map((item) => (
+            <nav aria-label="Navegación principal" className="hidden h-full items-center xl:flex">
+              {site.nav.map((item) => {
+                if (item.href === "/productos") {
+                  return (
+                    <div key={item.href} className="static flex h-full items-center">
+                      <button
+                        ref={productButtonRef}
+                        type="button"
+                        className={`flex h-full items-center gap-1.5 border-b-2 px-3 text-[0.76rem] font-semibold uppercase tracking-[0.08em] transition-colors ${
+                          pathname.startsWith("/productos") || productsOpen
+                            ? "border-signal text-navy"
+                            : "border-transparent text-navy/66 hover:text-navy"
+                        }`}
+                        aria-expanded={productsOpen}
+                        aria-controls="familias-productos"
+                        aria-current={pathname.startsWith("/productos") ? "page" : undefined}
+                        onClick={() => setProductsOpen((value) => !value)}
+                        onKeyDown={(event) => {
+                          if (event.key === "ArrowDown") {
+                            event.preventDefault();
+                            setProductsOpen(true);
+                            requestAnimationFrame(focusFirstProduct);
+                          }
+                        }}
+                      >
+                        Productos
+                        <Chevron open={productsOpen} />
+                      </button>
+
+                      {productsOpen ? (
+                        <div
+                          ref={productsPanelRef}
+                          id="familias-productos"
+                          className="absolute inset-x-0 top-full border border-t-0 border-border bg-paper shadow-[var(--shadow-float)]"
+                        >
+                          <div className="grid grid-cols-12 gap-x-8 p-8">
+                            <div className="col-span-3 flex flex-col justify-between border-r border-border pr-8">
+                              <div>
+                                <p className="eyebrow text-signal">Catálogo</p>
+                                <p className="font-display mt-4 text-3xl font-medium leading-none tracking-[-0.035em] text-navy">
+                                  Seis familias.
+                                  <br />Una solución.
+                                </p>
+                              </div>
+                              <Link
+                                href="/productos"
+                                prefetch={false}
+                                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-navy underline decoration-signal decoration-2 underline-offset-4"
+                                onClick={() => setProductsOpen(false)}
+                              >
+                                Ver catálogo completo
+                                <span aria-hidden="true">↗</span>
+                              </Link>
+                            </div>
+                            <div className="col-span-9 grid grid-cols-3 gap-px bg-border">
+                              {productFamilies.map((family) => (
+                                <Link
+                                  key={family.id}
+                                  href={family.href}
+                                  prefetch={false}
+                                  className="group bg-paper p-5 transition-colors hover:bg-ivory focus-visible:relative"
+                                  onClick={() => setProductsOpen(false)}
+                                >
+                                  <span className="font-mono text-[0.65rem] text-signal">{family.index}</span>
+                                  <span className="font-display mt-3 block text-lg font-medium leading-tight tracking-[-0.025em] text-navy">
+                                    {family.title}
+                                  </span>
+                                  <span className="mt-3 block text-sm leading-5 text-muted">
+                                    {family.description}
+                                  </span>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  );
+                }
+
+                return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="text-sm font-medium text-navy/80 transition-colors hover:text-navy"
-                    onMouseEnter={() => setProductsOpen(false)}
+                    aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
+                    className={`flex h-full items-center border-b-2 px-3 text-[0.76rem] font-semibold uppercase tracking-[0.08em] transition-colors ${
+                      isCurrent(pathname, item.href)
+                        ? "border-signal text-navy"
+                        : "border-transparent text-navy/66 hover:text-navy"
+                    }`}
+                    onClick={() => setProductsOpen(false)}
+                    onFocus={() => setProductsOpen(false)}
                   >
                     {item.label}
                   </Link>
-                ))}
-              <Link
-                href="/contacto"
-                className="rounded-lg bg-[#1538d4] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1230b8]"
-                onMouseEnter={() => setProductsOpen(false)}
-              >
-                Contacto
-              </Link>
+                );
+              })}
             </nav>
 
+            <div className="hidden xl:block">
+              <Link
+                href="/contacto"
+                aria-current={isCurrent(pathname, "/contacto") ? "page" : undefined}
+                className="inline-flex min-h-11 items-center rounded-[var(--radius-sm)] bg-signal px-5 text-[0.73rem] font-semibold uppercase tracking-[0.09em] text-white transition-colors hover:bg-signal-dark"
+                onClick={() => setProductsOpen(false)}
+              >
+                Cotizar proyecto
+              </Link>
+            </div>
+
             <button
+              ref={mobileButtonRef}
               type="button"
-              className="relative z-10 flex h-10 w-10 items-center justify-center lg:hidden"
-              aria-label={open ? "Cerrar menú" : "Abrir menú"}
-              onClick={() => setOpen((v) => !v)}
+              className="relative z-10 flex h-11 items-center gap-3 rounded-[var(--radius-sm)] border border-border px-3 text-xs font-semibold uppercase tracking-[0.09em] text-navy xl:hidden"
+              aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={mobileOpen}
+              aria-controls="navegacion-movil"
+              onClick={() => setMobileOpen((value) => !value)}
             >
-              <span className="sr-only">Menú</span>
-              <div className="flex w-5 flex-col gap-1.5">
-                <span
-                  className={`h-px w-full bg-navy transition ${open ? "translate-y-[3.5px] rotate-45" : ""}`}
-                />
-                <span
-                  className={`h-px w-full bg-navy transition ${open ? "-translate-y-[3.5px] -rotate-45" : ""}`}
-                />
-              </div>
+              <span>{mobileOpen ? "Cerrar" : "Menú"}</span>
+              <MenuIcon open={mobileOpen} />
             </button>
           </div>
+        </Container>
+      </div>
 
-          {productsOpen ? (
-            <div
-              id="productos-megamenu"
-              className="hidden animate-fade-in border-t border-border/50 bg-gradient-to-b from-white/90 to-surface/80 lg:block"
-              onMouseEnter={() => setProductsOpen(true)}
-            >
-              <div className="grid max-h-[min(70vh,560px)] grid-cols-5 gap-0 overflow-y-auto px-3 py-5 xl:px-5">
-                {megaMenuColumns.map((column, index) => (
-                  <div
-                    key={column.title}
-                    className={`px-3 xl:px-4 ${
-                      index > 0 ? "border-l border-border/50" : ""
-                    }`}
+      {mobileOpen ? (
+        <div
+          ref={mobilePanelRef}
+          id="navegacion-movil"
+          className="h-[calc(100dvh-4.75rem)] overflow-y-auto bg-navy text-white xl:hidden"
+        >
+          <Container className="py-8">
+            <nav aria-label="Navegación móvil">
+              <div className="grid gap-px bg-white/15 sm:grid-cols-2">
+                <Link
+                  href="/productos"
+                  prefetch={false}
+                  aria-current={isCurrent(pathname, "/productos") ? "page" : undefined}
+                  className="bg-navy p-5 font-display text-2xl font-medium tracking-[-0.03em] hover:bg-navy-mid"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Todos los productos
+                </Link>
+                <Link
+                  href="/soluciones"
+                  aria-current={isCurrent(pathname, "/soluciones") ? "page" : undefined}
+                  className="bg-navy p-5 font-display text-2xl font-medium tracking-[-0.03em] hover:bg-navy-mid"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Soluciones
+                </Link>
+              </div>
+
+              <p className="eyebrow mb-4 mt-8 text-white/60">Familias de producto</p>
+              <div className="grid gap-px bg-white/15 sm:grid-cols-2">
+                {productFamilies.map((family) => (
+                  <Link
+                    key={family.id}
+                    href={family.href}
+                    prefetch={false}
+                    className="group flex items-start gap-4 bg-navy p-4 hover:bg-navy-mid"
+                    onClick={() => setMobileOpen(false)}
                   >
-                    {column.href ? (
-                      <Link
-                        href={column.href}
-                        className="group mb-3.5 flex items-center gap-2"
-                      >
-                        <span className="h-4 w-0.5 rounded-full bg-[#1538d4]" />
-                        <span className="font-[family-name:var(--font-outfit)] text-[13px] font-semibold tracking-wide text-navy transition-colors group-hover:text-[#1538d4]">
-                          {column.title}
-                        </span>
-                      </Link>
-                    ) : (
-                      <div className="mb-3.5 flex items-center gap-2">
-                        <span className="h-4 w-0.5 rounded-full bg-[#1538d4]" />
-                        <span className="font-[family-name:var(--font-outfit)] text-[13px] font-semibold tracking-wide text-navy">
-                          {column.title}
-                        </span>
-                      </div>
-                    )}
-                    <ul className="space-y-0.5">
-                      {column.items.map((item) => (
-                        <li key={item.href}>
-                          <Link
-                            href={item.href}
-                            className="-mx-1.5 block rounded-md px-1.5 py-1.5 text-[12.5px] leading-snug text-navy/70 transition-colors hover:bg-white hover:text-navy"
-                          >
-                            {item.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    <span className="font-mono mt-1 text-[0.64rem] text-white/60">{family.index}</span>
+                    <span className="font-display text-lg font-medium leading-tight">{family.title}</span>
+                  </Link>
                 ))}
               </div>
 
-              <div className="flex items-center justify-between gap-4 border-t border-border/50 bg-white/70 px-6 py-3.5">
-                <p className="text-xs text-muted">
-                  Fabricación, venta, alquiler e instalación en toda la Argentina
-                </p>
-                <Link
-                  href="/productos"
-                  className="group inline-flex items-center gap-2 text-sm font-medium text-[#1538d4] transition-colors hover:text-[#1230b8]"
-                >
-                  Ver catálogo completo
-                  <ArrowRight />
-                </Link>
-              </div>
-            </div>
-          ) : null}
-
-          {open ? (
-            <div className="border-t border-border/60 lg:hidden">
-              <div className="flex max-h-[75vh] flex-col gap-1 overflow-y-auto px-4 py-4">
-                <button
-                  type="button"
-                  className="flex items-center justify-between rounded-lg px-2 py-3 text-left text-base font-medium text-navy"
-                  onClick={() => setMobileProductsOpen((v) => !v)}
-                  aria-expanded={mobileProductsOpen}
-                >
-                  Productos
-                  <ChevronDown open={mobileProductsOpen} />
-                </button>
-
-                {mobileProductsOpen ? (
-                  <div className="mb-2 space-y-4 rounded-xl bg-surface/80 px-3 py-4">
-                    {megaMenuColumns.map((column) => (
-                      <div key={column.title}>
-                        <div className="mb-1.5 flex items-center gap-2 px-1">
-                          <span className="h-3.5 w-0.5 rounded-full bg-[#1538d4]" />
-                          <p className="text-sm font-semibold text-navy">
-                            {column.title}
-                          </p>
-                        </div>
-                        <div className="flex flex-col">
-                          {column.items.map((item) => (
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              className="rounded-lg px-2 py-2 text-sm text-navy/70"
-                              onClick={() => setOpen(false)}
-                            >
-                              {item.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                    <Link
-                      href="/productos"
-                      className="group inline-flex items-center gap-2 px-2 pt-1 text-sm font-medium text-[#1538d4]"
-                      onClick={() => setOpen(false)}
-                    >
-                      Ver catálogo completo
-                      <ArrowRight />
-                    </Link>
-                  </div>
-                ) : null}
-
+              <div className="mt-8 grid gap-px bg-white/15 sm:grid-cols-2">
                 {site.nav
-                  .filter(
-                    (item) =>
-                      item.href !== "/productos" &&
-                      item.href !== "/contacto" &&
-                      item.href !== "/#verticales",
-                  )
+                  .filter((item) => item.href !== "/productos" && item.href !== "/soluciones")
                   .map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="rounded-lg px-2 py-3 text-base font-medium text-navy"
-                      onClick={() => setOpen(false)}
+                      aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
+                      className="bg-navy p-4 text-sm font-semibold uppercase tracking-[0.08em] text-white/76 hover:bg-navy-mid hover:text-white"
+                      onClick={() => setMobileOpen(false)}
                     >
                       {item.label}
                     </Link>
                   ))}
-                <Link
-                  href="/contacto"
-                  className="mt-2 rounded-lg bg-[#1538d4] px-3 py-3 text-center text-base font-medium text-white transition-colors hover:bg-[#1230b8]"
-                  onClick={() => setOpen(false)}
-                >
-                  Contacto
-                </Link>
               </div>
-            </div>
-          ) : null}
+
+              <Link
+                href="/contacto"
+                className="mt-6 flex min-h-14 items-center justify-between rounded-[var(--radius-sm)] bg-signal px-5 text-sm font-semibold uppercase tracking-[0.09em] text-white"
+                onClick={() => setMobileOpen(false)}
+              >
+                Cotizar proyecto
+                <span aria-hidden="true">→</span>
+              </Link>
+            </nav>
+          </Container>
         </div>
-      </Container>
+      ) : null}
     </header>
   );
 }

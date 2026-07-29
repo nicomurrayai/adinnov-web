@@ -1,0 +1,38 @@
+{
+  "measuredAt": "2026-07-28T22:54:26.168Z",
+  "results": [
+    {
+      "route": "/",
+      "status": 200,
+      "profile": "Pixel 7 · Fast 4G aproximado · CPU 4×",
+      "lcpMs": 2192,
+      "lcpElement": "h1.motion-hero.font-display.mt-6",
+      "lcpUrl": null,
+      "cls": 0,
+      "inpMs": 104,
+      "ttfbMs": 63
+    },
+    {
+      "route": "/productos",
+      "status": 200,
+      "profile": "Pixel 7 · Fast 4G aproximado · CPU 4×",
+      "lcpMs": 2036,
+      "lcpElement": "img.object-cover.transition-transform.duration-700",
+      "lcpUrl": "http://127.0.0.1:3100/_next/image?url=%2Fproducts%2Ftotem-digital%2F01.jpg&w=1200&q=75",
+      "cls": 0,
+      "inpMs": 120,
+      "ttfbMs": 16
+    },
+    {
+      "route": "/productos/totem-digital",
+      "status": 200,
+      "profile": "Pixel 7 · Fast 4G aproximado · CPU 4×",
+      "lcpMs": 2016,
+      "lcpElement": "img.object-contain.p-3.transition-transform",
+      "lcpUrl": "http://127.0.0.1:3100/_next/image?url=%2Fproducts%2Ftotem-digital%2F01.jpg&w=1200&q=75",
+      "cls": 0,
+      "inpMs": 80,
+      "ttfbMs": 20
+    }
+  ]
+}

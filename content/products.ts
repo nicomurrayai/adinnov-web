@@ -225,7 +225,7 @@ export const products: Product[] = [
     title: "Pantallas y Pizarras Interactivas",
     description: "Descubre la tecnología táctil que está revolucionando la educación, el trabajo colaborativo y la interacción digital",
     category: "pizarras",
-    images: ["/products/pantallas-y-pizarras-interactivas/01.jpg", "/products/pantallas-y-pizarras-interactivas/02.jpg", "/products/pantallas-y-pizarras-interactivas/03.jpg", "/products/pantallas-y-pizarras-interactivas/04.jpg"],
+    images: ["/products/pantallas-y-pizarras-interactivas/01.jpg", "/products/pantallas-y-pizarras-interactivas/02.jpg", "/products/pantallas-y-pizarras-interactivas/03.jpg", "/products/pantallas-y-pizarras-interactivas/04.jpg", "/products/pantallas-y-pizarras-interactivas/05.jpg"],
     features: [
       "Detecta la electricidad natural del cuerpo humano",
       "Es muy precisa, permite gestos multitáctiles (como zoom con dos dedos)",
@@ -1128,7 +1128,7 @@ export const products: Product[] = [
     title: "Terminales Interactivas",
     description: "Pantallas grandes (32'' - 55'') - Soluciones digitales de gran formato para máxima visibilidad e impacto",
     category: "terminales",
-    images: ["/products/terminales-interactivas-pantallas-grandes/01.jpg", "/products/terminales-interactivas-pantallas-grandes/02.jpg", "/products/terminales-interactivas-pantallas-grandes/03.png", "/products/terminales-interactivas-pantallas-grandes/04.jpg"],
+    images: ["/products/terminales-interactivas-pantallas-grandes/01.jpg", "/products/terminales-interactivas-pantallas-grandes/02.jpg", "/products/terminales-interactivas-pantallas-grandes/03.png", "/products/terminales-interactivas-pantallas-grandes/04.jpg", "/products/terminales-interactivas-pantallas-grandes/05.jpg"],
     features: [
       "Mayor visibilidad y impacto visual",
       "Ideales para entornos amplios",
@@ -1328,7 +1328,7 @@ export const products: Product[] = [
     title: "Pantalla Dual SOLUM 49'' - 55''",
     description: "Pantallas digitales duales ideales para retail, tiendas de moda, restaurantes y más",
     category: "pantallas",
-    images: ["/products/pantalla-dual-solum-49-55/01.png", "/products/pantalla-dual-solum-49-55/02.jpeg", "/products/pantalla-dual-solum-49-55/03.png", "/products/pantalla-dual-solum-49-55/04.png", "/products/pantalla-dual-solum-49-55/05.png", "/products/pantalla-dual-solum-49-55/06.png", "/products/pantalla-dual-solum-49-55/07.png"],
+    images: ["/products/pantalla-dual-solum-49-55/02.jpeg", "/products/pantalla-dual-solum-49-55/03.png", "/products/pantalla-dual-solum-49-55/04.png", "/products/pantalla-dual-solum-49-55/05.png", "/products/pantalla-dual-solum-49-55/06.png", "/products/pantalla-dual-solum-49-55/07.png", "/products/pantalla-dual-solum-49-55/01.png"],
     features: [
       "Contenido sincronizado en ambas pantallas",
       "Mensajes contrastantes o complementarios",
@@ -1483,7 +1483,7 @@ export const products: Product[] = [
     title: "BAR Display: Pantallas Stretch",
     description: "Renovación del comercio minorista con la excelencia de SOLUM",
     category: "pantallas",
-    images: ["/products/bar-display-pantallas-stretch-solum/01.png", "/products/bar-display-pantallas-stretch-solum/02.webp", "/products/bar-display-pantallas-stretch-solum/03.webp", "/products/bar-display-pantallas-stretch-solum/04.webp", "/products/bar-display-pantallas-stretch-solum/05.webp", "/products/bar-display-pantallas-stretch-solum/06.png", "/products/bar-display-pantallas-stretch-solum/07.png", "/products/bar-display-pantallas-stretch-solum/08.png", "/products/bar-display-pantallas-stretch-solum/09.png", "/products/bar-display-pantallas-stretch-solum/10.png", "/products/bar-display-pantallas-stretch-solum/11.png", "/products/bar-display-pantallas-stretch-solum/12.png", "/products/bar-display-pantallas-stretch-solum/13.webp", "/products/bar-display-pantallas-stretch-solum/14.png", "/products/bar-display-pantallas-stretch-solum/15.png"],
+    images: ["/products/bar-display-pantallas-stretch-solum/12.png", "/products/bar-display-pantallas-stretch-solum/01.png", "/products/bar-display-pantallas-stretch-solum/02.webp", "/products/bar-display-pantallas-stretch-solum/13.webp", "/products/bar-display-pantallas-stretch-solum/14.png", "/products/bar-display-pantallas-stretch-solum/15.png", "/products/bar-display-pantallas-stretch-solum/06.png", "/products/bar-display-pantallas-stretch-solum/07.png", "/products/bar-display-pantallas-stretch-solum/08.png", "/products/bar-display-pantallas-stretch-solum/09.png", "/products/bar-display-pantallas-stretch-solum/10.png", "/products/bar-display-pantallas-stretch-solum/11.png", "/products/bar-display-pantallas-stretch-solum/03.webp", "/products/bar-display-pantallas-stretch-solum/04.webp", "/products/bar-display-pantallas-stretch-solum/05.webp"],
     features: [
       "OS: Android 8.1",
       "CPU: Quad-core ARM Cortex-A35, 1.35GHz",
@@ -1920,7 +1920,7 @@ export const products: Product[] = [
     title: "Kioscos de Autogestión para Gastronomía",
     description: "Dispositivos digitales interactivos que mejoran la experiencia del cliente y agilizan el servicio",
     category: "kioscos",
-    images: ["/products/kiosco-autogestion-gastronomia/01.jpg", "/products/kiosco-autogestion-gastronomia/02.jpg", "/products/kiosco-autogestion-gastronomia/03.webp"],
+    images: ["/products/kiosco-autogestion-gastronomia/01.jpg", "/products/kiosco-autogestion-gastronomia/02.jpg", "/products/kiosco-autogestion-gastronomia/03.webp", "/products/kiosco-autogestion-gastronomia/04.jpg", "/products/kiosco-autogestion-gastronomia/05.jpg"],
     features: [
       "Ver el menú digital",
       "Elegir y personalizar su pedido",
@@ -2055,7 +2055,7 @@ export const products: Product[] = [
     title: "Mini Tótem Digital e Interactivo",
     description: "Formato pequeño ideal para mostradores, estantes y escritorios - Fabricación nacional",
     category: "totems",
-    images: ["/products/mini-totem-digital/01.jpg", "/products/mini-totem-digital/02.jpg", "/products/mini-totem-digital/03.jpg", "/products/mini-totem-digital/04.jpg"],
+    images: ["/products/mini-totem-digital/01.jpg", "/products/mini-totem-digital/02.jpg", "/products/mini-totem-digital/03.jpg", "/products/mini-totem-digital/04.jpg", "/products/mini-totem-digital/05.jpg"],
     features: [
       "Mini PC con Windows",
       "Android Media Player",
@@ -2697,7 +2697,7 @@ export const products: Product[] = [
     title: "Terminal Interactiva para Sillas de Ruedas",
     description: "Solución de accesibilidad universal para personas con movilidad reducida",
     category: "terminales",
-    images: ["/products/terminal-interactiva-sillas-ruedas/01.jpg", "/products/terminal-interactiva-sillas-ruedas/02.jpg", "/products/terminal-interactiva-sillas-ruedas/03.jpg", "/products/terminal-interactiva-sillas-ruedas/04.jpg"],
+    images: ["/products/terminal-interactiva-sillas-ruedas/01.jpg", "/products/terminal-interactiva-sillas-ruedas/02.jpg", "/products/terminal-interactiva-sillas-ruedas/03.jpg", "/products/terminal-interactiva-sillas-ruedas/04.jpg", "/products/terminal-interactiva-sillas-ruedas/05.jpg"],
     features: [
       "Capacitiva 32\"",
       "LED display Philips HD (1366 x 768 px)",
@@ -2937,7 +2937,7 @@ export const products: Product[] = [
     title: "Mesa Interactiva",
     description: "Dispositivo digital con pantalla táctil horizontal para experiencias colaborativas e inmersivas",
     category: "totems",
-    images: ["/products/mesa-interactiva/01.png", "/products/mesa-interactiva/02.jpg", "/products/mesa-interactiva/03.jpg"],
+    images: ["/products/mesa-interactiva/01.png", "/products/mesa-interactiva/02.jpg", "/products/mesa-interactiva/03.jpg", "/products/mesa-interactiva/04.png", "/products/mesa-interactiva/05.jpeg"],
     features: [
       "Juegos didácticos",
       "Actividades en grupo",
@@ -3305,7 +3305,7 @@ export const products: Product[] = [
     title: "Monitores Profesionales de Cartelería Digital",
     description: "Pantallas diseñadas específicamente para entornos comerciales con alto rendimiento y durabilidad",
     category: "pantallas",
-    images: ["/products/monitores-stand-alone/01.png", "/products/monitores-stand-alone/02.jpg", "/products/monitores-stand-alone/03.png"],
+    images: ["/products/monitores-stand-alone/03.png", "/products/monitores-stand-alone/02.jpg", "/products/monitores-stand-alone/04.png", "/products/monitores-stand-alone/05.png", "/products/monitores-stand-alone/01.png"],
     features: [
       "Múltiples entradas HDMI",
       "DisplayPort",
@@ -3821,7 +3821,7 @@ export const products: Product[] = [
     title: "VIDRIERA DIGITAL",
     description: "Transforma tu negocio con la tecnología de cartelería digital más avanzada",
     category: "pantallas",
-    images: ["/products/vidrieras-digitales/01.jpg", "/products/vidrieras-digitales/02.jpg", "/products/vidrieras-digitales/03.jpg", "/products/vidrieras-digitales/04.jpg", "/products/vidrieras-digitales/05.jpg", "/products/vidrieras-digitales/06.png", "/products/vidrieras-digitales/07.jpg", "/products/vidrieras-digitales/08.jpg", "/products/vidrieras-digitales/09.jpg", "/products/vidrieras-digitales/10.png"],
+    images: ["/products/vidrieras-digitales/04.jpg", "/products/vidrieras-digitales/05.jpg", "/products/vidrieras-digitales/08.jpg", "/products/vidrieras-digitales/09.jpg", "/products/vidrieras-digitales/01.jpg", "/products/vidrieras-digitales/06.png", "/products/vidrieras-digitales/10.png", "/products/vidrieras-digitales/03.jpg", "/products/vidrieras-digitales/02.jpg", "/products/vidrieras-digitales/07.jpg"],
     features: [
 
     ],
@@ -3989,7 +3989,7 @@ export const products: Product[] = [
     title: "Videowalls",
     description: "Nueva y poderosa forma de impactar a la audiencia. Contenido de alto impacto en gran escala",
     category: "pantallas",
-    images: ["/products/videowalls-samsung/01.png", "/products/videowalls-samsung/02.png", "/products/videowalls-samsung/03.jpg", "/products/videowalls-samsung/04.jpg", "/products/videowalls-samsung/05.png", "/products/videowalls-samsung/06.jpg", "/products/videowalls-samsung/07.jpg", "/products/videowalls-samsung/08.png", "/products/videowalls-samsung/09.png", "/products/videowalls-samsung/10.png", "/products/videowalls-samsung/11.png", "/products/videowalls-samsung/12.png", "/products/videowalls-samsung/13.png", "/products/videowalls-samsung/14.png", "/products/videowalls-samsung/15.png"],
+    images: ["/products/videowalls-samsung/02.png", "/products/videowalls-samsung/04.jpg", "/products/videowalls-samsung/06.jpg", "/products/videowalls-samsung/07.jpg", "/products/videowalls-samsung/08.png", "/products/videowalls-samsung/15.png", "/products/videowalls-samsung/03.jpg", "/products/videowalls-samsung/05.png", "/products/videowalls-samsung/01.png", "/products/videowalls-samsung/09.png", "/products/videowalls-samsung/10.png", "/products/videowalls-samsung/11.png", "/products/videowalls-samsung/12.png", "/products/videowalls-samsung/13.png", "/products/videowalls-samsung/14.png"],
     features: [
 
     ],
@@ -5092,7 +5092,7 @@ export const products: Product[] = [
     title: "Pantallas de LED",
     description: "Tecnología de visualización de alta calidad para interiores y exteriores",
     category: "led",
-    images: ["/products/pantallas-led/01.jpg", "/products/pantallas-led/02.avif", "/products/pantallas-led/03.jpg", "/products/pantallas-led/04.webp", "/products/pantallas-led/05.webp"],
+    images: ["/products/pantallas-led/03.jpg", "/products/pantallas-led/02.avif", "/products/pantallas-led/05.webp", "/products/pantallas-led/04.webp", "/products/pantallas-led/01.jpg"],
     features: [
       "Menor brillo",
       "Resolución más alta (1.5mm o 2.5mm)",
@@ -5558,7 +5558,7 @@ export const products: Product[] = [
     title: "Banners LED",
     description: "Pantallas LED alargadas y verticales para contenido dinámico",
     category: "led",
-    images: ["/products/banner-led/01.jpg", "/products/banner-led/02.jpg", "/products/banner-led/03.jpg"],
+    images: ["/products/banner-led/01.jpg", "/products/banner-led/02.jpg", "/products/banner-led/03.jpg", "/products/banner-led/04.jpg", "/products/banner-led/05.png"],
     features: [
       "Panel LED (con pixel pitch entre P1.8 y P4)",
       "Carcasa rígida de aluminio o materiales livianos como madera",
@@ -5792,7 +5792,7 @@ export const products: Product[] = [
     title: "Tótem LED Outdoor",
     description: "Estructura vertical autoportante para publicidad digital exterior",
     category: "led",
-    images: ["/products/totem-led-outdoor/01.jpg", "/products/totem-led-outdoor/02.webp", "/products/totem-led-outdoor/03.png", "/products/totem-led-outdoor/04.jpg"],
+    images: ["/products/totem-led-outdoor/01.jpg", "/products/totem-led-outdoor/02.webp", "/products/totem-led-outdoor/03.png", "/products/totem-led-outdoor/04.jpg", "/products/totem-led-outdoor/05.png"],
     features: [
       "Pixel pitch: P3–P6 mm",
       "Distancia de lectura: 2–10 m",
@@ -6260,7 +6260,7 @@ export const products: Product[] = [
     title: "Carteles Redondos LED",
     description: "Pantallas digitales circulares para contenido visual dinámico",
     category: "led",
-    images: ["/products/carteles-redondos-led/01.png", "/products/carteles-redondos-led/02.jpg", "/products/carteles-redondos-led/03.png", "/products/carteles-redondos-led/04.png", "/products/carteles-redondos-led/05.jpg", "/products/carteles-redondos-led/06.jpg"],
+    images: ["/products/carteles-redondos-led/05.jpg", "/products/carteles-redondos-led/03.png", "/products/carteles-redondos-led/06.jpg", "/products/carteles-redondos-led/02.jpg", "/products/carteles-redondos-led/04.png", "/products/carteles-redondos-led/01.png"],
     features: [
       "Módulos LED curvos o en triángulos segmentados para lograr la forma circular",
       "Superficie de visualización continua, sin bordes visibles",
@@ -6489,7 +6489,7 @@ export const products: Product[] = [
     title: "Carteles Salientes LED",
     description: "Banderolas LED para máxima visibilidad lateral",
     category: "led",
-    images: ["/products/carteles-salientes-led/01.png", "/products/carteles-salientes-led/02.jpg", "/products/carteles-salientes-led/03.jpg", "/products/carteles-salientes-led/04.jpg"],
+    images: ["/products/carteles-salientes-led/01.png", "/products/carteles-salientes-led/02.jpg", "/products/carteles-salientes-led/03.jpg", "/products/carteles-salientes-led/04.jpg", "/products/carteles-salientes-led/05.png"],
     features: [
       "Formato: Rectangular o circular",
       "Caras: Un lado o doble cara",
@@ -6940,7 +6940,7 @@ export const products: Product[] = [
     title: "Shelf LED",
     description: "Carteles LED para góndolas - Pantallas digitales para punto de venta",
     category: "led",
-    images: ["/products/shelf-led/01.jpg", "/products/shelf-led/02.jpg", "/products/shelf-led/03.avif", "/products/shelf-led/04.jpeg"],
+    images: ["/products/shelf-led/01.jpg", "/products/shelf-led/02.jpg", "/products/shelf-led/03.avif", "/products/shelf-led/04.jpeg", "/products/shelf-led/05.png"],
     features: [
       "Tiras de 60 mm de alto, disponibles en longitudes de 300, 600, 900 o 1200 mm, con conexión en cascada",
       "Combinan diseño ultradelgado y gabinete metálico resistente, con mantenimiento frontal, impermeabilidad y conectividad avanzada",
@@ -7334,7 +7334,7 @@ export const products: Product[] = [
     title: "Software de Cartelería Digital",
     description: "Controla, programa y distribuye contenido multimedia en pantallas digitales",
     category: "software",
-    images: ["/products/software-carteleria-digital/01.jpg", "/products/software-carteleria-digital/02.jpg", "/products/software-carteleria-digital/03.png"],
+    images: ["/products/software-carteleria-digital/01.jpg", "/products/software-carteleria-digital/02.jpg", "/products/software-carteleria-digital/03.png", "/products/software-carteleria-digital/04.jpg", "/products/software-carteleria-digital/05.png"],
     features: [
       "Mayor velocidad de transferencia de contenidos",
       "Optimización del ancho de banda disponible",
@@ -8227,7 +8227,7 @@ export const products: Product[] = [
     title: "C-Control",
     description: "El software C-Control es una solución profesional diseñada para visualizar contenidos y controlar videowalls permitiendo mostrar múltiples fuentes de video e información de forma centralizada. Diseñado para funcionar 24 x 7.",
     category: "software",
-    images: ["/products/c-control-videowalls/01.png", "/products/c-control-videowalls/02.jpg", "/products/c-control-videowalls/03.png", "/products/c-control-videowalls/04.jpg"],
+    images: ["/products/c-control-videowalls/01.png", "/products/c-control-videowalls/02.jpg", "/products/c-control-videowalls/03.png", "/products/c-control-videowalls/04.jpg", "/products/c-control-videowalls/05.gif"],
     features: [
       "Múltiples fuentes de información",
       "Trabajo colaborativo local o remoto",
@@ -8458,7 +8458,7 @@ export const products: Product[] = [
     title: "Salas de Videoconferencias",
     description: "Solución profesional para reuniones remotas de alta calidad",
     category: "software",
-    images: ["/products/videoconferencias/01.jpg", "/products/videoconferencias/02.jpg"],
+    images: ["/products/videoconferencias/01.jpg", "/products/videoconferencias/02.jpg", "/videos/hero-adinnov-poster.webp", "/products/videoconferencias/04-contexto-ia.webp", "/products/videoconferencias/05-contexto-ia.webp"],
     features: [
       "Hardware especializado de alta calidad",
       "Software de colaboración avanzado",
@@ -8664,7 +8664,7 @@ export const products: Product[] = [
     title: "Tótem de Guardia Remoto",
     description: "Sistema de vigilancia y control de acceso operado remotamente",
     category: "totems",
-    images: ["/products/totem-guardia-remoto/01.jpg", "/products/totem-guardia-remoto/02.jpg", "/products/totem-guardia-remoto/03.jpg", "/products/totem-guardia-remoto/04.jpg"],
+    images: ["/products/totem-guardia-remoto/01.jpg", "/products/totem-guardia-remoto/02.jpg", "/products/totem-guardia-remoto/03.jpg", "/products/totem-guardia-remoto/04.jpg", "/products/totem-guardia-remoto/05.jpg"],
     features: [
       "Recibir visitantes o proveedores en un edificio",
       "Autorizar ingresos a un garaje o empresa",
@@ -9097,7 +9097,7 @@ export const products: Product[] = [
     title: "Lustrador de Calzado Automático",
     description: "Cartelería Digital con un servicio extra para el público",
     category: "totems",
-    images: ["/products/lustrador-calzado/01.jpg", "/products/lustrador-calzado/02.jpg", "/products/lustrador-calzado/03.jpg", "/products/lustrador-calzado/04.jpg", "/products/lustrador-calzado/05.jpg", "/products/lustrador-calzado/06.jpg"],
+    images: ["/products/lustrador-calzado/04.jpg", "/products/lustrador-calzado/05.jpg", "/products/lustrador-calzado/06.jpg", "/products/lustrador-calzado/01.jpg", "/products/lustrador-calzado/02.jpg", "/products/lustrador-calzado/03.jpg"],
     features: [
       "Pantalla digital Android de 43\"",
       "Contenido dinámico y actualizable",

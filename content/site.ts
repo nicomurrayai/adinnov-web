@@ -1,24 +1,119 @@
+export const productFamilies = [
+  {
+    id: "totems-terminales",
+    index: "01",
+    title: "Tótems y terminales",
+    shortTitle: "Tótems",
+    description:
+      "Equipos digitales e interactivos de fabricación propia para comunicar, orientar y activar experiencias.",
+    href: "/productos?familia=totems-terminales",
+    image: "/products/totem-interactivo/01.jpg",
+  },
+  {
+    id: "pantallas-profesionales",
+    index: "02",
+    title: "Pantallas profesionales",
+    shortTitle: "Pantallas",
+    description:
+      "Displays profesionales, videowalls y formatos especiales para espacios corporativos y comerciales.",
+    href: "/productos?familia=pantallas-profesionales",
+    image: "/products/videowalls-samsung/03.jpg",
+  },
+  {
+    id: "led",
+    index: "03",
+    title: "LED",
+    shortTitle: "LED",
+    description:
+      "Pantallas, posters y piezas LED indoor u outdoor configuradas para cada escala y entorno.",
+    href: "/productos?familia=led",
+    image: "/products/poster-led/02.jpg",
+  },
+  {
+    id: "pizarras-interaccion",
+    index: "04",
+    title: "Pizarras e interacción",
+    shortTitle: "Interacción",
+    description:
+      "Superficies táctiles para presentar, colaborar y trabajar con contenido en tiempo real.",
+    href: "/productos?familia=pizarras-interaccion",
+    image: "/products/pizarra-interactiva-i3touch-e-one/04.webp",
+  },
+  {
+    id: "kioscos-autogestion",
+    index: "05",
+    title: "Kioscos y autogestión",
+    shortTitle: "Autogestión",
+    description:
+      "Terminales para pedidos, pagos, turnos y atención autónoma en puntos de alto tránsito.",
+    href: "/productos?familia=kioscos-autogestion",
+    image: "/products/kiosco-autogestion-gastronomia/01.jpg",
+  },
+  {
+    id: "software-servicios",
+    index: "06",
+    title: "Software y servicios",
+    shortTitle: "Software",
+    description:
+      "Gestión de contenidos, aplicaciones interactivas e integración para que cada equipo cumpla su objetivo.",
+    href: "/productos?familia=software-servicios",
+    image: "/products/software-carteleria-digital/01.jpg",
+  },
+] as const;
+
+export const processSteps = [
+  {
+    index: "01",
+    title: "Entender el espacio",
+    description:
+      "Relevamos el entorno, la audiencia y el objetivo de comunicación antes de definir un equipo.",
+  },
+  {
+    index: "02",
+    title: "Diseñar la solución",
+    description:
+      "Combinamos hardware, estructura, software y contenidos en una propuesta adaptada al proyecto.",
+  },
+  {
+    index: "03",
+    title: "Implementar",
+    description:
+      "Coordinamos fabricación, logística, instalación y puesta en marcha para dejar la solución operativa.",
+  },
+] as const;
+
 export const site = {
   name: "Adinnov",
   tagline: "Cartelería digital",
   description:
-    "Integramos tecnología para estar a la vanguardia digital. Fabricamos tótems, pantallas LED, kioscos y software para instituciones y empresas.",
+    "Soluciones de cartelería digital, interacción y autogestión para empresas e instituciones. Venta, alquiler, fabricación e instalación en Argentina.",
   url: "https://adinnov.com.ar",
   email: "info@adinnov.com.ar",
+  address: "Membrillar 74, Ciudad de Buenos Aires",
   phones: [
-    { label: "15-5478-9803", href: "tel:+541154789803", display: "11 5478-9803" },
-    { label: "11 4190-6432", href: "tel:+541141906432", display: "11 4190-6432" },
+    {
+      label: "Móvil",
+      href: "tel:+541154789803",
+      display: "11 5478-9803",
+    },
+    {
+      label: "Línea secundaria",
+      href: "tel:+541141906432",
+      display: "11 4190-6432",
+    },
   ],
   whatsapp: [
     {
       label: "WhatsApp",
-      href: "https://wa.me/541154789803",
-      number: "541154789803",
+      href: "https://wa.me/5491154789803",
+      number: "5491154789803",
+      display: "11 5478-9803",
     },
     {
-      label: "WhatsApp alt.",
+      label: "WhatsApp alternativo",
       href: "https://wa.me/541141906432",
       number: "541141906432",
+      display: "11 4190-6432",
     },
   ],
   social: {
@@ -28,34 +123,64 @@ export const site = {
     youtube: "https://www.youtube.com/@adinnovcarteleriadigital4786",
   },
   partners: [
-    { name: "AVIXA", href: "https://www.avixa.org/es", image: "/brand/avixa.png" },
-    { name: "IoT Innov", href: "https://iotinnov.com.ar/", image: "/brand/iot-innov.png" },
-    { name: "Tech Innov", href: "https://techinnov.com.ar/", image: "/brand/tech-innov.png" },
+    { name: "Samsung", image: "/partners/samsung.png" },
+    { name: "LG Business Solutions", image: "/partners/lg-business-solutions.png" },
+    { name: "i3-Technologies", image: "/partners/i3-technologies.png" },
+    { name: "NovaStar", image: "/partners/novastar.png" },
+    { name: "Mean Well", image: "/partners/meanwell.png" },
+    { name: "Philips", image: "/partners/philips.png" },
+    { name: "ViewSonic", image: "/partners/viewsonic.png" },
+    { name: "Logitech", image: "/partners/logitech.png" },
+    { name: "Elo", image: "/partners/elo.jpg" },
+    { name: "Dahua", image: "/partners/dahua.png" },
+    { name: "Hikvision", image: "/partners/hikvision.png" },
+    { name: "Intel", image: "/partners/intel.png" },
   ],
   home: {
-    eyebrow: "Nuestras soluciones",
-    headline: "Integramos tecnología para estar a la vanguardia digital",
+    eyebrow: "Cartelería digital · Buenos Aires",
+    headline: "Tecnología que transforma espacios y conecta experiencias",
     supporting:
-      "Fabricación propia de tótems, pantallas LED, kioscos y software. Venta, alquiler e instalación para empresas e instituciones en toda Argentina.",
-    ctaPrimary: { label: "Ver productos", href: "/productos" },
-    ctaSecondary: { label: "Contactar", href: "/contacto" },
+      "Diseñamos e integramos tótems, pantallas LED, kioscos, sistemas interactivos y software para proyectos corporativos en toda la Argentina.",
+    ctaPrimary: { label: "Cotizar un proyecto", href: "/contacto?intent=venta" },
+    ctaSecondary: { label: "Explorar soluciones", href: "/soluciones" },
   },
+  proofs: [
+    {
+      title: "Fabricación propia",
+      description: "Tótems, terminales y formatos adaptados a cada proyecto.",
+    },
+    {
+      title: "Venta y alquiler",
+      description: "Modalidades para instalaciones permanentes y eventos.",
+    },
+    {
+      title: "Implementación integral",
+      description: "Logística, instalación, puesta en marcha y soporte.",
+    },
+  ],
   about: {
-    title: "Nosotros",
+    title: "Tecnología aplicada a espacios reales",
+    lead:
+      "Somos una empresa de la Ciudad de Buenos Aires especializada en cartelería digital para instituciones y empresas de distintas escalas.",
     paragraphs: [
-      "Somos una empresa con base en la Ciudad de Buenos Aires con más de 10 años de experiencia brindando productos y servicios de Cartelería Digital en instituciones y empresas de todo tipo y tamaño.",
-      "Nos especializamos en la fabricación de Tótems Digitales e Interactivos (con pantalla táctil), teniendo un modelo único en el mercado diseñado por nosotros mismos el cual posee patente del INPI. También fabricamos Terminales y kioscos Interactivos, POS All-in-one, Atriles Digitales y mini Tótems Digitales.",
-      "En los últimos años hemos incorporado todo tipo de productos LED desde pantallas de gran formato, tanto Outdoor para vía pública como también Indoor para empresas, locales comerciales e instituciones.",
-      "Dado que somos fabricantes nuestros productos están destinados tanto a la venta como también al alquiler para eventos de todo tipo. Participamos de exposiciones, conferencias y eventos corporativos en los que damos una solución integral, desde la logística y entrega de los equipos, instalación y puesta en marcha dejando los productos funcionando.",
-      "Nuestros clientes son muy variados y de todo tipo de tamaños: pequeños emprendedores, medianas empresas y grandes multinacionales. También somos proveedores de organismos del Estado como Ministerios y Municipios.",
-      "Contamos con un equipo de desarrollo de software destinado a satisfacer las necesidades de nuestros clientes. En especial nos especializamos en desarrollar apps y juegos interactivos para los tótems y terminales.",
-      "Tal como nuestro nombre muestra poseemos una profunda vocación de innovar en nuevos productos y soluciones al servicio del marketing, la publicidad y la comunicación.",
+      "Desde hace más de diez años desarrollamos soluciones para comunicar, informar y crear experiencias interactivas. Nos especializamos en la fabricación de tótems digitales e interactivos, terminales, kioscos, atriles y formatos a medida.",
+      "También integramos pantallas profesionales y tecnología LED indoor y outdoor para empresas, locales comerciales, instituciones y vía pública.",
+      "La fabricación propia nos permite trabajar tanto en venta como en alquiler. Para eventos coordinamos la logística, la instalación y la puesta en marcha de los equipos.",
+      "Nuestro equipo de software desarrolla aplicaciones, juegos interactivos y sistemas de gestión de contenidos para acompañar el hardware con una experiencia completa.",
+    ],
+    capabilities: [
+      "Fabricación de equipamiento",
+      "Integración audiovisual",
+      "Desarrollo de software",
+      "Alquiler para eventos",
+      "Instalación y puesta en marcha",
+      "Soluciones personalizadas",
     ],
   },
   customWork: {
-    title: "Soluciones a medida",
+    title: "Cuando el producto estándar no alcanza",
     description:
-      "Fabricamos equipamiento según las necesidades específicas de nuestros clientes.",
+      "Diseñamos y fabricamos equipamiento a medida según las necesidades físicas, técnicas y visuales de cada proyecto.",
   },
   contact: {
     title: "Contacto",
@@ -65,10 +190,10 @@ export const site = {
   },
   nav: [
     { label: "Productos", href: "/productos" },
+    { label: "Soluciones", href: "/soluciones" },
     { label: "Alquileres", href: "/alquileres" },
-    { label: "Soluciones", href: "/#verticales" },
-    { label: "Nosotros", href: "/nosotros" },
     { label: "Trabajos", href: "/trabajos" },
-    { label: "Contacto", href: "/contacto" },
+    { label: "Clientes", href: "/clientes" },
+    { label: "Nosotros", href: "/nosotros" },
   ],
 } as const;

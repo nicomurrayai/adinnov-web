@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export function Container({
   children,
@@ -8,7 +8,7 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-6xl px-5 md:px-8 ${className}`}>
+    <div className={`mx-auto w-full max-w-[90rem] px-5 sm:px-8 lg:px-12 xl:px-16 ${className}`}>
       {children}
     </div>
   );

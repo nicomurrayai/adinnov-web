@@ -1,39 +1,37 @@
 import Image from "next/image";
 import { site } from "@content/site";
-import { Section } from "../ui/Section";
+import { Container } from "../ui/Container";
 
 export function Partners() {
   return (
-    <Section tone="surface" className="!py-14">
-      <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-        <div className="max-w-md">
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-muted">
-            Partners
+    <section className="border-y border-border bg-paper py-8" aria-labelledby="partners-title">
+      <Container className="flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p id="partners-title" className="eyebrow text-muted">
+            Ecosistema tecnológico
           </p>
-          <h2 className="font-[family-name:var(--font-outfit)] text-2xl font-medium tracking-tight text-navy md:text-3xl">
-            Red de alianzas tecnológicas
-          </h2>
+          <p className="font-display mt-2 text-xl font-medium tracking-[-0.025em] text-navy">
+            Partners y alianzas
+          </p>
         </div>
-        <div className="flex flex-wrap items-center gap-10">
-          {site.partners.map((p) => (
-            <a
-              key={p.name}
-              href={p.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="opacity-70 grayscale transition hover:opacity-100 hover:grayscale-0"
+        <div className="flex flex-wrap items-center gap-x-10 gap-y-6 md:justify-end lg:gap-x-14">
+          {site.partners.map((partner) => (
+            <div
+              key={partner.name}
+              className="opacity-65 grayscale transition-[opacity,filter] duration-300 hover:opacity-100 hover:grayscale-0"
             >
               <Image
-                src={p.image}
-                alt={p.name}
-                width={100}
-                height={40}
-                className="h-8 w-auto object-contain md:h-10"
+                src={partner.image}
+                alt={partner.name}
+                width={140}
+                height={54}
+                sizes="140px"
+                className="h-9 w-auto object-contain md:h-10"
               />
-            </a>
+            </div>
           ))}
         </div>
-      </div>
-    </Section>
+      </Container>
+    </section>
   );
 }

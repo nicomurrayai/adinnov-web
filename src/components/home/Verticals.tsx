@@ -1,31 +1,45 @@
 import { verticals } from "@content/verticals";
+import { Button } from "../ui/Button";
+import { Reveal } from "../ui/Reveal";
 import { Section, SectionHeading } from "../ui/Section";
 
 export function Verticals() {
   return (
     <Section id="verticales">
-      <SectionHeading
-        eyebrow="Verticales"
-        title="Soluciones por industria"
-        description="Aplicamos cartelería digital e interactiva en entornos de alto tránsito y comunicación crítica."
-      />
-      <ol className="grid gap-0 border-t border-border md:grid-cols-2">
-        {verticals.map((v, i) => (
-          <li
-            key={v.id}
-            className="border-b border-border py-7 md:odd:pr-8 md:even:border-l md:even:pl-8"
-          >
-            <div className="flex gap-5">
-              <span className="font-[family-name:var(--font-outfit)] text-sm text-muted">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className="font-[family-name:var(--font-outfit)] text-lg font-medium text-navy">
-                  {v.title}
+      <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+        <SectionHeading
+          eyebrow="Sectores"
+          title="Pensado para el contexto, no sólo para la pantalla"
+          description="Cada entorno tiene su propio ritmo, audiencia y nivel de exigencia. La solución se define a partir de ese contexto."
+          className="lg:col-span-9"
+        />
+        <div className="lg:col-span-3 lg:flex lg:justify-end">
+          <Button href="/soluciones" variant="secondary">
+            Ver soluciones
+          </Button>
+        </div>
+      </div>
+
+      <ol className="mt-14 border-t border-border lg:mt-20">
+        {verticals.map((vertical, index) => (
+          <li key={vertical.id} className="border-b border-border">
+            <Reveal>
+              <div className="group grid gap-4 py-6 transition-colors md:grid-cols-12 md:items-center md:py-7">
+                <span className="font-mono text-[0.64rem] text-signal md:col-span-1">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display text-2xl font-medium tracking-[-0.035em] text-navy md:col-span-4 md:text-3xl">
+                  {vertical.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{v.description}</p>
+                <p className="max-w-2xl text-sm leading-6 text-muted md:col-span-6">{vertical.description}</p>
+                <span
+                  aria-hidden="true"
+                  className="hidden text-right text-xl text-navy/35 transition-transform group-hover:translate-x-1 md:col-span-1 md:block"
+                >
+                  →
+                </span>
               </div>
-            </div>
+            </Reveal>
           </li>
         ))}
       </ol>

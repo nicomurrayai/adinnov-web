@@ -1,0 +1,1494 @@
+{
+  "/clients/banco-provincia.jpeg": {
+    "width": 666,
+    "height": 232
+  },
+  "/clients/buenos-aires-ciudad.png": {
+    "width": 800,
+    "height": 261
+  },
+  "/clients/coca-cola.png": {
+    "width": 2560,
+    "height": 804
+  },
+  "/clients/google.png": {
+    "width": 360,
+    "height": 153
+  },
+  "/clients/hospital-italiano.png": {
+    "width": 405,
+    "height": 275
+  },
+  "/clients/mercado-libre.png": {
+    "width": 2100,
+    "height": 516
+  },
+  "/clients/netflix.png": {
+    "width": 3840,
+    "height": 2160
+  },
+  "/clients/osde.png": {
+    "width": 446,
+    "height": 180
+  },
+  "/clients/roche.png": {
+    "width": 312,
+    "height": 162
+  },
+  "/clients/techint.png": {
+    "width": 1200,
+    "height": 1586
+  },
+  "/clients/unilever.png": {
+    "width": 920,
+    "height": 690
+  },
+  "/clients/ypf.png": {
+    "width": 200,
+    "height": 200
+  },
+  "/partners/dahua.png": {
+    "width": 500,
+    "height": 240
+  },
+  "/partners/elo.jpg": {
+    "width": 500,
+    "height": 281
+  },
+  "/partners/hikvision.png": {
+    "width": 600,
+    "height": 80
+  },
+  "/partners/i3-technologies.png": {
+    "width": 1000,
+    "height": 274
+  },
+  "/partners/intel.png": {
+    "width": 1005,
+    "height": 663
+  },
+  "/partners/lg-business-solutions.png": {
+    "width": 512,
+    "height": 284
+  },
+  "/partners/logitech.png": {
+    "width": 407,
+    "height": 124
+  },
+  "/partners/meanwell.png": {
+    "width": 258,
+    "height": 152
+  },
+  "/partners/novastar.png": {
+    "width": 2520,
+    "height": 469
+  },
+  "/partners/philips.png": {
+    "width": 2272,
+    "height": 880
+  },
+  "/partners/samsung.png": {
+    "width": 2272,
+    "height": 536
+  },
+  "/partners/viewsonic.png": {
+    "width": 1529,
+    "height": 505
+  },
+  "/products/apps-juegos-interactivos/01.jpg": {
+    "width": 2500,
+    "height": 2560
+  },
+  "/products/apps-juegos-interactivos/02.jpg": {
+    "width": 1500,
+    "height": 2592
+  },
+  "/products/apps-juegos-interactivos/03.jpg": {
+    "width": 3000,
+    "height": 6000
+  },
+  "/products/apps-juegos-interactivos/04.jpg": {
+    "width": 1024,
+    "height": 576
+  },
+  "/products/apps-juegos-interactivos/05.jpg": {
+    "width": 563,
+    "height": 732
+  },
+  "/products/apps-juegos-interactivos/06.jpg": {
+    "width": 820,
+    "height": 720
+  },
+  "/products/apps-juegos-interactivos/07.jpg": {
+    "width": 640,
+    "height": 1016
+  },
+  "/products/apps-juegos-interactivos/08.jpg": {
+    "width": 793,
+    "height": 1052
+  },
+  "/products/atril-digital/01.png": {
+    "width": 2000,
+    "height": 2796
+  },
+  "/products/atril-digital/02.jpg": {
+    "width": 570,
+    "height": 748
+  },
+  "/products/atril-digital/03.jpeg": {
+    "width": 749,
+    "height": 500
+  },
+  "/products/atril-digital/04.jpg": {
+    "width": 446,
+    "height": 491
+  },
+  "/products/atril-digital/05.jpg": {
+    "width": 538,
+    "height": 754
+  },
+  "/products/banner-led/01.jpg": {
+    "width": 501,
+    "height": 707
+  },
+  "/products/banner-led/02.jpg": {
+    "width": 502,
+    "height": 713
+  },
+  "/products/banner-led/03.jpg": {
+    "width": 748,
+    "height": 650
+  },
+  "/products/banner-led/04.jpg": {
+    "width": 2856,
+    "height": 1912
+  },
+  "/products/banner-led/05.png": {
+    "width": 1155,
+    "height": 528
+  },
+  "/products/bar-display-pantallas-stretch-solum/01.png": {
+    "width": 832,
+    "height": 596
+  },
+  "/products/bar-display-pantallas-stretch-solum/02.webp": {
+    "width": 614,
+    "height": 349
+  },
+  "/products/bar-display-pantallas-stretch-solum/03.webp": {
+    "width": 124,
+    "height": 124
+  },
+  "/products/bar-display-pantallas-stretch-solum/04.webp": {
+    "width": 124,
+    "height": 124
+  },
+  "/products/bar-display-pantallas-stretch-solum/05.webp": {
+    "width": 124,
+    "height": 124
+  },
+  "/products/bar-display-pantallas-stretch-solum/06.png": {
+    "width": 448,
+    "height": 299
+  },
+  "/products/bar-display-pantallas-stretch-solum/07.png": {
+    "width": 448,
+    "height": 299
+  },
+  "/products/bar-display-pantallas-stretch-solum/08.png": {
+    "width": 448,
+    "height": 301
+  },
+  "/products/bar-display-pantallas-stretch-solum/09.png": {
+    "width": 446,
+    "height": 299
+  },
+  "/products/bar-display-pantallas-stretch-solum/10.png": {
+    "width": 448,
+    "height": 299
+  },
+  "/products/bar-display-pantallas-stretch-solum/11.png": {
+    "width": 448,
+    "height": 301
+  },
+  "/products/bar-display-pantallas-stretch-solum/12.png": {
+    "width": 835,
+    "height": 633
+  },
+  "/products/bar-display-pantallas-stretch-solum/13.webp": {
+    "width": 614,
+    "height": 349
+  },
+  "/products/bar-display-pantallas-stretch-solum/14.png": {
+    "width": 837,
+    "height": 633
+  },
+  "/products/bar-display-pantallas-stretch-solum/15.png": {
+    "width": 837,
+    "height": 633
+  },
+  "/products/c-control-videowalls/01.png": {
+    "width": 714,
+    "height": 549
+  },
+  "/products/c-control-videowalls/02.jpg": {
+    "width": 730,
+    "height": 411
+  },
+  "/products/c-control-videowalls/03.png": {
+    "width": 630,
+    "height": 539
+  },
+  "/products/c-control-videowalls/04.jpg": {
+    "width": 730,
+    "height": 411
+  },
+  "/products/c-control-videowalls/05.gif": {
+    "width": 700,
+    "height": 695
+  },
+  "/products/carteles-redondos-led/01.png": {
+    "width": 432,
+    "height": 380
+  },
+  "/products/carteles-redondos-led/02.jpg": {
+    "width": 648,
+    "height": 657
+  },
+  "/products/carteles-redondos-led/03.png": {
+    "width": 1046,
+    "height": 1046
+  },
+  "/products/carteles-redondos-led/04.png": {
+    "width": 1046,
+    "height": 436
+  },
+  "/products/carteles-redondos-led/05.jpg": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/products/carteles-redondos-led/06.jpg": {
+    "width": 800,
+    "height": 800
+  },
+  "/products/carteles-salientes-led/01.png": {
+    "width": 1080,
+    "height": 911
+  },
+  "/products/carteles-salientes-led/02.jpg": {
+    "width": 800,
+    "height": 898
+  },
+  "/products/carteles-salientes-led/03.jpg": {
+    "width": 960,
+    "height": 636
+  },
+  "/products/carteles-salientes-led/04.jpg": {
+    "width": 708,
+    "height": 503
+  },
+  "/products/carteles-salientes-led/05.png": {
+    "width": 750,
+    "height": 1280
+  },
+  "/products/cubos-led/01.png": {
+    "width": 585,
+    "height": 572
+  },
+  "/products/cubos-led/02.jpg": {
+    "width": 600,
+    "height": 600
+  },
+  "/products/cubos-led/03.jpg": {
+    "width": 600,
+    "height": 600
+  },
+  "/products/cubos-led/04.jpg": {
+    "width": 720,
+    "height": 720
+  },
+  "/products/cubos-led/05.webp": {
+    "width": 800,
+    "height": 800
+  },
+  "/products/cubos-led/06.webp": {
+    "width": 800,
+    "height": 800
+  },
+  "/products/cubos-led/07.jpg": {
+    "width": 720,
+    "height": 539
+  },
+  "/products/cubos-led/08.webp": {
+    "width": 640,
+    "height": 640
+  },
+  "/products/flip/01.jpg": {
+    "width": 2400,
+    "height": 1800
+  },
+  "/products/flip/02.jpg": {
+    "width": 750,
+    "height": 750
+  },
+  "/products/flip/03.jpg": {
+    "width": 352,
+    "height": 637
+  },
+  "/products/flip/04.jpg": {
+    "width": 1440,
+    "height": 830
+  },
+  "/products/flip/05.jpg": {
+    "width": 400,
+    "height": 524
+  },
+  "/products/flip/06.jpg": {
+    "width": 1440,
+    "height": 1000
+  },
+  "/products/flip/07.jpg": {
+    "width": 1440,
+    "height": 804
+  },
+  "/products/flip/08.jpg": {
+    "width": 1068,
+    "height": 713
+  },
+  "/products/gestion-filas/01.jpg": {
+    "width": 550,
+    "height": 510
+  },
+  "/products/gestion-filas/02.jpg": {
+    "width": 600,
+    "height": 513
+  },
+  "/products/gestion-filas/03.jpg": {
+    "width": 267,
+    "height": 160
+  },
+  "/products/gestion-filas/04.jpg": {
+    "width": 942,
+    "height": 750
+  },
+  "/products/gestion-filas/05.jpg": {
+    "width": 485,
+    "height": 381
+  },
+  "/products/gestion-filas/06.jpg": {
+    "width": 2560,
+    "height": 1438
+  },
+  "/products/gestion-filas/07.jpg": {
+    "width": 1140,
+    "height": 600
+  },
+  "/products/gestion-filas/08.jpg": {
+    "width": 1140,
+    "height": 600
+  },
+  "/products/gestion-turnos/01.jpg": {
+    "width": 708,
+    "height": 886
+  },
+  "/products/gestion-turnos/02.png": {
+    "width": 264,
+    "height": 469
+  },
+  "/products/gestion-turnos/03.png": {
+    "width": 692,
+    "height": 469
+  },
+  "/products/gestion-turnos/04.png": {
+    "width": 712,
+    "height": 426
+  },
+  "/products/gestion-turnos/05.png": {
+    "width": 712,
+    "height": 388
+  },
+  "/products/gestion-turnos/06.png": {
+    "width": 712,
+    "height": 389
+  },
+  "/products/gestion-turnos/07.jpg": {
+    "width": 1166,
+    "height": 574
+  },
+  "/products/kiosco-autogestion-3nstar/01.png": {
+    "width": 1013,
+    "height": 751
+  },
+  "/products/kiosco-autogestion-3nstar/02.png": {
+    "width": 500,
+    "height": 500
+  },
+  "/products/kiosco-autogestion-3nstar/03.png": {
+    "width": 500,
+    "height": 500
+  },
+  "/products/kiosco-autogestion-3nstar/04.png": {
+    "width": 6200,
+    "height": 6200
+  },
+  "/products/kiosco-autogestion-3nstar/05.png": {
+    "width": 500,
+    "height": 500
+  },
+  "/products/kiosco-autogestion-3nstar/06.png": {
+    "width": 500,
+    "height": 500
+  },
+  "/products/kiosco-autogestion-3nstar/07.png": {
+    "width": 500,
+    "height": 500
+  },
+  "/products/kiosco-autogestion-gastronomia/01.jpg": {
+    "width": 1386,
+    "height": 850
+  },
+  "/products/kiosco-autogestion-gastronomia/02.jpg": {
+    "width": 1366,
+    "height": 916
+  },
+  "/products/kiosco-autogestion-gastronomia/03.webp": {
+    "width": 1000,
+    "height": 1000
+  },
+  "/products/kiosco-autogestion-gastronomia/04.jpg": {
+    "width": 2560,
+    "height": 1956
+  },
+  "/products/kiosco-autogestion-gastronomia/05.jpg": {
+    "width": 608,
+    "height": 482
+  },
+  "/products/kiosco-autogestion-samsung/01.webp": {
+    "width": 720,
+    "height": 635
+  },
+  "/products/kiosco-autogestion-samsung/02.webp": {
+    "width": 1440,
+    "height": 940
+  },
+  "/products/kiosco-autogestion-samsung/03.avif": {
+    "width": 1440,
+    "height": 960
+  },
+  "/products/kiosco-autogestion-samsung/04.webp": {
+    "width": 1440,
+    "height": 780
+  },
+  "/products/kiosco-autogestion-samsung/05.webp": {
+    "width": 720,
+    "height": 940
+  },
+  "/products/kiosco-autogestion-samsung/06.webp": {
+    "width": 720,
+    "height": 940
+  },
+  "/products/kiosco-autogestion-samsung/07.jpeg": {
+    "width": 1440,
+    "height": 1270
+  },
+  "/products/kiosco-autogestion-samsung/08.webp": {
+    "width": 1440,
+    "height": 1270
+  },
+  "/products/kiosco-autogestion-samsung/09.avif": {
+    "width": 1440,
+    "height": 1270
+  },
+  "/products/lustrador-calzado/01.jpg": {
+    "width": 500,
+    "height": 281
+  },
+  "/products/lustrador-calzado/02.jpg": {
+    "width": 465,
+    "height": 332
+  },
+  "/products/lustrador-calzado/03.jpg": {
+    "width": 366,
+    "height": 276
+  },
+  "/products/lustrador-calzado/04.jpg": {
+    "width": 1024,
+    "height": 768
+  },
+  "/products/lustrador-calzado/05.jpg": {
+    "width": 1024,
+    "height": 768
+  },
+  "/products/lustrador-calzado/06.jpg": {
+    "width": 1024,
+    "height": 768
+  },
+  "/products/mesa-interactiva/01.png": {
+    "width": 900,
+    "height": 661
+  },
+  "/products/mesa-interactiva/02.jpg": {
+    "width": 692,
+    "height": 327
+  },
+  "/products/mesa-interactiva/03.jpg": {
+    "width": 800,
+    "height": 600
+  },
+  "/products/mesa-interactiva/04.png": {
+    "width": 900,
+    "height": 661
+  },
+  "/products/mesa-interactiva/05.jpeg": {
+    "width": 1488,
+    "height": 1141
+  },
+  "/products/mini-totem-digital/01.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "/products/mini-totem-digital/02.jpg": {
+    "width": 565,
+    "height": 600
+  },
+  "/products/mini-totem-digital/03.jpg": {
+    "width": 717,
+    "height": 526
+  },
+  "/products/mini-totem-digital/04.jpg": {
+    "width": 963,
+    "height": 1280
+  },
+  "/products/mini-totem-digital/05.jpg": {
+    "width": 963,
+    "height": 1280
+  },
+  "/products/monitores-stand-alone/01.png": {
+    "width": 255,
+    "height": 300
+  },
+  "/products/monitores-stand-alone/02.jpg": {
+    "width": 1000,
+    "height": 667
+  },
+  "/products/monitores-stand-alone/03.png": {
+    "width": 1152,
+    "height": 780
+  },
+  "/products/monitores-stand-alone/04.png": {
+    "width": 1152,
+    "height": 780
+  },
+  "/products/monitores-stand-alone/05.png": {
+    "width": 800,
+    "height": 501
+  },
+  "/products/pantalla-105-5k/01.avif": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pantalla-105-5k/02.jpg": {
+    "width": 1200,
+    "height": 1200
+  },
+  "/products/pantalla-105-5k/03.avif": {
+    "width": 1440,
+    "height": 814
+  },
+  "/products/pantalla-105-5k/04.avif": {
+    "width": 1440,
+    "height": 981
+  },
+  "/products/pantalla-105-5k/05.avif": {
+    "width": 1440,
+    "height": 985
+  },
+  "/products/pantalla-105-5k/06.webp": {
+    "width": 1440,
+    "height": 795
+  },
+  "/products/pantalla-105-5k/07.avif": {
+    "width": 1440,
+    "height": 795
+  },
+  "/products/pantalla-105-5k/08.avif": {
+    "width": 1440,
+    "height": 866
+  },
+  "/products/pantalla-105-5k/09.webp": {
+    "width": 720,
+    "height": 489
+  },
+  "/products/pantalla-105-5k/10.webp": {
+    "width": 1440,
+    "height": 840
+  },
+  "/products/pantalla-105-5k/11.jpeg": {
+    "width": 1440,
+    "height": 790
+  },
+  "/products/pantalla-105-5k/12.avif": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pantalla-105-5k/13.jpg": {
+    "width": 1200,
+    "height": 1200
+  },
+  "/products/pantalla-98-4k/01.avif": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pantalla-98-4k/02.avif": {
+    "width": 1440,
+    "height": 900
+  },
+  "/products/pantalla-98-4k/03.avif": {
+    "width": 1440,
+    "height": 860
+  },
+  "/products/pantalla-98-4k/04.avif": {
+    "width": 1440,
+    "height": 860
+  },
+  "/products/pantalla-98-4k/05.jpeg": {
+    "width": 1440,
+    "height": 700
+  },
+  "/products/pantalla-dual-3000-1000-nits/01.jpg": {
+    "width": 1000,
+    "height": 1520
+  },
+  "/products/pantalla-dual-3000-1000-nits/02.jpg": {
+    "width": 1440,
+    "height": 845
+  },
+  "/products/pantalla-dual-3000-1000-nits/03.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "/products/pantalla-dual-3000-1000-nits/04.jpg": {
+    "width": 1024,
+    "height": 566
+  },
+  "/products/pantalla-dual-3000-1000-nits/05.jpg": {
+    "width": 675,
+    "height": 900
+  },
+  "/products/pantalla-dual-3000-1000-nits/06.jpg": {
+    "width": 1024,
+    "height": 1366
+  },
+  "/products/pantalla-dual-3000-1000-nits/07.jpg": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pantalla-dual-3000-1000-nits/08.jpg": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pantalla-dual-3000-1000-nits/09.jpg": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pantalla-dual-3000-1000-nits/10.jpeg": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pantalla-dual-solum-49-55/01.png": {
+    "width": 448,
+    "height": 299
+  },
+  "/products/pantalla-dual-solum-49-55/02.jpeg": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/products/pantalla-dual-solum-49-55/03.png": {
+    "width": 837,
+    "height": 633
+  },
+  "/products/pantalla-dual-solum-49-55/04.png": {
+    "width": 837,
+    "height": 633
+  },
+  "/products/pantalla-dual-solum-49-55/05.png": {
+    "width": 837,
+    "height": 633
+  },
+  "/products/pantalla-dual-solum-49-55/06.png": {
+    "width": 837,
+    "height": 633
+  },
+  "/products/pantalla-dual-solum-49-55/07.png": {
+    "width": 837,
+    "height": 633
+  },
+  "/products/pantallas-led/01.jpg": {
+    "width": 263,
+    "height": 160
+  },
+  "/products/pantallas-led/02.avif": {
+    "width": 1440,
+    "height": 1080
+  },
+  "/products/pantallas-led/03.jpg": {
+    "width": 700,
+    "height": 493
+  },
+  "/products/pantallas-led/04.webp": {
+    "width": 500,
+    "height": 401
+  },
+  "/products/pantallas-led/05.webp": {
+    "width": 730,
+    "height": 547
+  },
+  "/products/pantallas-touch/01.jpg": {
+    "width": 1440,
+    "height": 720
+  },
+  "/products/pantallas-touch/02.webp": {
+    "width": 708,
+    "height": 374
+  },
+  "/products/pantallas-touch/03.webp": {
+    "width": 800,
+    "height": 600
+  },
+  "/products/pantallas-touch/04.jpeg": {
+    "width": 1440,
+    "height": 850
+  },
+  "/products/pantallas-touch/05.webp": {
+    "width": 4500,
+    "height": 3000
+  },
+  "/products/pantallas-y-pizarras-interactivas/01.jpg": {
+    "width": 1024,
+    "height": 683
+  },
+  "/products/pantallas-y-pizarras-interactivas/02.jpg": {
+    "width": 799,
+    "height": 711
+  },
+  "/products/pantallas-y-pizarras-interactivas/03.jpg": {
+    "width": 968,
+    "height": 594
+  },
+  "/products/pantallas-y-pizarras-interactivas/04.jpg": {
+    "width": 600,
+    "height": 578
+  },
+  "/products/pantallas-y-pizarras-interactivas/05.jpg": {
+    "width": 1861,
+    "height": 1556
+  },
+  "/products/pizarra-android-eboard-wad/01.jpeg": {
+    "width": 1440,
+    "height": 915
+  },
+  "/products/pizarra-android-eboard-wad/02.jpeg": {
+    "width": 1440,
+    "height": 797
+  },
+  "/products/pizarra-android-eboard-wad/03.jpeg": {
+    "width": 1440,
+    "height": 787
+  },
+  "/products/pizarra-android-eboard-wad/04.jpeg": {
+    "width": 1440,
+    "height": 513
+  },
+  "/products/pizarra-android-eboard-wad/05.avif": {
+    "width": 1440,
+    "height": 761
+  },
+  "/products/pizarra-android-eboard-wad/06.jpeg": {
+    "width": 900,
+    "height": 675
+  },
+  "/products/pizarra-android-eboard-wad/07.png": {
+    "width": 900,
+    "height": 675
+  },
+  "/products/pizarra-android-eboard-wad/08.avif": {
+    "width": 900,
+    "height": 675
+  },
+  "/products/pizarra-android-eboard-wad/09.jpeg": {
+    "width": 1440,
+    "height": 675
+  },
+  "/products/pizarra-android-eboard-wad/10.avif": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pizarra-android-eboard-wad/11.avif": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pizarra-android-eboard-wad/12.webp": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pizarra-android-eboard-wad/13.avif": {
+    "width": 684,
+    "height": 547
+  },
+  "/products/pizarra-interactiva-i3touch-e-one/01.png": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/products/pizarra-interactiva-i3touch-e-one/02.png": {
+    "width": 1024,
+    "height": 700
+  },
+  "/products/pizarra-interactiva-i3touch-e-one/03.png": {
+    "width": 1180,
+    "height": 800
+  },
+  "/products/pizarra-interactiva-i3touch-e-one/04.webp": {
+    "width": 1600,
+    "height": 1600
+  },
+  "/products/pizarra-interactiva-i3touch-e-one/05.jpeg": {
+    "width": 1378,
+    "height": 768
+  },
+  "/products/pizarra-interactiva-i3touch-e-one/06.jpeg": {
+    "width": 1392,
+    "height": 768
+  },
+  "/products/pizarra-interactiva-i3touch-ultra-105/01.png": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/products/pizarra-interactiva-i3touch-ultra-105/02.png": {
+    "width": 1800,
+    "height": 1067
+  },
+  "/products/pizarra-interactiva-i3touch-ultra-105/03.png": {
+    "width": 1800,
+    "height": 928
+  },
+  "/products/pizarra-interactiva-i3touch-ultra-105/04.jpg": {
+    "width": 1800,
+    "height": 1200
+  },
+  "/products/pizarra-interactiva-i3touch-ultra-105/05.jpg": {
+    "width": 1800,
+    "height": 1201
+  },
+  "/products/pizarra-interactiva-i3touch-ultra-105/06.jpg": {
+    "width": 1800,
+    "height": 1202
+  },
+  "/products/poster-led/01.png": {
+    "width": 386,
+    "height": 505
+  },
+  "/products/poster-led/02.jpg": {
+    "width": 612,
+    "height": 606
+  },
+  "/products/poster-led/03.jpg": {
+    "width": 1536,
+    "height": 626
+  },
+  "/products/poster-led/04.jpg": {
+    "width": 800,
+    "height": 630
+  },
+  "/products/poster-led/05.jpg": {
+    "width": 627,
+    "height": 540
+  },
+  "/products/poster-led/06.jpg": {
+    "width": 1257,
+    "height": 556
+  },
+  "/products/poster-led/07.webp": {
+    "width": 1213,
+    "height": 525
+  },
+  "/products/poster-led/08.jpg": {
+    "width": 406,
+    "height": 586
+  },
+  "/products/rotulos-letreros-led/01.jpg": {
+    "width": 796,
+    "height": 456
+  },
+  "/products/rotulos-letreros-led/02.png": {
+    "width": 463,
+    "height": 744
+  },
+  "/products/rotulos-letreros-led/03.jpg": {
+    "width": 800,
+    "height": 486
+  },
+  "/products/rotulos-letreros-led/04.jpg": {
+    "width": 800,
+    "height": 451
+  },
+  "/products/rotulos-letreros-led/05.jpg": {
+    "width": 800,
+    "height": 519
+  },
+  "/products/samsung-business-tv/01.png": {
+    "width": 800,
+    "height": 533
+  },
+  "/products/samsung-business-tv/02.png": {
+    "width": 704,
+    "height": 424
+  },
+  "/products/samsung-business-tv/03.jpg": {
+    "width": 1440,
+    "height": 660
+  },
+  "/products/samsung-business-tv/04.jpg": {
+    "width": 650,
+    "height": 389
+  },
+  "/products/samsung-business-tv/05.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "/products/samsung-business-tv/06.jpg": {
+    "width": 1080,
+    "height": 596
+  },
+  "/products/samsung-business-tv/07.jpg": {
+    "width": 1440,
+    "height": 760
+  },
+  "/products/samsung-business-tv/08.jpg": {
+    "width": 1440,
+    "height": 692
+  },
+  "/products/samsung-business-tv/09.jpg": {
+    "width": 940,
+    "height": 523
+  },
+  "/products/samsung-business-tv/10.jpg": {
+    "width": 800,
+    "height": 491
+  },
+  "/products/shelf-led/01.jpg": {
+    "width": 1706,
+    "height": 1280
+  },
+  "/products/shelf-led/02.jpg": {
+    "width": 340,
+    "height": 340
+  },
+  "/products/shelf-led/03.avif": {
+    "width": 1000,
+    "height": 668
+  },
+  "/products/shelf-led/04.jpeg": {
+    "width": 350,
+    "height": 362
+  },
+  "/products/shelf-led/05.png": {
+    "width": 862,
+    "height": 486
+  },
+  "/products/software-carteleria-digital/01.jpg": {
+    "width": 769,
+    "height": 538
+  },
+  "/products/software-carteleria-digital/02.jpg": {
+    "width": 960,
+    "height": 787
+  },
+  "/products/software-carteleria-digital/03.png": {
+    "width": 512,
+    "height": 277
+  },
+  "/products/software-carteleria-digital/04.jpg": {
+    "width": 1728,
+    "height": 942
+  },
+  "/products/software-carteleria-digital/05.png": {
+    "width": 512,
+    "height": 277
+  },
+  "/products/terminal-interactiva-sillas-ruedas/01.jpg": {
+    "width": 853,
+    "height": 756
+  },
+  "/products/terminal-interactiva-sillas-ruedas/02.jpg": {
+    "width": 500,
+    "height": 500
+  },
+  "/products/terminal-interactiva-sillas-ruedas/03.jpg": {
+    "width": 1199,
+    "height": 756
+  },
+  "/products/terminal-interactiva-sillas-ruedas/04.jpg": {
+    "width": 1199,
+    "height": 756
+  },
+  "/products/terminal-interactiva-sillas-ruedas/05.jpg": {
+    "width": 1890,
+    "height": 756
+  },
+  "/products/terminales-interactivas-pantallas-grandes/01.jpg": {
+    "width": 2500,
+    "height": 2560
+  },
+  "/products/terminales-interactivas-pantallas-grandes/02.jpg": {
+    "width": 899,
+    "height": 1126
+  },
+  "/products/terminales-interactivas-pantallas-grandes/03.png": {
+    "width": 449,
+    "height": 479
+  },
+  "/products/terminales-interactivas-pantallas-grandes/04.jpg": {
+    "width": 605,
+    "height": 404
+  },
+  "/products/terminales-interactivas-pantallas-grandes/05.jpg": {
+    "width": 2500,
+    "height": 2800
+  },
+  "/products/terminales-interactivas-pantallas-pequenas/01.jpg": {
+    "width": 1207,
+    "height": 823
+  },
+  "/products/terminales-interactivas-pantallas-pequenas/02.jpg": {
+    "width": 493,
+    "height": 553
+  },
+  "/products/terminales-interactivas-pantallas-pequenas/03.jpg": {
+    "width": 403,
+    "height": 748
+  },
+  "/products/terminales-interactivas-pantallas-pequenas/04.jpg": {
+    "width": 1280,
+    "height": 728
+  },
+  "/products/terminales-interactivas-pantallas-pequenas/05.jpg": {
+    "width": 719,
+    "height": 1433
+  },
+  "/products/totem-cargador-celulares/01.jpg": {
+    "width": 510,
+    "height": 541
+  },
+  "/products/totem-cargador-celulares/02.jpg": {
+    "width": 1000,
+    "height": 1000
+  },
+  "/products/totem-cargador-celulares/03.jpg": {
+    "width": 788,
+    "height": 764
+  },
+  "/products/totem-cargador-celulares/04.jpg": {
+    "width": 1000,
+    "height": 1000
+  },
+  "/products/totem-cargador-celulares/05.jpg": {
+    "width": 1200,
+    "height": 900
+  },
+  "/products/totem-cargador-celulares/06.jpg": {
+    "width": 767,
+    "height": 585
+  },
+  "/products/totem-cargador-celulares/07.jpg": {
+    "width": 540,
+    "height": 469
+  },
+  "/products/totem-digital/01.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/products/totem-digital/02.jpg": {
+    "width": 1500,
+    "height": 2592
+  },
+  "/products/totem-digital/03.jpg": {
+    "width": 583,
+    "height": 731
+  },
+  "/products/totem-digital/04.png": {
+    "width": 1868,
+    "height": 3104
+  },
+  "/products/totem-digital/05.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/products/totem-guardia-remoto/01.jpg": {
+    "width": 1544,
+    "height": 3888
+  },
+  "/products/totem-guardia-remoto/02.jpg": {
+    "width": 641,
+    "height": 837
+  },
+  "/products/totem-guardia-remoto/03.jpg": {
+    "width": 3104,
+    "height": 1616
+  },
+  "/products/totem-guardia-remoto/04.jpg": {
+    "width": 1544,
+    "height": 3888
+  },
+  "/products/totem-guardia-remoto/05.jpg": {
+    "width": 3104,
+    "height": 1616
+  },
+  "/products/totem-interactivo/01.jpg": {
+    "width": 1862,
+    "height": 1012
+  },
+  "/products/totem-interactivo/02.jpeg": {
+    "width": 960,
+    "height": 1280
+  },
+  "/products/totem-interactivo/03.png": {
+    "width": 948,
+    "height": 1498
+  },
+  "/products/totem-interactivo/04.jpeg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "/products/totem-interactivo/05.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/products/totem-led-outdoor-pedestal/01.png": {
+    "width": 1082,
+    "height": 441
+  },
+  "/products/totem-led-outdoor-pedestal/02.jpg": {
+    "width": 1000,
+    "height": 870
+  },
+  "/products/totem-led-outdoor-pedestal/03.jpg": {
+    "width": 1000,
+    "height": 1000
+  },
+  "/products/totem-led-outdoor-pedestal/04.png": {
+    "width": 1024,
+    "height": 1024
+  },
+  "/products/totem-led-outdoor-pedestal/05.webp": {
+    "width": 1366,
+    "height": 769
+  },
+  "/products/totem-led-outdoor-pedestal/06.webp": {
+    "width": 1000,
+    "height": 1000
+  },
+  "/products/totem-led-outdoor/01.jpg": {
+    "width": 992,
+    "height": 1053
+  },
+  "/products/totem-led-outdoor/02.webp": {
+    "width": 1500,
+    "height": 1500
+  },
+  "/products/totem-led-outdoor/03.png": {
+    "width": 566,
+    "height": 720
+  },
+  "/products/totem-led-outdoor/04.jpg": {
+    "width": 495,
+    "height": 864
+  },
+  "/products/totem-led-outdoor/05.png": {
+    "width": 1050,
+    "height": 1050
+  },
+  "/products/totem-velocidad-lpr/01.jpg": {
+    "width": 1044,
+    "height": 692
+  },
+  "/products/totem-velocidad-lpr/02.jpg": {
+    "width": 3096,
+    "height": 4128
+  },
+  "/products/totem-velocidad-lpr/03.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/products/totem-velocidad-lpr/04.jpg": {
+    "width": 960,
+    "height": 1280
+  },
+  "/products/totem-velocidad-lpr/05.jpg": {
+    "width": 1280,
+    "height": 960
+  },
+  "/products/totem-velocidad-lpr/06.jpg": {
+    "width": 981,
+    "height": 570
+  },
+  "/products/video-walls/01.png": {
+    "width": 500,
+    "height": 500
+  },
+  "/products/video-walls/02.jpg": {
+    "width": 1920,
+    "height": 1080
+  },
+  "/products/video-walls/03.png": {
+    "width": 1024,
+    "height": 576
+  },
+  "/products/video-walls/04.png": {
+    "width": 860,
+    "height": 598
+  },
+  "/products/video-walls/05.jpg": {
+    "width": 960,
+    "height": 1280
+  },
+  "/products/videoconferencias/01.jpg": {
+    "width": 1200,
+    "height": 762
+  },
+  "/products/videoconferencias/02.jpg": {
+    "width": 1024,
+    "height": 683
+  },
+  "/products/videoconferencias/04-contexto-ia.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/products/videoconferencias/05-contexto-ia.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/products/videowalls-samsung/01.png": {
+    "width": 255,
+    "height": 300
+  },
+  "/products/videowalls-samsung/02.png": {
+    "width": 1241,
+    "height": 1212
+  },
+  "/products/videowalls-samsung/03.jpg": {
+    "width": 1440,
+    "height": 890
+  },
+  "/products/videowalls-samsung/04.jpg": {
+    "width": 1440,
+    "height": 640
+  },
+  "/products/videowalls-samsung/05.png": {
+    "width": 1031,
+    "height": 404
+  },
+  "/products/videowalls-samsung/06.jpg": {
+    "width": 1440,
+    "height": 955
+  },
+  "/products/videowalls-samsung/07.jpg": {
+    "width": 1576,
+    "height": 628
+  },
+  "/products/videowalls-samsung/08.png": {
+    "width": 1139,
+    "height": 637
+  },
+  "/products/videowalls-samsung/09.png": {
+    "width": 565,
+    "height": 436
+  },
+  "/products/videowalls-samsung/10.png": {
+    "width": 563,
+    "height": 520
+  },
+  "/products/videowalls-samsung/11.png": {
+    "width": 1140,
+    "height": 436
+  },
+  "/products/videowalls-samsung/12.png": {
+    "width": 1140,
+    "height": 437
+  },
+  "/products/videowalls-samsung/13.png": {
+    "width": 679,
+    "height": 437
+  },
+  "/products/videowalls-samsung/14.png": {
+    "width": 449,
+    "height": 437
+  },
+  "/products/videowalls-samsung/15.png": {
+    "width": 1140,
+    "height": 638
+  },
+  "/products/vidrieras-digitales/01.jpg": {
+    "width": 939,
+    "height": 353
+  },
+  "/products/vidrieras-digitales/02.jpg": {
+    "width": 457,
+    "height": 441
+  },
+  "/products/vidrieras-digitales/03.jpg": {
+    "width": 498,
+    "height": 517
+  },
+  "/products/vidrieras-digitales/04.jpg": {
+    "width": 1440,
+    "height": 967
+  },
+  "/products/vidrieras-digitales/05.jpg": {
+    "width": 1432,
+    "height": 640
+  },
+  "/products/vidrieras-digitales/06.png": {
+    "width": 1263,
+    "height": 444
+  },
+  "/products/vidrieras-digitales/07.jpg": {
+    "width": 605,
+    "height": 179
+  },
+  "/products/vidrieras-digitales/08.jpg": {
+    "width": 1440,
+    "height": 762
+  },
+  "/products/vidrieras-digitales/09.jpg": {
+    "width": 1088,
+    "height": 593
+  },
+  "/products/vidrieras-digitales/10.png": {
+    "width": 580,
+    "height": 310
+  },
+  "/site/nosotros.jpg": {
+    "width": 1287,
+    "height": 3188
+  },
+  "/site/works/alquileres/01.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/site/works/alquileres/02.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/site/works/alquileres/03.jpg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "/site/works/alquileres/04.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/site/works/alquileres/05.jpg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "/site/works/led/01.jpg": {
+    "width": 4032,
+    "height": 2268
+  },
+  "/site/works/led/02.jpg": {
+    "width": 4032,
+    "height": 2268
+  },
+  "/site/works/led/03.jpg": {
+    "width": 4032,
+    "height": 2268
+  },
+  "/site/works/led/04.jpg": {
+    "width": 3264,
+    "height": 1836
+  },
+  "/site/works/led/05.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/site/works/totems/01.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/site/works/totems/02.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/site/works/totems/03.jpg": {
+    "width": 1600,
+    "height": 1200
+  },
+  "/site/works/totems/04.png": {
+    "width": 1855,
+    "height": 1037
+  },
+  "/site/works/totems/05.png": {
+    "width": 1816,
+    "height": 1022
+  },
+  "/site/works/totems/06.jpg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "/site/works/totems/07.jpg": {
+    "width": 1200,
+    "height": 1600
+  },
+  "/site/works/tvs/01.jpg": {
+    "width": 1384,
+    "height": 923
+  },
+  "/site/works/tvs/02.jpg": {
+    "width": 1384,
+    "height": 923
+  },
+  "/site/works/tvs/03.jpg": {
+    "width": 1384,
+    "height": 923
+  },
+  "/site/works/tvs/04.jpg": {
+    "width": 1384,
+    "height": 923
+  },
+  "/site/works/tvs/05.jpg": {
+    "width": 1384,
+    "height": 923
+  },
+  "/site/works/tvs/06.jpg": {
+    "width": 1384,
+    "height": 923
+  },
+  "/site/works/videowalls/01.jpg": {
+    "width": 4032,
+    "height": 2268
+  },
+  "/site/works/videowalls/02.jpg": {
+    "width": 4032,
+    "height": 2268
+  },
+  "/site/works/videowalls/03.jpg": {
+    "width": 4032,
+    "height": 2268
+  },
+  "/site/works/videowalls/04.jpg": {
+    "width": 4032,
+    "height": 2268
+  },
+  "/site/works/videowalls/05.jpg": {
+    "width": 4032,
+    "height": 2268
+  },
+  "/videos/hero-adinnov-poster-mobile.webp": {
+    "width": 720,
+    "height": 1280
+  },
+  "/videos/hero-adinnov-poster.webp": {
+    "width": 1600,
+    "height": 900
+  }
+}

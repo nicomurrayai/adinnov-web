@@ -1,55 +1,70 @@
 import type { RentalItem } from "./types";
 
 export const rentalsIntro =
-  "Alquilamos equipamiento para todo tipo de eventos: corporativos y sociales, ferias, exposiciones, conferencias y congresos. Incluye logística, instalación y puesta en marcha.";
+  "Equipamiento para ferias, exposiciones, conferencias, congresos y eventos corporativos. Coordinamos logística, instalación y puesta en marcha.";
 
 export const rentalItems: RentalItem[] = [
   {
     slug: "totem-interactivo",
     title: "Tótem interactivo",
     description:
-      "Pantallas táctiles IR de 32\" a 75\" (Full HD/4K), estructura ultradelgada (10-12cm) e integración para apps interactivas y cartelería digital.",
+      "Pantallas táctiles en formato vertical para aplicaciones, catálogos, registros y experiencias de marca.",
+    image: "/products/totem-interactivo/02.jpeg",
   },
   {
     slug: "totem-digital",
     title: "Tótem digital",
     description:
-      "Cartelería digital vertical para difusión de videos e imágenes en eventos y espacios de alto tránsito.",
+      "Cartelería vertical para reproducir videos, piezas gráficas e información durante el evento.",
+    image: "/products/totem-digital/01.jpg",
   },
   {
     slug: "poster-led",
     title: "Poster LED",
     description:
-      "Poster LED de alto brillo para comunicación de marca y promoción en ferias y locales.",
+      "Formato LED vertical de alto impacto para stands, accesos, escenarios y activaciones.",
+    image: "/products/poster-led/02.jpg",
   },
   {
     slug: "tv-soporte",
     title: "TV con soporte",
     description:
-      "Pantallas profesionales con soporte para presentaciones, streaming y señalética temporal.",
+      "Pantallas profesionales montadas para presentaciones, contenidos institucionales y señalización temporal.",
+    image: "/products/samsung-business-tv/06.jpg",
   },
   {
     slug: "terminales-interactivas",
     title: "Terminales interactivas",
     description:
-      "Terminales táctiles para autogestión, encuestas, catálogos y experiencias interactivas.",
+      "Equipos táctiles para encuestas, consultas, catálogos, registro y autogestión.",
+    image: "/products/terminales-interactivas-pantallas-grandes/01.jpg",
   },
   {
     slug: "pantallas-touch",
-    title: "Pantallas Touch",
+    title: "Pantallas touch",
     description:
-      "Pantallas táctiles de distintos formatos para demos, stands y espacios colaborativos.",
+      "Superficies interactivas para demostraciones, presentaciones y contenido colaborativo.",
+    image: "/products/pantallas-touch/04.jpeg",
   },
   {
     slug: "pantallas-led",
-    title: "Pantallas de LED",
+    title: "Pantallas LED",
     description:
-      "LED indoor/outdoor de gran formato para escenarios, backdrops y activaciones.",
+      "Configuraciones de gran formato para escenarios, fondos visuales y comunicación de alto impacto.",
+    image: "/products/pantallas-led/03.jpg",
   },
   {
     slug: "atril-digital",
     title: "Atril digital",
     description:
-      "Atril con pantalla para conferencias, presentadores y recepción de eventos.",
+      "Atril con pantalla para conferencias, presentaciones, recepción e información de agenda.",
+    image: "/products/atril-digital/02.jpg",
   },
 ];
+
+export const rentalServices = [
+  "Asesoramiento para elegir el formato",
+  "Coordinación logística",
+  "Instalación y puesta en marcha",
+  "Retiro al finalizar el evento",
+] as const;

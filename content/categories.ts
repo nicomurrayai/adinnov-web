@@ -1,91 +1,85 @@
-import type { Category } from "./types";
+import type {
+  Category,
+  ProductCategoryId,
+  ProductFamilyId,
+} from "./types";
 
 export const categories: Category[] = [
   {
-    id: "totems",
-    name: "Tótems digitales e interactivos",
+    id: "totems-terminales",
+    name: "Tótems y terminales",
+    shortName: "Tótems",
     description:
-      "Fabricación propia con patente INPI. Pantallas táctiles IR de 32\" a 75\" (Full HD/4K), estructura ultradelgada y múltiples opciones de integración.",
-    href: "/productos?categoria=totems",
+      "Equipos verticales, atriles y terminales configurables para información, atención y experiencias de marca.",
+    href: "/productos?familia=totems-terminales",
+    sourceCategories: ["totems", "terminales"],
   },
   {
-    id: "pizarras",
-    name: "Pizarras interactivas",
+    id: "pantallas-profesionales",
+    name: "Pantallas profesionales",
+    shortName: "Pantallas",
     description:
-      "Pantallas y pizarras táctiles para educación, salas de reunión y colaboración: i3Touch, FLIP, E-Board y gran formato.",
-    href: "/productos?categoria=pizarras",
+      "Displays comerciales, videowalls y formatos especiales pensados para operación corporativa y retail.",
+    href: "/productos?familia=pantallas-profesionales",
+    sourceCategories: ["pantallas"],
   },
   {
     id: "led",
-    name: "Pantallas y productos LED",
+    name: "LED",
+    shortName: "LED",
     description:
-      "LED indoor y outdoor: pantallas de gran formato, posters, banners, tótems, rótulos, cubos y shelf LED para vía pública y retail.",
-    href: "/productos?categoria=led",
+      "Pantallas y formatos LED de alto impacto para interiores, vidrieras, eventos y espacios exteriores.",
+    href: "/productos?familia=led",
+    sourceCategories: ["led"],
   },
   {
-    id: "pantallas",
-    name: "Pantallas profesionales",
+    id: "pizarras-interaccion",
+    name: "Pizarras e interacción",
+    shortName: "Interacción",
     description:
-      "Video walls, Samsung Business TV, monitores stand-alone, pantallas duales, stretch displays y vidrieras semi-outdoor.",
-    href: "/productos?categoria=pantallas",
+      "Superficies táctiles y pantallas colaborativas para aulas, salas de reunión y presentaciones de gran formato.",
+    href: "/productos?familia=pizarras-interaccion",
+    sourceCategories: ["pizarras"],
   },
   {
-    id: "kioscos",
-    name: "Kioscos de autogestión",
+    id: "kioscos-autogestion",
+    name: "Kioscos y autogestión",
+    shortName: "Autogestión",
     description:
-      "Terminales y kioscos para retail, gastronomía y atención al público: autogestión, pagos y experiencia self-service.",
-    href: "/productos?categoria=kioscos",
+      "Terminales de autoservicio para pedidos, pagos, turnos y atención en retail, gastronomía e instituciones.",
+    href: "/productos?familia=kioscos-autogestion",
+    sourceCategories: ["kioscos"],
   },
   {
-    id: "software",
-    name: "Software y soluciones",
+    id: "software-servicios",
+    name: "Software y servicios",
+    shortName: "Software",
     description:
-      "Software de cartelería digital, apps y juegos interactivos, gestión de turnos y filas, videoconferencias y control de videowalls.",
-    href: "/productos?categoria=software",
-  },
-  {
-    id: "terminales",
-    name: "Terminales interactivas",
-    description:
-      "Terminales con pantallas chicas y grandes, incluyendo modelos accesibles para sillas de ruedas.",
-    href: "/productos?categoria=terminales",
+      "Plataformas para administrar contenidos, turnos, filas, experiencias interactivas y sistemas audiovisuales.",
+    href: "/productos?familia=software-servicios",
+    sourceCategories: ["software", "otros"],
   },
 ];
 
-export const solutionHighlights = [
-  {
-    id: "totems",
-    title: "Tótems digitales e interactivos",
-    description:
-      "Tótem interactivo con pantallas táctiles IR de 32\" a 75\" (Full HD/4K), estructura ultradelgada (10-12cm) y múltiples opciones de integración.",
-    href: "/productos?categoria=totems",
-  },
-  {
-    id: "pizarras",
-    title: "Pizarras interactivas",
-    description:
-      "Colaboración y formación con pantallas táctiles de alta resolución para aulas, boardrooms y espacios compartidos.",
-    href: "/productos?categoria=pizarras",
-  },
-  {
-    id: "led",
-    title: "Pantallas de LED",
-    description:
-      "Soluciones LED de gran impacto visual para indoor y outdoor, desde vía pública hasta locales comerciales.",
-    href: "/productos?categoria=led",
-  },
-  {
-    id: "productos-led",
-    title: "Productos LED",
-    description:
-      "Posters, banners, rótulos, carteles, cubos y shelf LED para comunicación de marca y promoción.",
-    href: "/productos?categoria=led",
-  },
-  {
-    id: "kioscos",
-    title: "Kioscos de autogestión",
-    description:
-      "Equipos para pedidos, turnos y autoservicio en gastronomía, retail e instituciones.",
-    href: "/productos?categoria=kioscos",
-  },
-];
+export const productFamilyByCategory: Record<
+  ProductCategoryId,
+  ProductFamilyId
+> = {
+  totems: "totems-terminales",
+  terminales: "totems-terminales",
+  pantallas: "pantallas-profesionales",
+  led: "led",
+  pizarras: "pizarras-interaccion",
+  kioscos: "kioscos-autogestion",
+  software: "software-servicios",
+  otros: "software-servicios",
+};
+
+export const solutionHighlights = categories.map(
+  ({ id, name: title, description, href }) => ({
+    id,
+    title,
+    description,
+    href,
+  }),
+);

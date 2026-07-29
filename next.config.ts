@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   turbopack: {
     root: process.cwd(),
   },
@@ -9,22 +10,28 @@ const nextConfig: NextConfig = {
       {
         source: "/producto/:slug",
         destination: "/productos/:slug",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/nuestros-trabajos",
         destination: "/trabajos",
-        permanent: true,
+        statusCode: 301,
       },
       {
         source: "/nuestros-clientes",
         destination: "/clientes",
-        permanent: true,
+        statusCode: 301,
+      },
+      {
+        source: "/servicios",
+        destination: "/soluciones",
+        statusCode: 301,
       },
     ];
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 84],
   },
 };
 

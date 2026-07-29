@@ -1,26 +1,28 @@
-import { type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Container } from "./Container";
 
 export function Section({
   children,
   className = "",
+  containerClassName = "",
   id,
   tone = "white",
 }: {
   children: ReactNode;
   className?: string;
+  containerClassName?: string;
   id?: string;
   tone?: "white" | "surface" | "navy";
 }) {
   const tones = {
-    white: "bg-white text-navy",
-    surface: "bg-surface text-navy",
+    white: "bg-paper text-navy",
+    surface: "bg-ivory text-navy",
     navy: "bg-navy text-white",
   };
 
   return (
-    <section id={id} className={`py-20 md:py-28 ${tones[tone]} ${className}`}>
-      <Container>{children}</Container>
+    <section id={id} className={`py-[var(--space-section)] ${tones[tone]} ${className}`}>
+      <Container className={containerClassName}>{children}</Container>
     </section>
   );
 }
@@ -29,40 +31,32 @@ export function SectionHeading({
   eyebrow,
   title,
   description,
-  light,
+  light = false,
+  className = "",
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   light?: boolean;
+  className?: string;
 }) {
   return (
-    <div className="mb-12 max-w-2xl md:mb-16">
+    <header className={`max-w-3xl ${className}`}>
       {eyebrow ? (
-        <p
-          className={`mb-3 text-xs font-medium uppercase tracking-[0.18em] ${
-            light ? "text-white/60" : "text-muted"
-          }`}
-        >
-          {eyebrow}
-        </p>
+        <p className={`eyebrow ${light ? "text-white/56" : "text-signal"}`}>{eyebrow}</p>
       ) : null}
       <h2
-        className={`font-[family-name:var(--font-outfit)] text-3xl font-medium tracking-tight md:text-4xl ${
-          light ? "text-white" : "text-navy"
-        }`}
+        className={`font-display mt-5 text-balance text-[clamp(2.35rem,5vw,5.6rem)] font-medium leading-[0.94] tracking-[-0.045em] ${light ? "text-white" : "text-navy"}`}
       >
         {title}
       </h2>
       {description ? (
         <p
-          className={`mt-4 text-base leading-relaxed md:text-lg ${
-            light ? "text-white/75" : "text-muted"
-          }`}
+          className={`mt-6 max-w-2xl text-base leading-7 md:text-lg md:leading-8 ${light ? "text-white/68" : "text-muted"}`}
         >
           {description}
         </p>
       ) : null}
-    </div>
+    </header>
   );
 }

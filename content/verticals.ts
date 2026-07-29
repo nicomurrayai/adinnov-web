@@ -3,62 +3,62 @@ import type { Vertical } from "./types";
 export const verticals: Vertical[] = [
   {
     id: "eventos",
-    title: "Eventos y Showrooms",
+    title: "Eventos y showrooms",
     description:
-      "Impacto visual e interacción en ferias, lanzamientos y showrooms con tótems, LED y alquiler integral.",
+      "Tótems, pantallas y LED con logística e instalación para ferias, congresos, lanzamientos y activaciones.",
   },
   {
     id: "corporativo",
-    title: "Edificios corporativos y oficinas",
+    title: "Espacios corporativos",
     description:
-      "Señalética digital, wayfinding, salas de reunión y comunicación interna para sedes corporativas.",
+      "Señalización, comunicación interna, videowalls y herramientas de colaboración para oficinas y sedes.",
   },
   {
     id: "gastronomia",
     title: "Gastronomía",
     description:
-      "Menús digitales, kioscos de autogestión y pantallas para salones, cadenas y food courts.",
+      "Menús digitales, kioscos de autogestión y pantallas para salones, cadenas y espacios de atención.",
   },
   {
     id: "hoteleria",
     title: "Hotelería",
     description:
-      "Información de huéspedes, check-in, señalética y experiencias interactivas en hoteles.",
+      "Información para huéspedes, orientación, señalización y experiencias interactivas en áreas comunes.",
   },
   {
     id: "retail",
     title: "Retail",
     description:
-      "Vidrieras digitales, posters LED, catálogos táctiles y promoción en punto de venta.",
+      "Vidrieras digitales, cartelería, catálogos táctiles y comunicación dinámica en el punto de venta.",
   },
   {
     id: "monitoreo",
     title: "Centros de monitoreo",
     description:
-      "Video walls y pantallas profesionales para operación continua y visualización de datos.",
+      "Videowalls y pantallas profesionales para operación continua y visualización centralizada.",
   },
   {
-    id: "aeropuertos",
-    title: "Aeropuertos y terminales",
+    id: "terminales",
+    title: "Terminales y transporte",
     description:
-      "Información de vuelos, wayfinding y cartelería de alto tránsito en terminales.",
+      "Información, orientación y cartelería para entornos de alto tránsito y atención permanente.",
   },
   {
     id: "gobierno",
-    title: "Gobierno",
+    title: "Sector público",
     description:
-      "Soluciones para ministerios, municipios y organismos públicos: turnos, información y atención.",
+      "Turnos, información y autogestión para ministerios, municipios y espacios de atención ciudadana.",
   },
   {
     id: "salas",
     title: "Salas de reunión",
     description:
-      "Pizarras interactivas, FLIP y sistemas de videoconferencia para colaboración híbrida.",
+      "Pizarras interactivas, displays y videoconferencia para encuentros presenciales e híbridos.",
   },
   {
-    id: "museos",
-    title: "Museos",
+    id: "cultura",
+    title: "Museos y cultura",
     description:
-      "Mesas y tótems interactivos, contenidos táctiles y experiencias inmersivas para visitantes.",
+      "Mesas, tótems y contenidos interactivos para ampliar la experiencia de cada visitante.",
   },
 ];
