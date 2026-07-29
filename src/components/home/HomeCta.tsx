@@ -16,14 +16,14 @@ export function HomeCta() {
               Hagamos que el espacio trabaje mejor.
             </h2>
             <div className="flex flex-col gap-3 sm:flex-row lg:col-span-3 lg:flex-col">
-              <Button href="/contacto" className="border-white bg-white text-signal hover:border-navy hover:bg-navy hover:text-white">
+              <Button href="/contacto" className="!border-white !bg-white !text-signal hover:!border-navy hover:!bg-navy hover:!text-white">
                 Cotizar proyecto
               </Button>
               <Button
                 href={site.whatsapp[0].href}
                 external
                 variant="secondary"
-                className="border-white/50 text-white hover:border-white hover:bg-white hover:text-signal"
+                className="border-white/50 text-white hover:border-white hover:bg-white hover:!text-signal"
               >
                 WhatsApp
               </Button>

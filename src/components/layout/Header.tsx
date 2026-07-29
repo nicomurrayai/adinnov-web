@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { productFamilies, site } from "@content/site";
-import { Container } from "../ui/Container";
+import { productFamilies } from "@content/site";
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -13,7 +12,7 @@ function Chevron({ open }: { open: boolean }) {
       aria-hidden="true"
       viewBox="0 0 14 14"
       fill="none"
-      className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+      className={`h-3 w-3 shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
     >
       <path d="m3 5 4 4 4-4" stroke="currentColor" strokeWidth="1.4" />
     </svg>
@@ -38,15 +37,44 @@ function isCurrent(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+const headerNav = [
+  { label: "Productos", href: "/productos" },
+  { label: "Clientes", href: "/clientes" },
+  { label: "Trabajos", href: "/trabajos" },
+] as const;
+
 export function Header() {
   const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const productButtonRef = useRef<HTMLButtonElement>(null);
   const productsPanelRef = useRef<HTMLDivElement>(null);
+  const productsCloseTimerRef = useRef<number | null>(null);
   const mobileButtonRef = useRef<HTMLButtonElement>(null);
   const mobilePanelRef = useRef<HTMLDivElement>(null);
+  const overDark = (pathname === "/" && !scrolled) || mobileOpen;
+
+  function clearProductsCloseTimer() {
+    if (productsCloseTimerRef.current !== null) {
+      window.clearTimeout(productsCloseTimerRef.current);
+      productsCloseTimerRef.current = null;
+    }
+  }
+
+  function openProductsMenu() {
+    clearProductsCloseTimer();
+    setProductsOpen(true);
+  }
+
+  function scheduleCloseProductsMenu() {
+    clearProductsCloseTimer();
+    productsCloseTimerRef.current = window.setTimeout(() => {
+      setProductsOpen(false);
+      productsCloseTimerRef.current = null;
+    }, 140);
+  }
 
   useEffect(() => {
     function handlePointerDown(event: PointerEvent) {
@@ -87,6 +115,23 @@ export function Header() {
     closeMobileMenu(desktop);
     desktop.addEventListener("change", closeMobileMenu);
     return () => desktop.removeEventListener("change", closeMobileMenu);
+  }, []);
+
+  useEffect(() => {
+    const updateScroll = () => setScrolled(window.scrollY > 24);
+    updateScroll();
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    return () => window.removeEventListener("scroll", updateScroll);
+  }, []);
+
+  useEffect(() => {
+    setProductsOpen(false);
+    setMobileOpen(false);
+    clearProductsCloseTimer();
+  }, [pathname]);
+
+  useEffect(() => {
+    return () => clearProductsCloseTimer();
   }, []);
 
   useEffect(() => {
@@ -131,11 +176,27 @@ export function Header() {
     firstLink?.focus();
   }
 
+  const navIdle = overDark
+    ? "border-transparent text-white/72 hover:text-white"
+    : "border-transparent text-navy/66 hover:text-navy";
+  const navActive = overDark
+    ? "border-white text-white"
+    : "border-signal text-navy";
+  const navItemClass = (active: boolean) =>
+    `inline-flex h-full items-center border-b-2 border-solid px-3 font-sans text-[0.76rem] font-semibold uppercase leading-none tracking-[0.08em] transition-colors ${
+      active ? navActive : navIdle
+    }`;
+  const shellClass = overDark
+    ? "border-white/18 bg-ink/35 text-white shadow-[0_18px_50px_rgba(7,23,43,0.28)]"
+    : "border-border/70 bg-paper/55 text-navy shadow-[var(--shadow-card)]";
+
   return (
-    <header ref={headerRef} className="fixed inset-x-0 top-0 z-50">
-      <div className="border-b border-border bg-paper/95 backdrop-blur-xl">
-        <Container>
-          <div className="relative flex h-[4.75rem] items-center justify-between">
+    <header ref={headerRef} className="pointer-events-none fixed inset-x-0 top-0 z-50">
+      <div className="pointer-events-auto mx-auto w-full max-w-[90rem] px-3 pt-3 sm:px-5 lg:px-8 xl:px-10">
+        <div
+          className={`relative rounded-[1.35rem] border backdrop-blur-2xl transition-[background-color,border-color,box-shadow,color] duration-300 ${shellClass}`}
+        >
+          <div className="relative flex h-[4.5rem] items-center justify-between gap-3 px-3 sm:h-[5rem] sm:px-5">
             <Link
               href="/"
               aria-label="Adinnov, ir al inicio"
@@ -148,212 +209,210 @@ export function Header() {
               <Image
                 src="/brand/logo.svg"
                 alt="Adinnov"
-                width={192}
-                height={70}
+                width={240}
+                height={88}
                 loading="eager"
                 fetchPriority="high"
-                className="h-[4.25rem] w-auto"
+                className="h-[3.75rem] w-auto sm:h-[4.35rem]"
               />
             </Link>
 
-            <nav aria-label="Navegación principal" className="hidden h-full items-center xl:flex">
-              {site.nav.map((item) => {
-                if (item.href === "/productos") {
-                  return (
-                    <div key={item.href} className="static flex h-full items-center">
-                      <button
-                        ref={productButtonRef}
-                        type="button"
-                        className={`flex h-full items-center gap-1.5 border-b-2 px-3 text-[0.76rem] font-semibold uppercase tracking-[0.08em] transition-colors ${
-                          pathname.startsWith("/productos") || productsOpen
-                            ? "border-signal text-navy"
-                            : "border-transparent text-navy/66 hover:text-navy"
-                        }`}
-                        aria-expanded={productsOpen}
-                        aria-controls="familias-productos"
-                        aria-current={pathname.startsWith("/productos") ? "page" : undefined}
-                        onClick={() => setProductsOpen((value) => !value)}
-                        onKeyDown={(event) => {
-                          if (event.key === "ArrowDown") {
-                            event.preventDefault();
-                            setProductsOpen(true);
-                            requestAnimationFrame(focusFirstProduct);
-                          }
-                        }}
+            <div className="hidden h-full items-center gap-1 xl:flex">
+              <nav aria-label="Navegación principal" className="flex h-full items-center">
+                {headerNav.map((item) => {
+                  if (item.href === "/productos") {
+                    return (
+                      <div
+                        key={item.href}
+                        className="static flex h-full items-center"
+                        onMouseEnter={openProductsMenu}
+                        onMouseLeave={scheduleCloseProductsMenu}
                       >
-                        Productos
-                        <Chevron open={productsOpen} />
-                      </button>
-
-                      {productsOpen ? (
-                        <div
-                          ref={productsPanelRef}
-                          id="familias-productos"
-                          className="absolute inset-x-0 top-full border border-t-0 border-border bg-paper shadow-[var(--shadow-float)]"
+                        <button
+                          ref={productButtonRef}
+                          type="button"
+                          className={`${navItemClass(
+                            pathname.startsWith("/productos") || productsOpen,
+                          )} gap-1`}
+                          aria-expanded={productsOpen}
+                          aria-haspopup="true"
+                          aria-controls="familias-productos"
+                          aria-current={pathname.startsWith("/productos") ? "page" : undefined}
+                          onClick={() => setProductsOpen((value) => !value)}
+                          onFocus={openProductsMenu}
+                          onKeyDown={(event) => {
+                            if (event.key === "ArrowDown") {
+                              event.preventDefault();
+                              openProductsMenu();
+                              requestAnimationFrame(focusFirstProduct);
+                            }
+                          }}
                         >
-                          <div className="grid grid-cols-12 gap-x-8 p-8">
-                            <div className="col-span-3 flex flex-col justify-between border-r border-border pr-8">
-                              <div>
-                                <p className="eyebrow text-signal">Catálogo</p>
-                                <p className="font-display mt-4 text-3xl font-medium leading-none tracking-[-0.035em] text-navy">
-                                  Seis familias.
-                                  <br />Una solución.
-                                </p>
+                          {item.label}
+                          <Chevron open={productsOpen} />
+                        </button>
+
+                        {productsOpen ? (
+                          <div
+                            ref={productsPanelRef}
+                            id="familias-productos"
+                            className="absolute inset-x-0 top-full pt-2"
+                            onMouseEnter={openProductsMenu}
+                            onMouseLeave={scheduleCloseProductsMenu}
+                          >
+                            <div className="overflow-hidden rounded-[1.25rem] border border-border bg-paper text-navy shadow-[var(--shadow-float)]">
+                              <div className="grid grid-cols-12 gap-x-8 p-8">
+                                <div className="col-span-3 flex flex-col justify-between border-r border-border pr-8">
+                                  <div>
+                                    <p className="eyebrow text-signal">Catálogo</p>
+                                    <p className="font-display mt-4 text-3xl font-medium leading-none tracking-[-0.035em] text-navy">
+                                      Seis familias.
+                                      <br />Una solución.
+                                    </p>
+                                  </div>
+                                  <Link
+                                    href="/productos"
+                                    prefetch={false}
+                                    className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-navy underline decoration-signal decoration-2 underline-offset-4"
+                                    onClick={() => setProductsOpen(false)}
+                                  >
+                                    Ver catálogo completo
+                                    <span aria-hidden="true">↗</span>
+                                  </Link>
+                                </div>
+                                <div className="col-span-9 grid grid-cols-3 gap-px bg-border">
+                                  {productFamilies.map((family) => (
+                                    <Link
+                                      key={family.id}
+                                      href={family.href}
+                                      prefetch={false}
+                                      className="group bg-paper p-5 transition-colors hover:bg-ivory focus-visible:relative"
+                                      onClick={() => setProductsOpen(false)}
+                                    >
+                                      <span className="font-mono text-[0.65rem] text-signal">{family.index}</span>
+                                      <span className="font-display mt-3 block text-lg font-medium leading-tight tracking-[-0.025em] text-navy">
+                                        {family.title}
+                                      </span>
+                                      <span className="mt-3 block text-sm leading-5 text-muted">
+                                        {family.description}
+                                      </span>
+                                    </Link>
+                                  ))}
+                                </div>
                               </div>
-                              <Link
-                                href="/productos"
-                                prefetch={false}
-                                className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-navy underline decoration-signal decoration-2 underline-offset-4"
-                                onClick={() => setProductsOpen(false)}
-                              >
-                                Ver catálogo completo
-                                <span aria-hidden="true">↗</span>
-                              </Link>
-                            </div>
-                            <div className="col-span-9 grid grid-cols-3 gap-px bg-border">
-                              {productFamilies.map((family) => (
-                                <Link
-                                  key={family.id}
-                                  href={family.href}
-                                  prefetch={false}
-                                  className="group bg-paper p-5 transition-colors hover:bg-ivory focus-visible:relative"
-                                  onClick={() => setProductsOpen(false)}
-                                >
-                                  <span className="font-mono text-[0.65rem] text-signal">{family.index}</span>
-                                  <span className="font-display mt-3 block text-lg font-medium leading-tight tracking-[-0.025em] text-navy">
-                                    {family.title}
-                                  </span>
-                                  <span className="mt-3 block text-sm leading-5 text-muted">
-                                    {family.description}
-                                  </span>
-                                </Link>
-                              ))}
                             </div>
                           </div>
-                        </div>
-                      ) : null}
-                    </div>
+                        ) : null}
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
+                      className={navItemClass(isCurrent(pathname, item.href))}
+                      onClick={() => setProductsOpen(false)}
+                      onFocus={() => setProductsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
                   );
-                }
+                })}
+              </nav>
 
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
-                    className={`flex h-full items-center border-b-2 px-3 text-[0.76rem] font-semibold uppercase tracking-[0.08em] transition-colors ${
-                      isCurrent(pathname, item.href)
-                        ? "border-signal text-navy"
-                        : "border-transparent text-navy/66 hover:text-navy"
-                    }`}
-                    onClick={() => setProductsOpen(false)}
-                    onFocus={() => setProductsOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-
-            <div className="hidden xl:block">
               <Link
                 href="/contacto"
                 aria-current={isCurrent(pathname, "/contacto") ? "page" : undefined}
-                className="inline-flex min-h-11 items-center rounded-[var(--radius-sm)] bg-signal px-5 text-[0.73rem] font-semibold uppercase tracking-[0.09em] text-white transition-colors hover:bg-signal-dark"
+                className="ml-2 inline-flex min-h-11 items-center rounded-full bg-signal px-5 text-[0.73rem] font-semibold uppercase tracking-[0.09em] text-white transition-colors hover:bg-signal-dark"
                 onClick={() => setProductsOpen(false)}
               >
-                Cotizar proyecto
+                Cotizar
               </Link>
             </div>
 
             <button
               ref={mobileButtonRef}
               type="button"
-              className="relative z-10 flex h-11 items-center gap-3 rounded-[var(--radius-sm)] border border-border px-3 text-xs font-semibold uppercase tracking-[0.09em] text-navy xl:hidden"
+              className={`relative z-10 flex h-11 w-11 items-center justify-center rounded-full border xl:hidden ${
+                overDark
+                  ? "border-white/25 text-white"
+                  : "border-border text-navy"
+              }`}
               aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={mobileOpen}
               aria-controls="navegacion-movil"
               onClick={() => setMobileOpen((value) => !value)}
             >
-              <span>{mobileOpen ? "Cerrar" : "Menú"}</span>
               <MenuIcon open={mobileOpen} />
             </button>
           </div>
-        </Container>
-      </div>
 
-      {mobileOpen ? (
-        <div
-          ref={mobilePanelRef}
-          id="navegacion-movil"
-          className="h-[calc(100dvh-4.75rem)] overflow-y-auto bg-navy text-white xl:hidden"
-        >
-          <Container className="py-8">
-            <nav aria-label="Navegación móvil">
-              <div className="grid gap-px bg-white/15 sm:grid-cols-2">
-                <Link
-                  href="/productos"
-                  prefetch={false}
-                  aria-current={isCurrent(pathname, "/productos") ? "page" : undefined}
-                  className="bg-navy p-5 font-display text-2xl font-medium tracking-[-0.03em] hover:bg-navy-mid"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Todos los productos
-                </Link>
-                <Link
-                  href="/soluciones"
-                  aria-current={isCurrent(pathname, "/soluciones") ? "page" : undefined}
-                  className="bg-navy p-5 font-display text-2xl font-medium tracking-[-0.03em] hover:bg-navy-mid"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Soluciones
-                </Link>
-              </div>
-
-              <p className="eyebrow mb-4 mt-8 text-white/60">Familias de producto</p>
-              <div className="grid gap-px bg-white/15 sm:grid-cols-2">
-                {productFamilies.map((family) => (
+          {mobileOpen ? (
+            <div
+              ref={mobilePanelRef}
+              id="navegacion-movil"
+              className="max-h-[min(70dvh,36rem)] overflow-y-auto border-t border-white/12 px-3 pb-4 pt-2 text-white sm:px-5 xl:hidden"
+            >
+              <nav aria-label="Navegación móvil">
+                <div className="grid gap-px overflow-hidden rounded-2xl bg-white/15">
                   <Link
-                    key={family.id}
-                    href={family.href}
+                    href="/productos"
                     prefetch={false}
-                    className="group flex items-start gap-4 bg-navy p-4 hover:bg-navy-mid"
+                    aria-current={isCurrent(pathname, "/productos") ? "page" : undefined}
+                    className="bg-navy/90 p-5 font-display text-2xl font-medium tracking-[-0.03em] hover:bg-navy-mid"
                     onClick={() => setMobileOpen(false)}
                   >
-                    <span className="font-mono mt-1 text-[0.64rem] text-white/60">{family.index}</span>
-                    <span className="font-display text-lg font-medium leading-tight">{family.title}</span>
+                    Productos
                   </Link>
-                ))}
-              </div>
+                </div>
 
-              <div className="mt-8 grid gap-px bg-white/15 sm:grid-cols-2">
-                {site.nav
-                  .filter((item) => item.href !== "/productos" && item.href !== "/soluciones")
-                  .map((item) => (
+                <p className="eyebrow mb-4 mt-8 text-white/60">Familias de producto</p>
+                <div className="grid gap-px overflow-hidden rounded-2xl bg-white/15 sm:grid-cols-2">
+                  {productFamilies.map((family) => (
                     <Link
-                      key={item.href}
-                      href={item.href}
-                      aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
-                      className="bg-navy p-4 text-sm font-semibold uppercase tracking-[0.08em] text-white/76 hover:bg-navy-mid hover:text-white"
+                      key={family.id}
+                      href={family.href}
+                      prefetch={false}
+                      className="group flex items-start gap-4 bg-navy/90 p-4 hover:bg-navy-mid"
                       onClick={() => setMobileOpen(false)}
                     >
-                      {item.label}
+                      <span className="font-mono mt-1 text-[0.64rem] text-white/60">{family.index}</span>
+                      <span className="font-display text-lg font-medium leading-tight">{family.title}</span>
                     </Link>
                   ))}
-              </div>
+                </div>
 
-              <Link
-                href="/contacto"
-                className="mt-6 flex min-h-14 items-center justify-between rounded-[var(--radius-sm)] bg-signal px-5 text-sm font-semibold uppercase tracking-[0.09em] text-white"
-                onClick={() => setMobileOpen(false)}
-              >
-                Cotizar proyecto
-                <span aria-hidden="true">→</span>
-              </Link>
-            </nav>
-          </Container>
+                <div className="mt-8 grid gap-px overflow-hidden rounded-2xl bg-white/15">
+                  {headerNav
+                    .filter((item) => item.href !== "/productos")
+                    .map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
+                        className="bg-navy/90 p-4 text-sm font-semibold uppercase tracking-[0.08em] text-white/76 hover:bg-navy-mid hover:text-white"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                </div>
+
+                <Link
+                  href="/contacto"
+                  className="mt-6 flex min-h-14 items-center justify-between rounded-full bg-signal px-5 text-sm font-semibold uppercase tracking-[0.09em] text-white"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Cotizar
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </nav>
+            </div>
+          ) : null}
         </div>
-      ) : null}
+      </div>
     </header>
   );
 }

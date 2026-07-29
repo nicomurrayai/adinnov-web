@@ -106,7 +106,7 @@ export function Hero() {
                 {site.home.eyebrow}
               </m.p>
               <m.h1
-                className="motion-hero font-display mt-6 max-w-5xl text-balance text-[clamp(3.45rem,7.3vw,7.7rem)] font-medium leading-[0.84] tracking-[-0.058em] text-white"
+                className="motion-hero font-display mt-6 max-w-4xl text-balance text-[clamp(2.4rem,5.2vw,4.75rem)] font-medium leading-[0.9] tracking-[-0.045em] text-white"
                 initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.78, delay: reducedMotion ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}
@@ -137,38 +137,27 @@ export function Hero() {
           </div>
 
           <m.div
-            className="motion-hero mt-12 grid gap-7 border-t border-white/20 pt-7 md:grid-cols-12 md:items-center lg:mt-14"
+            className="motion-hero mt-12 flex flex-col items-start gap-6 border-t border-white/20 pt-7 lg:mt-14"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: reducedMotion ? 0 : 0.28 }}
           >
-            <p className="max-w-2xl text-base leading-7 text-white/70 md:col-span-7 md:text-lg md:leading-8">
-              {site.home.supporting}
+            <p className="max-w-2xl text-base leading-7 text-white/70 md:text-lg md:leading-8">
+              Diseñamos e integramos{" "}
+              <strong className="font-bold text-white">
+                tótems, pantallas LED, kioscos, sistemas interactivos y software
+              </strong>{" "}
+              para proyectos corporativos en toda la Argentina.
             </p>
-            <div className="flex flex-col gap-3 sm:flex-row md:col-span-5 md:justify-end">
-              <Button href={site.home.ctaPrimary.href}>{site.home.ctaPrimary.label}</Button>
-              <Button
-                href={site.home.ctaSecondary.href}
-                variant="secondary"
-                className="border-white/32 text-white hover:border-white hover:bg-white hover:text-navy"
-              >
-                {site.home.ctaSecondary.label}
-              </Button>
-            </div>
+            <Button
+              href={site.home.ctaSecondary.href}
+              variant="secondary"
+              className="border-white/32 text-white hover:border-white hover:bg-white hover:!text-ink"
+            >
+              {site.home.ctaSecondary.label}
+            </Button>
           </m.div>
 
-          <div className="mt-8 flex items-center justify-between border-t border-white/10 pr-16 pt-4 sm:pr-0">
-            <p className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-white/60">
-              Venta · Alquiler · Integración
-            </p>
-            <a
-              href="#credenciales"
-              className="font-mono inline-flex items-center gap-2 text-[0.6rem] uppercase tracking-[0.12em] text-white/60 hover:text-white"
-            >
-              Descubrir
-              <span aria-hidden="true">↓</span>
-            </a>
-          </div>
         </Container>
       </section>
     </LazyMotion>

@@ -47,7 +47,7 @@ test.describe("navegación pública", () => {
       await expect(trigger).toBeFocused();
 
       await trigger.click();
-      await page.getByRole("link", { name: "Todos los productos" }).click();
+      await page.getByRole("link", { name: "Productos" }).click();
     } else {
       const trigger = page
         .getByRole("navigation", { name: "Navegación principal" })
