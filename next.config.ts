@@ -24,7 +24,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/servicios",
-        destination: "/soluciones",
+        destination: "/productos",
+        statusCode: 301,
+      },
+      {
+        source: "/soluciones",
+        destination: "/productos",
         statusCode: 301,
       },
     ];

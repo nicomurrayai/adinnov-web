@@ -6,7 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url;
   const staticRoutes = [
     "",
-    "/soluciones",
     "/productos",
     "/alquileres",
     "/nosotros",

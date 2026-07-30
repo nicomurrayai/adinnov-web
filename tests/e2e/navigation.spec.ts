@@ -6,7 +6,6 @@ test.describe.configure({ mode: "serial" });
 const publicRoutes = [
   "/",
   "/productos",
-  "/soluciones",
   "/alquileres",
   "/trabajos",
   "/clientes",

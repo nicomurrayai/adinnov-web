@@ -148,7 +148,7 @@ export const site = {
     supporting:
       "Diseñamos e integramos tótems, pantallas LED, kioscos, sistemas interactivos y software para proyectos corporativos en toda la Argentina.",
     ctaPrimary: { label: "Cotizar un proyecto", href: "/contacto?intent=venta" },
-    ctaSecondary: { label: "Explorar soluciones", href: "/soluciones" },
+    ctaSecondary: { label: "Explorar Productos", href: "/productos" },
   },
   proofs: [
     {
@@ -196,7 +196,6 @@ export const site = {
   },
   nav: [
     { label: "Productos", href: "/productos" },
-    { label: "Soluciones", href: "/soluciones" },
     { label: "Alquileres", href: "/alquileres" },
     { label: "Trabajos", href: "/trabajos" },
     { label: "Clientes", href: "/clientes" },

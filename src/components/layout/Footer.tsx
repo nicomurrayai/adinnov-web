@@ -40,7 +40,7 @@ export function Footer() {
             </div>
 
             <div>
-              <p className="eyebrow text-white/60">Soluciones</p>
+              <p className="eyebrow text-white/60">Productos</p>
               <ul className="mt-5 space-y-3">
                 {productFamilies.map((family) => (
                   <li key={family.id}>

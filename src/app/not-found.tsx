@@ -24,9 +24,9 @@ export default function NotFound() {
               </Button>
             </div>
             <p className="mt-7 text-sm text-muted">
-              También podés recorrer nuestras{" "}
-              <Link href="/soluciones" className="font-semibold text-navy underline decoration-signal decoration-2">
-                soluciones
+              También podés recorrer nuestro{" "}
+              <Link href="/productos" className="font-semibold text-navy underline decoration-signal decoration-2">
+                catálogo de productos
               </Link>
               .
             </p>

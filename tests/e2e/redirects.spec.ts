@@ -4,7 +4,8 @@ const redirects = [
   ["/producto/totem-digital", "/productos/totem-digital"],
   ["/nuestros-trabajos", "/trabajos"],
   ["/nuestros-clientes", "/clientes"],
-  ["/servicios", "/soluciones"],
+  ["/servicios", "/productos"],
+  ["/soluciones", "/productos"],
 ] as const;
 
 test.describe("redirecciones históricas", () => {

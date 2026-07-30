@@ -14,8 +14,8 @@ export function Verticals() {
           className="lg:col-span-9"
         />
         <div className="lg:col-span-3 lg:flex lg:justify-end">
-          <Button href="/soluciones" variant="secondary">
-            Ver soluciones
+          <Button href="/productos" variant="secondary">
+            Ver productos
           </Button>
         </div>
       </div>
