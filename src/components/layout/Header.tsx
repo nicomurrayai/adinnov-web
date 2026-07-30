@@ -50,7 +50,6 @@ export function Header() {
   const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [activeFamilyId, setActiveFamilyId] = useState<ProductFamilyId>(DEFAULT_FAMILY_ID);
   const headerRef = useRef<HTMLElement>(null);
   const productButtonRef = useRef<HTMLButtonElement>(null);
@@ -58,7 +57,6 @@ export function Header() {
   const productsCloseTimerRef = useRef<number | null>(null);
   const mobileButtonRef = useRef<HTMLButtonElement>(null);
   const mobilePanelRef = useRef<HTMLDivElement>(null);
-  const overDark = (pathname === "/" && !scrolled) || mobileOpen;
 
   function clearProductsCloseTimer() {
     if (productsCloseTimerRef.current !== null) {
@@ -125,13 +123,6 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    const updateScroll = () => setScrolled(window.scrollY > 24);
-    updateScroll();
-    window.addEventListener("scroll", updateScroll, { passive: true });
-    return () => window.removeEventListener("scroll", updateScroll);
-  }, []);
-
-  useEffect(() => {
     setProductsOpen(false);
     setMobileOpen(false);
     setActiveFamilyId(DEFAULT_FAMILY_ID);
@@ -190,19 +181,14 @@ export function Header() {
     firstLink?.focus();
   }
 
-  const navIdle = overDark
-    ? "border-transparent text-white/72 hover:text-white"
-    : "border-transparent text-navy/66 hover:text-navy";
-  const navActive = overDark
-    ? "border-white text-white"
-    : "border-signal text-navy";
+  const navIdle = "border-transparent text-navy/66 hover:text-navy";
+  const navActive = "border-signal text-navy";
   const navItemClass = (active: boolean) =>
     `inline-flex h-full items-center border-b-2 border-solid px-3 font-sans text-[0.76rem] font-semibold uppercase leading-none tracking-[0.08em] transition-colors ${
       active ? navActive : navIdle
     }`;
-  const shellClass = overDark
-    ? "border-white/18 bg-ink/35 text-white shadow-[0_18px_50px_rgba(7,23,43,0.28)]"
-    : "border-border/70 bg-paper/55 text-navy shadow-[var(--shadow-card)]";
+  const shellClass =
+    "border-border/80 bg-white/88 text-navy shadow-[var(--shadow-card)]";
 
   return (
     <header ref={headerRef} className="pointer-events-none fixed inset-x-0 top-0 z-50">
@@ -373,11 +359,7 @@ export function Header() {
             <button
               ref={mobileButtonRef}
               type="button"
-              className={`relative z-10 flex h-11 w-11 items-center justify-center rounded-full border xl:hidden ${
-                overDark
-                  ? "border-white/25 text-white"
-                  : "border-border text-navy"
-              }`}
+              className="relative z-10 flex h-11 w-11 items-center justify-center rounded-full border border-border text-navy xl:hidden"
               aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
               aria-expanded={mobileOpen}
               aria-controls="navegacion-movil"
@@ -391,7 +373,7 @@ export function Header() {
             <div
               ref={mobilePanelRef}
               id="navegacion-movil"
-              className="max-h-[min(70dvh,36rem)] overflow-y-auto border-t border-white/12 px-3 pb-4 pt-2 text-white sm:px-5 xl:hidden"
+              className="max-h-[min(70dvh,36rem)] overflow-y-auto border-t border-border px-3 pb-4 pt-2 text-white sm:px-5 xl:hidden"
             >
               <nav aria-label="Navegación móvil">
                 <div className="grid gap-px overflow-hidden rounded-2xl bg-white/15">
@@ -406,7 +388,7 @@ export function Header() {
                   </Link>
                 </div>
 
-                <p className="eyebrow mb-4 mt-8 text-white/60">Familias de producto</p>
+                <p className="eyebrow mb-4 mt-8 text-navy/50">Familias de producto</p>
                 <div className="grid gap-px overflow-hidden rounded-2xl bg-white/15 sm:grid-cols-2">
                   {productFamilies.map((family) => (
                     <Link
