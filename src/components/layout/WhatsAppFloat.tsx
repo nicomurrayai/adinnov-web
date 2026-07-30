@@ -17,11 +17,11 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Contactar a Adinnov por WhatsApp al ${whatsapp.display}`}
-      className="group fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-40 flex min-h-12 items-center gap-2.5 rounded-full border border-white/20 bg-navy px-3.5 text-white shadow-[var(--shadow-float)] transition-[background-color,transform] duration-300 hover:-translate-y-1 hover:bg-signal focus-visible:outline-white md:bottom-6 md:right-6 md:px-4"
+      className="group fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-40 flex min-h-12 items-center gap-2.5 rounded-full border border-white/20 bg-[#25D366] px-3.5 text-white shadow-[var(--shadow-float)] transition-[background-color,transform] duration-300 hover:-translate-y-1 hover:bg-[#1EBE57] focus-visible:outline-white md:bottom-6 md:right-6 md:px-4"
     >
       <WhatsAppIcon />
       <span className="hidden text-xs font-semibold uppercase tracking-[0.08em] sm:inline">WhatsApp</span>
-      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[#36d27e] group-hover:bg-white" />
+      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-white/90" />
     </a>
   );
 }

@@ -1,12 +1,9 @@
-import Link from "next/link";
 import type { EnrichedProduct } from "@content/types";
 import { site } from "@content/site";
 import { getCategoryLabel } from "@/lib/content";
 import { ProductGallery } from "./ProductGallery";
 
 export function ProductHero({ product }: { product: EnrichedProduct }) {
-  const rentalHref = `/contacto?intent=alquiler&product=${encodeURIComponent(product.slug)}`;
-
   return (
     <section className="grid items-start gap-10 border-b border-border pb-14 lg:grid-cols-[minmax(0,1.35fr)_minmax(20rem,0.85fr)] lg:gap-16 lg:pb-20">
       <ProductGallery media={product.media} productName={product.title} />
@@ -62,14 +59,6 @@ export function ProductHero({ product }: { product: EnrichedProduct }) {
             Consultar por WhatsApp
             <span aria-hidden="true">↗</span>
           </a>
-          {product.availability.rental ? (
-            <Link
-              href={rentalHref}
-              className="inline-flex min-h-12 items-center justify-center rounded-sm border border-navy bg-white px-6 py-3 text-sm font-semibold text-navy transition-colors hover:bg-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              Cotizar alquiler
-            </Link>
-          ) : null}
         </div>
       </div>
     </section>

@@ -205,7 +205,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="mt-16 grid gap-14 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-16">
           <ProductDetails product={product} />
           <aside aria-label="Opciones para cotizar">
-            <StickyProductActions product={product} />
+            <StickyProductActions />
           </aside>
         </div>
 
