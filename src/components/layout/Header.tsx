@@ -213,7 +213,7 @@ export function Header() {
                 height={88}
                 loading="eager"
                 fetchPriority="high"
-                className="h-[3.75rem] w-auto sm:h-[4.35rem]"
+                className="h-[4.1rem] w-auto sm:h-[4.7rem]"
               />
             </Link>
 
