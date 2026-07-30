@@ -43,11 +43,15 @@ const headerNav = [
   { label: "Trabajos", href: "/trabajos" },
 ] as const;
 
+type ProductFamilyId = (typeof productFamilies)[number]["id"];
+const DEFAULT_FAMILY_ID: ProductFamilyId = "totems-terminales";
+
 export function Header() {
   const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeFamilyId, setActiveFamilyId] = useState<ProductFamilyId>(DEFAULT_FAMILY_ID);
   const headerRef = useRef<HTMLElement>(null);
   const productButtonRef = useRef<HTMLButtonElement>(null);
   const productsPanelRef = useRef<HTMLDivElement>(null);
@@ -75,6 +79,9 @@ export function Header() {
       productsCloseTimerRef.current = null;
     }, 140);
   }
+
+  const activeFamily =
+    productFamilies.find((family) => family.id === activeFamilyId) ?? productFamilies[0]!;
 
   useEffect(() => {
     function handlePointerDown(event: PointerEvent) {
@@ -127,8 +134,15 @@ export function Header() {
   useEffect(() => {
     setProductsOpen(false);
     setMobileOpen(false);
+    setActiveFamilyId(DEFAULT_FAMILY_ID);
     clearProductsCloseTimer();
   }, [pathname]);
+
+  useEffect(() => {
+    if (!productsOpen) {
+      setActiveFamilyId(DEFAULT_FAMILY_ID);
+    }
+  }, [productsOpen]);
 
   useEffect(() => {
     return () => clearProductsCloseTimer();
@@ -262,18 +276,36 @@ export function Header() {
                           >
                             <div className="overflow-hidden rounded-[1.25rem] border border-border bg-paper text-navy shadow-[var(--shadow-float)]">
                               <div className="grid grid-cols-12 gap-x-8 p-8">
-                                <div className="col-span-3 flex flex-col justify-between border-r border-border pr-8">
-                                  <div>
-                                    <p className="eyebrow text-signal">Catálogo</p>
-                                    <p className="font-display mt-4 text-3xl font-medium leading-none tracking-[-0.035em] text-navy">
-                                      Seis familias.
-                                      <br />Una solución.
-                                    </p>
+                                <div className="col-span-3 flex flex-col border-r border-border pr-8">
+                                  <div className="relative min-h-[22rem] flex-1 overflow-hidden bg-aluminum-light">
+                                    {productFamilies.map((family) => (
+                                      <Image
+                                        key={family.id}
+                                        src={family.image}
+                                        alt=""
+                                        fill
+                                        sizes="280px"
+                                        className={`object-cover transition-opacity duration-300 ${
+                                          family.id === activeFamilyId
+                                            ? "opacity-100"
+                                            : "opacity-0"
+                                        }`}
+                                        aria-hidden={family.id !== activeFamilyId}
+                                      />
+                                    ))}
+                                    <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-4 pb-4 pt-16">
+                                      <p className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-white/70">
+                                        {activeFamily.index}
+                                      </p>
+                                      <p className="font-display mt-1 text-lg font-medium leading-tight tracking-[-0.025em] text-white">
+                                        {activeFamily.title}
+                                      </p>
+                                    </div>
                                   </div>
                                   <Link
                                     href="/productos"
                                     prefetch={false}
-                                    className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-navy underline decoration-signal decoration-2 underline-offset-4"
+                                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy underline decoration-signal decoration-2 underline-offset-4"
                                     onClick={() => setProductsOpen(false)}
                                   >
                                     Ver catálogo completo
@@ -286,8 +318,14 @@ export function Header() {
                                       key={family.id}
                                       href={family.href}
                                       prefetch={false}
-                                      className="group bg-paper p-5 transition-colors hover:bg-ivory focus-visible:relative"
+                                      className={`group p-5 transition-colors focus-visible:relative ${
+                                        family.id === activeFamilyId
+                                          ? "bg-ivory"
+                                          : "bg-paper hover:bg-ivory"
+                                      }`}
                                       onClick={() => setProductsOpen(false)}
+                                      onFocus={() => setActiveFamilyId(family.id)}
+                                      onMouseEnter={() => setActiveFamilyId(family.id)}
                                     >
                                       <span className="font-mono text-[0.65rem] text-signal">{family.index}</span>
                                       <span className="font-display mt-3 block text-lg font-medium leading-tight tracking-[-0.025em] text-navy">
