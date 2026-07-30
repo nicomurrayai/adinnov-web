@@ -7,7 +7,7 @@ export const productFamilies = [
     description:
       "Equipos digitales e interactivos de fabricación propia para comunicar, orientar y activar experiencias.",
     href: "/productos?familia=totems-terminales",
-    image: "/products/totem-interactivo/01.jpg",
+    image: "/navigation/product-families/totems-terminales.webp",
   },
   {
     id: "pantallas-profesionales",
@@ -17,7 +17,7 @@ export const productFamilies = [
     description:
       "Displays profesionales, videowalls y formatos especiales para espacios corporativos y comerciales.",
     href: "/productos?familia=pantallas-profesionales",
-    image: "/products/videowalls-samsung/03.jpg",
+    image: "/navigation/product-families/pantallas-profesionales.webp",
   },
   {
     id: "led",
@@ -27,7 +27,7 @@ export const productFamilies = [
     description:
       "Pantallas, posters y piezas LED indoor u outdoor configuradas para cada escala y entorno.",
     href: "/productos?familia=led",
-    image: "/products/poster-led/02.jpg",
+    image: "/navigation/product-families/led.webp",
   },
   {
     id: "pizarras-interaccion",
@@ -37,7 +37,7 @@ export const productFamilies = [
     description:
       "Superficies táctiles para presentar, colaborar y trabajar con contenido en tiempo real.",
     href: "/productos?familia=pizarras-interaccion",
-    image: "/products/pizarra-interactiva-i3touch-e-one/04.webp",
+    image: "/navigation/product-families/pizarras-interaccion.webp",
   },
   {
     id: "kioscos-autogestion",
@@ -47,7 +47,7 @@ export const productFamilies = [
     description:
       "Terminales para pedidos, pagos, turnos y atención autónoma en puntos de alto tránsito.",
     href: "/productos?familia=kioscos-autogestion",
-    image: "/products/kiosco-autogestion-gastronomia/01.jpg",
+    image: "/navigation/product-families/kioscos-autogestion.webp",
   },
   {
     id: "software-servicios",
@@ -57,7 +57,7 @@ export const productFamilies = [
     description:
       "Gestión de contenidos, aplicaciones interactivas e integración para que cada equipo cumpla su objetivo.",
     href: "/productos?familia=software-servicios",
-    image: "/products/software-carteleria-digital/01.jpg",
+    image: "/navigation/product-families/software-servicios.webp",
   },
 ] as const;
 
