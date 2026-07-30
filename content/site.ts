@@ -8,6 +8,7 @@ export const productFamilies = [
       "Equipos digitales e interactivos de fabricación propia para comunicar, orientar y activar experiencias.",
     href: "/productos?familia=totems-terminales",
     image: "/navigation/product-families/totems-terminales.webp",
+    homeImage: "/home/product-families/totems-terminales.webp",
   },
   {
     id: "pantallas-profesionales",
@@ -18,6 +19,7 @@ export const productFamilies = [
       "Displays profesionales, videowalls y formatos especiales para espacios corporativos y comerciales.",
     href: "/productos?familia=pantallas-profesionales",
     image: "/navigation/product-families/pantallas-profesionales.webp",
+    homeImage: "/home/product-families/pantallas-profesionales.webp",
   },
   {
     id: "led",
@@ -28,6 +30,7 @@ export const productFamilies = [
       "Pantallas, posters y piezas LED indoor u outdoor configuradas para cada escala y entorno.",
     href: "/productos?familia=led",
     image: "/navigation/product-families/led.webp",
+    homeImage: "/home/product-families/led.webp",
   },
   {
     id: "pizarras-interaccion",
@@ -38,6 +41,7 @@ export const productFamilies = [
       "Superficies táctiles para presentar, colaborar y trabajar con contenido en tiempo real.",
     href: "/productos?familia=pizarras-interaccion",
     image: "/navigation/product-families/pizarras-interaccion.webp",
+    homeImage: "/home/product-families/pizarras-interaccion.webp",
   },
   {
     id: "kioscos-autogestion",
@@ -48,6 +52,7 @@ export const productFamilies = [
       "Terminales para pedidos, pagos, turnos y atención autónoma en puntos de alto tránsito.",
     href: "/productos?familia=kioscos-autogestion",
     image: "/navigation/product-families/kioscos-autogestion.webp",
+    homeImage: "/home/product-families/kioscos-autogestion.webp",
   },
   {
     id: "software-servicios",
@@ -58,6 +63,7 @@ export const productFamilies = [
       "Gestión de contenidos, aplicaciones interactivas e integración para que cada equipo cumpla su objetivo.",
     href: "/productos?familia=software-servicios",
     image: "/navigation/product-families/software-servicios.webp",
+    homeImage: "/home/product-families/software-servicios.webp",
   },
 ] as const;
 

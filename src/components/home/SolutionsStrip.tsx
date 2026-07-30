@@ -29,7 +29,7 @@ export function SolutionsStrip() {
             >
               <div className="relative aspect-[16/10] overflow-hidden bg-aluminum-light">
                 <Image
-                  src={family.image}
+                  src={family.homeImage}
                   alt={family.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
