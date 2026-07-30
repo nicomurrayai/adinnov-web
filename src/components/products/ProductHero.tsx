@@ -1,10 +1,10 @@
 import Link from "next/link";
 import type { EnrichedProduct } from "@content/types";
+import { site } from "@content/site";
 import { getCategoryLabel } from "@/lib/content";
 import { ProductGallery } from "./ProductGallery";
 
 export function ProductHero({ product }: { product: EnrichedProduct }) {
-  const saleHref = `/contacto?intent=venta&product=${encodeURIComponent(product.slug)}`;
   const rentalHref = `/contacto?intent=alquiler&product=${encodeURIComponent(product.slug)}`;
 
   return (
@@ -53,15 +53,15 @@ export function ProductHero({ product }: { product: EnrichedProduct }) {
         ) : null}
 
         <div className="mt-8 hidden flex-col gap-3 sm:flex-row lg:flex">
-          {product.availability.sale ? (
-            <Link
-              href={saleHref}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-            >
-              Cotizar compra
-              <span aria-hidden="true">↗</span>
-            </Link>
-          ) : null}
+          <a
+            href={site.whatsapp[0].href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-sm bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            Consultar por WhatsApp
+            <span aria-hidden="true">↗</span>
+          </a>
           {product.availability.rental ? (
             <Link
               href={rentalHref}

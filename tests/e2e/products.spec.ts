@@ -43,7 +43,7 @@ test.describe("fichas de producto", () => {
           .soft(html, `${product.slug}: canonical`)
           .toContain(`https://adinnov.com.ar/productos/${product.slug}`);
         expect.soft(html, `${product.slug}: JSON-LD Product`).toContain('"@type":"Product"');
-        expect.soft(html, `${product.slug}: CTA venta`).toContain("Cotizar compra");
+        expect.soft(html, `${product.slug}: CTA WhatsApp`).toContain("Consultar por WhatsApp");
 
         if (rentalSlugs.has(product.slug)) {
           expect.soft(html, `${product.slug}: CTA alquiler`).toContain("Cotizar alquiler");
@@ -104,16 +104,7 @@ test.describe("interacciones de ficha", () => {
     await expect(fallback).toContainText("Vista no disponible");
   });
 
-  test("los CTAs trasladan intent y producto al formulario", async ({ page }) => {
-    await page.goto("/productos/totem-digital");
-    await page
-      .locator('a[href="/contacto?intent=venta&product=totem-digital"]:visible')
-      .first()
-      .click();
-    await expect(page).toHaveURL(/intent=venta&product=totem-digital/);
-    await expect(page.getByLabel("¿Cómo podemos ayudarte?")).toHaveValue("venta");
-    await expect(page.getByLabel("Producto")).toHaveValue("totem-digital");
-
+  test("los CTAs trasladan intent y producto al formulario de alquiler", async ({ page }) => {
     await page.goto("/productos/totem-digital");
     await page
       .locator('a[href="/contacto?intent=alquiler&product=totem-digital"]:visible')
@@ -127,7 +118,7 @@ test.describe("interacciones de ficha", () => {
 
   test("una ficha solo venta no presenta la acción de alquiler", async ({ page }) => {
     await page.goto("/productos/apps-juegos-interactivos");
-    await expect(page.getByRole("link", { name: "Cotizar compra" }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: "Consultar por WhatsApp" }).first()).toBeVisible();
     await expect(page.getByRole("link", { name: "Cotizar alquiler" })).toHaveCount(0);
   });
 });

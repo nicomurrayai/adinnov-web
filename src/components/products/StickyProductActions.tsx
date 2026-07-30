@@ -3,7 +3,6 @@ import type { EnrichedProduct } from "@content/types";
 import { site } from "@content/site";
 
 export function StickyProductActions({ product }: { product: EnrichedProduct }) {
-  const saleHref = `/contacto?intent=venta&product=${encodeURIComponent(product.slug)}`;
   const rentalHref = `/contacto?intent=alquiler&product=${encodeURIComponent(product.slug)}`;
 
   return (
@@ -21,15 +20,15 @@ export function StickyProductActions({ product }: { product: EnrichedProduct }) 
           </p>
         </div>
 
-        {product.availability.sale ? (
-          <Link
-            href={saleHref}
-            className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-sm bg-navy px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:mt-6 lg:w-full"
-          >
-            Cotizar compra
-            <span className="hidden sm:inline" aria-hidden="true">↗</span>
-          </Link>
-        ) : null}
+        <a
+          href={site.whatsapp[0].href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-sm bg-navy px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent lg:mt-6 lg:w-full"
+        >
+          Consultar por WhatsApp
+          <span className="hidden sm:inline" aria-hidden="true">↗</span>
+        </a>
         {product.availability.rental ? (
           <Link
             href={rentalHref}
@@ -38,16 +37,6 @@ export function StickyProductActions({ product }: { product: EnrichedProduct }) 
             Cotizar alquiler
           </Link>
         ) : null}
-
-        <a
-          href={site.whatsapp[0].href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden min-h-11 items-center justify-center gap-2 text-sm font-medium text-navy underline-offset-4 hover:text-accent hover:underline lg:mt-3 lg:flex"
-        >
-          Consultar por WhatsApp
-          <span aria-hidden="true">↗</span>
-        </a>
       </div>
     </div>
   );
