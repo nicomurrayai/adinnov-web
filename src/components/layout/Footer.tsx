@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { productFamilies, site } from "@content/site";
 import { Container } from "../ui/Container";
@@ -9,14 +8,7 @@ export function Footer() {
       <Container className="py-16 md:py-24">
         <div className="grid gap-12 border-b border-white/15 pb-14 lg:grid-cols-12 lg:pb-20">
           <div className="lg:col-span-5">
-            <Image
-              src="/brand/logo.svg"
-              alt="Adinnov"
-              width={164}
-              height={60}
-              className="h-12 w-auto brightness-0 invert"
-            />
-            <h2 className="font-display mt-10 max-w-lg text-balance text-[clamp(2.4rem,4vw,4.5rem)] font-medium leading-[0.94] tracking-[-0.045em]">
+            <h2 className="font-display max-w-lg text-balance text-[clamp(2.4rem,4vw,4.5rem)] font-medium leading-[0.94] tracking-[-0.045em]">
               Hablemos de tu próximo espacio digital.
             </h2>
             <Link
