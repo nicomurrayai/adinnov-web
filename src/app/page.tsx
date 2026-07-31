@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Clients } from "../components/home/Clients";
 import { CustomWork } from "../components/home/CustomWork";
-import { FeaturedProducts } from "../components/home/FeaturedProducts";
 import { Hero } from "../components/home/Hero";
 import { HomeCta } from "../components/home/HomeCta";
 import { Partners } from "../components/home/Partners";
@@ -22,7 +21,6 @@ export default function HomePage() {
     <>
       <Hero />
       <SolutionsStrip />
-      <FeaturedProducts />
       <RentalsSection />
       <CustomWork />
       <Verticals />

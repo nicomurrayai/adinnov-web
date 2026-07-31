@@ -111,7 +111,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.78, delay: reducedMotion ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}
               >
-                Tecnología que transforma espacios y conecta experiencias
+                Tecnología que convierte espacios en experiencias.
               </m.h1>
             </div>
 
@@ -143,7 +143,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: reducedMotion ? 0 : 0.28 }}
           >
             <p className="max-w-2xl text-base leading-7 text-white/70 md:text-lg md:leading-8">
-              Diseñamos e integramos{" "}
+              Fabricamos, alquilamos y vendemos{" "}
               <strong className="font-bold text-white">
                 tótems, pantallas LED, kioscos, sistemas interactivos y software
               </strong>{" "}

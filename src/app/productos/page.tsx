@@ -65,7 +65,7 @@ export default function ProductosPage() {
               Catálogo / {products.length.toString().padStart(2, "0")} equipos
             </p>
             <h1 className="mt-5 max-w-4xl text-balance font-display text-5xl font-medium leading-[0.96] tracking-[-0.045em] text-foreground sm:text-6xl lg:text-7xl">
-              Tecnología elegida para cada espacio.
+              Elegí la solución que mejor se adapte a tus necesidades.
             </h1>
           </div>
           <p className="max-w-xl text-base leading-7 text-muted md:pb-1">

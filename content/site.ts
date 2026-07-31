@@ -144,9 +144,9 @@ export const site = {
   ],
   home: {
     eyebrow: "Cartelería digital · Buenos Aires",
-    headline: "Tecnología que transforma espacios y conecta experiencias",
+    headline: "Tecnología que convierte espacios en experiencias.",
     supporting:
-      "Diseñamos e integramos tótems, pantallas LED, kioscos, sistemas interactivos y software para proyectos corporativos en toda la Argentina.",
+      "Fabricamos, alquilamos y vendemos tótems, pantallas LED, kioscos, sistemas interactivos y software para proyectos corporativos en toda la Argentina.",
     ctaPrimary: { label: "Cotizar un proyecto", href: "/contacto?intent=venta" },
     ctaSecondary: { label: "Explorar Productos", href: "/productos" },
   },
