@@ -6,7 +6,6 @@ import { Hero } from "../components/home/Hero";
 import { HomeCta } from "../components/home/HomeCta";
 import { Partners } from "../components/home/Partners";
 import { Process } from "../components/home/Process";
-import { ProofBar } from "../components/home/ProofBar";
 import { RentalsSection } from "../components/home/RentalsSection";
 import { SolutionsStrip } from "../components/home/SolutionsStrip";
 import { Verticals } from "../components/home/Verticals";
@@ -22,7 +21,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <ProofBar />
       <SolutionsStrip />
       <FeaturedProducts />
       <RentalsSection />

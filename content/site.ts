@@ -150,20 +150,6 @@ export const site = {
     ctaPrimary: { label: "Cotizar un proyecto", href: "/contacto?intent=venta" },
     ctaSecondary: { label: "Explorar Productos", href: "/productos" },
   },
-  proofs: [
-    {
-      title: "Fabricación propia",
-      description: "Tótems, terminales y formatos adaptados a cada proyecto.",
-    },
-    {
-      title: "Venta y alquiler",
-      description: "Modalidades para instalaciones permanentes y eventos.",
-    },
-    {
-      title: "Implementación integral",
-      description: "Logística, instalación, puesta en marcha y soporte.",
-    },
-  ],
   about: {
     title: "Tecnología aplicada a espacios reales",
     lead:

@@ -11,7 +11,7 @@ export function SolutionsStrip() {
         <SectionHeading
           eyebrow="Arquitectura de soluciones"
           title="Una tecnología para cada punto de contacto"
-          description="Partimos del objetivo, el espacio y la audiencia para combinar el formato físico con la experiencia digital adecuada."
+          description="Fabricamos soluciones a medida, disponibles para venta o alquiler, y nos ocupamos de toda la implementación, desde la logística hasta el soporte."
           className="lg:col-span-9"
         />
         <p className="font-mono border-l border-border pl-5 text-xs leading-6 text-muted lg:col-span-3">
