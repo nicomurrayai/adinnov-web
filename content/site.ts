@@ -197,7 +197,7 @@ export const site = {
   nav: [
     { label: "Productos", href: "/productos" },
     { label: "Alquileres", href: "/alquileres" },
-    { label: "Trabajos", href: "/trabajos" },
+    { label: "Casos de éxito", href: "/trabajos" },
     { label: "Clientes", href: "/clientes" },
     { label: "Nosotros", href: "/nosotros" },
   ],

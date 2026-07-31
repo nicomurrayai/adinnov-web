@@ -39,8 +39,7 @@ function isCurrent(pathname: string, href: string) {
 
 const headerNav = [
   { label: "Productos", href: "/productos" },
-  { label: "Clientes", href: "/clientes" },
-  { label: "Trabajos", href: "/trabajos" },
+  { label: "Casos de éxito", href: "/trabajos" },
 ] as const;
 
 type ProductFamilyId = (typeof productFamilies)[number]["id"];
