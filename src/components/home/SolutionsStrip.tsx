@@ -7,17 +7,15 @@ import { Section, SectionHeading } from "../ui/Section";
 export function SolutionsStrip() {
   return (
     <Section id="nuestras-soluciones" className="overflow-hidden">
-      <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-        <SectionHeading
-          eyebrow="Arquitectura de soluciones"
-          title="Tecnología que convierte cada espacio en una oportunidad"
-          description="Creamos soluciones de cartelería digital a medida para potenciar la comunicación de tu marca y mejorar la experiencia de tus clientes. Venta o alquiler, con un servicio integral que incluye fabricación, logística, instalación y soporte."
-          className="lg:col-span-9"
-        />
-        <p className="font-mono border-l border-border pl-5 text-xs leading-6 text-muted lg:col-span-3">
-          06 familias<br />47 líneas de producto
-        </p>
-      </div>
+      <SectionHeading
+        align="center"
+        eyebrow="Arquitectura de soluciones"
+        title="Tecnología que convierte cada espacio en una oportunidad"
+        description="Creamos soluciones de cartelería digital a medida para potenciar la comunicación de tu marca y mejorar la experiencia de tus clientes. Venta o alquiler, con un servicio integral que incluye fabricación, logística, instalación y soporte."
+      />
+      <p className="font-mono mt-6 text-center text-xs leading-6 text-muted">
+        06 familias · 47 líneas de producto
+      </p>
 
       <div className="mt-14 grid gap-px bg-border md:grid-cols-2 lg:mt-20 lg:grid-cols-3">
         {productFamilies.map((family, index) => (

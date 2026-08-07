@@ -32,16 +32,22 @@ export function SectionHeading({
   title,
   description,
   light = false,
+  align = "left",
   className = "",
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   light?: boolean;
+  align?: "left" | "center";
   className?: string;
 }) {
+  const centered = align === "center";
+
   return (
-    <header className={`max-w-3xl ${className}`}>
+    <header
+      className={`max-w-3xl ${centered ? "mx-auto text-center" : ""} ${className}`}
+    >
       {eyebrow ? (
         <p className={`eyebrow ${light ? "text-white/56" : "text-signal"}`}>{eyebrow}</p>
       ) : null}
@@ -52,7 +58,7 @@ export function SectionHeading({
       </h2>
       {description ? (
         <p
-          className={`mt-6 max-w-2xl text-base leading-7 md:text-lg md:leading-8 ${light ? "text-white/68" : "text-muted"}`}
+          className={`mt-6 max-w-2xl text-base leading-7 md:text-lg md:leading-8 ${centered ? "mx-auto" : ""} ${light ? "text-white/68" : "text-muted"}`}
         >
           {description}
         </p>

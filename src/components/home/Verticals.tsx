@@ -6,18 +6,16 @@ import { Section, SectionHeading } from "../ui/Section";
 export function Verticals() {
   return (
     <Section id="verticales">
-      <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
-        <SectionHeading
-          eyebrow="Sectores"
-          title="Pensado para el contexto, no sólo para la pantalla"
-          description="Cada entorno tiene su propio ritmo, audiencia y nivel de exigencia. La solución se define a partir de ese contexto."
-          className="lg:col-span-9"
-        />
-        <div className="lg:col-span-3 lg:flex lg:justify-end">
-          <Button href="/productos" variant="secondary">
-            Ver productos
-          </Button>
-        </div>
+      <SectionHeading
+        align="center"
+        eyebrow="Sectores"
+        title="Pensado para el contexto, no sólo para la pantalla"
+        description="Cada entorno tiene su propio ritmo, audiencia y nivel de exigencia. La solución se define a partir de ese contexto."
+      />
+      <div className="mt-8 flex justify-center">
+        <Button href="/productos" variant="secondary">
+          Ver productos
+        </Button>
       </div>
 
       <ol className="mt-14 border-t border-border lg:mt-20">

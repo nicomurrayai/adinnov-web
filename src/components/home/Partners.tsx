@@ -5,7 +5,7 @@ import { Container } from "../ui/Container";
 export function Partners() {
   return (
     <section className="border-y border-border bg-paper py-8" aria-labelledby="partners-title">
-      <Container className="flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
+      <Container className="flex flex-col items-center gap-7 text-center">
         <div>
           <p id="partners-title" className="eyebrow text-muted">
             Ecosistema tecnológico
@@ -14,7 +14,7 @@ export function Partners() {
             Partners y alianzas
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-x-10 gap-y-6 md:justify-end lg:gap-x-14">
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 lg:gap-x-14">
           {site.partners.map((partner) => (
             <div
               key={partner.name}
