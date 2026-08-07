@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { works, worksIntro } from "@content/works";
+import { bentoCases, worksIntro } from "@content/works";
 import { Button } from "../../components/ui/Button";
 import { Container } from "../../components/ui/Container";
-import { Reveal } from "../../components/ui/Reveal";
 import { Section, SectionHeading } from "../../components/ui/Section";
+import { WorksBentoGrid } from "../../components/works/WorksBentoGrid";
 
 export const metadata: Metadata = {
   title: "Trabajos e implementaciones",
@@ -13,85 +11,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "/trabajos" },
 };
 
-const collectionIds = ["videowalls", "tvs", "totems", "led", "alquileres"] as const;
-
-function galleryItemClass(index: number, total: number) {
-  if (index === 0) return "sm:col-span-2 lg:col-span-7 lg:row-span-2";
-  if (index === 1) return "lg:col-span-5 lg:row-span-2";
-  if (total === 6 && index === 5) return "sm:col-span-2 lg:col-span-12";
-  if (total === 7 && index >= 5) return "lg:col-span-6";
-  return "lg:col-span-4";
-}
-
 export default function TrabajosPage() {
   return (
     <>
       <Section>
         <SectionHeading
           title="Casos de éxito"
-          description="Así se ven nuestras soluciones instaladas: pantallas, tótems, LED y más, en proyectos reales."
+          description={worksIntro}
+          align="center"
         />
 
-        <div className="mt-16 space-y-24 lg:mt-28 lg:space-y-36">
-          {works.map((work, collectionIndex) => (
-            <article
-              key={work.title}
-              id={collectionIds[collectionIndex]}
-              className="scroll-mt-28"
-            >
-              <Reveal className="grid gap-8 border-t border-navy pt-6 lg:grid-cols-12 lg:items-end">
-                <div className="lg:col-span-3">
-                  <p className="eyebrow text-signal">
-                    Colección {String(collectionIndex + 1).padStart(2, "0")}
-                  </p>
-                </div>
-                <div className="lg:col-span-5">
-                  <h2 className="font-display text-[clamp(3.2rem,6vw,6.5rem)] font-medium leading-[0.86] tracking-[-0.055em] text-navy">
-                    {work.title}
-                  </h2>
-                </div>
-                <div className="lg:col-span-4">
-                  <p className="max-w-lg text-base leading-7 text-muted">{work.description}</p>
-                  <Link
-                    href="/contacto?intent=venta"
-                    className="mt-6 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.09em] text-navy transition-colors hover:text-signal"
-                  >
-                    Consultar proyecto
-                    <span aria-hidden="true">→</span>
-                  </Link>
-                </div>
-              </Reveal>
-
-              <div className="mt-9 grid auto-rows-[16rem] gap-3 sm:grid-cols-2 sm:auto-rows-[20rem] lg:grid-cols-12 lg:auto-rows-[15rem]">
-                {work.images.map((src, imageIndex) => (
-                  <Reveal
-                    key={src}
-                    delay={Math.min(imageIndex * 0.04, 0.2)}
-                    className={galleryItemClass(imageIndex, work.images.length)}
-                  >
-                    <figure className="group relative h-full overflow-hidden bg-surface">
-                      <Image
-                        src={src}
-                        alt={`${work.title}: implementación ${imageIndex + 1}`}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 60vw"
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025] motion-reduce:transform-none"
-                      />
-                      <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-navy/75 via-navy/20 to-transparent px-4 pb-4 pt-16 text-white">
-                        <span className="text-xs font-semibold uppercase tracking-[0.08em]">
-                          {work.title}
-                        </span>
-                        <span className="font-mono text-[0.62rem] text-white/80">
-                          {String(imageIndex + 1).padStart(2, "0")} / {String(work.images.length).padStart(2, "0")}
-                        </span>
-                      </figcaption>
-                    </figure>
-                  </Reveal>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+        <WorksBentoGrid cases={bentoCases} />
       </Section>
 
       <section className="border-y border-border bg-ivory py-14 md:py-20">

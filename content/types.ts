@@ -151,6 +151,26 @@ export type ClientLogo = {
   image: string;
 };
 
+export type WorkBrand = {
+  name: string;
+  logo?: string;
+};
+
+/** featured = 2×2, wide = 2×1, standard = 1×1 on desktop bento */
+export type BentoSpan = "featured" | "wide" | "standard";
+
+export type WorkCase = {
+  id: string;
+  kind: "collection" | "client";
+  category: string;
+  title: string;
+  description?: string;
+  brands: WorkBrand[];
+  images: string[];
+  span: BentoSpan;
+};
+
+/** @deprecated Prefer WorkCase — kept for transitional imports */
 export type WorkItem = {
   title: string;
   description: string;

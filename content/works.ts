@@ -1,75 +1,144 @@
-import type { WorkItem } from "./types";
+﻿import type { WorkBrand, WorkCase } from "./types";
 
 export const worksIntro =
-  "Una selección organizada por tipo de implementación. Cada colección reúne formatos que Adinnov fabrica, integra o instala para espacios permanentes y eventos.";
+  "Soluciones que ya están funcionando en el mundo real. Conocé algunos de los proyectos que desarrollamos e implementamos para marcas, empresas e instituciones.";
 
-export const works: WorkItem[] = [
+/** Demo brands until real per-case client data is available */
+const demoBrands: WorkBrand[] = [
+  { name: "Mercado Libre", logo: "/clients/mercado-libre.png" },
+  { name: "Coca-Cola", logo: "/clients/coca-cola.png" },
+  { name: "Unilever", logo: "/clients/unilever.png" },
+];
+
+const videowallImages = [
+  "/site/works/videowalls/01.jpg",
+  "/site/works/videowalls/02.jpg",
+  "/site/works/videowalls/03.jpg",
+  "/site/works/videowalls/04.jpg",
+  "/site/works/videowalls/05.jpg",
+];
+
+const tvImages = [
+  "/site/works/tvs/01.jpg",
+  "/site/works/tvs/02.jpg",
+  "/site/works/tvs/03.jpg",
+  "/site/works/tvs/04.jpg",
+  "/site/works/tvs/05.jpg",
+  "/site/works/tvs/06.jpg",
+];
+
+const totemImages = [
+  "/site/works/totems/01.jpg",
+  "/site/works/totems/02.jpg",
+  "/site/works/totems/03.jpg",
+  "/site/works/totems/04.png",
+  "/site/works/totems/05.png",
+  "/site/works/totems/06.jpg",
+  "/site/works/totems/07.jpg",
+];
+
+const ledImages = [
+  "/site/works/led/01.jpg",
+  "/site/works/led/02.jpg",
+  "/site/works/led/03.jpg",
+  "/site/works/led/04.jpg",
+  "/site/works/led/05.jpg",
+];
+
+const alquilerImages = [
+  "/site/works/alquileres/01.jpg",
+  "/site/works/alquileres/02.jpg",
+  "/site/works/alquileres/03.jpg",
+  "/site/works/alquileres/04.jpg",
+  "/site/works/alquileres/05.jpg",
+];
+
+/** Ordered for the /trabajos bento grid */
+export const bentoCases: WorkCase[] = [
   {
-    title: "Videowalls",
+    id: "videowalls",
+    kind: "collection",
+    category: "Videowalls",
+    title: "Multipantalla que organiza el espacio",
     description:
-      "Configuraciones multipantalla para centros de monitoreo, comunicación corporativa y espacios de atención.",
-    image: "/site/works/videowalls/01.jpg",
-    images: [
-      "/site/works/videowalls/01.jpg",
-      "/site/works/videowalls/02.jpg",
-      "/site/works/videowalls/03.jpg",
-      "/site/works/videowalls/04.jpg",
-      "/site/works/videowalls/05.jpg",
-    ],
+      "Configuraciones para centros de monitoreo, comunicación corporativa y espacios de atención.",
+    brands: demoBrands,
+    images: videowallImages,
+    span: "standard",
   },
   {
-    title: "TVs",
-    description:
-      "Instalaciones con pantallas profesionales para señalización, contenidos institucionales y presentaciones.",
-    image: "/site/works/tvs/01.jpg",
-    images: [
-      "/site/works/tvs/01.jpg",
-      "/site/works/tvs/02.jpg",
-      "/site/works/tvs/03.jpg",
-      "/site/works/tvs/04.jpg",
-      "/site/works/tvs/05.jpg",
-      "/site/works/tvs/06.jpg",
-    ],
+    id: "toyota",
+    kind: "client",
+    category: "Videowalls",
+    title: "Videowall de 12–18 pantallas",
+    description: "Implementación multipantalla a escala corporativa.",
+    brands: demoBrands,
+    images: [videowallImages[0], videowallImages[1], videowallImages[2]],
+    span: "standard",
   },
   {
-    title: "Tótems",
-    description:
-      "Equipos digitales e interactivos aplicados a ferias, retail, información y experiencias de marca.",
-    image: "/site/works/totems/01.jpg",
-    images: [
-      "/site/works/totems/01.jpg",
-      "/site/works/totems/02.jpg",
-      "/site/works/totems/03.jpg",
-      "/site/works/totems/04.png",
-      "/site/works/totems/05.png",
-      "/site/works/totems/06.jpg",
-      "/site/works/totems/07.jpg",
-    ],
+    id: "entel",
+    kind: "client",
+    category: "Monitoreo",
+    title: "Centro de monitoreo",
+    description: "Operación visual continua para centros de control.",
+    brands: demoBrands,
+    images: [videowallImages[3], tvImages[0], videowallImages[4]],
+    span: "standard",
   },
   {
-    title: "LED",
-    description:
-      "Soluciones LED indoor y outdoor en diferentes escalas y configuraciones visuales.",
-    image: "/site/works/led/01.jpg",
-    images: [
-      "/site/works/led/01.jpg",
-      "/site/works/led/02.jpg",
-      "/site/works/led/03.jpg",
-      "/site/works/led/04.jpg",
-      "/site/works/led/05.jpg",
-    ],
+    id: "gendarmeria",
+    kind: "client",
+    category: "Seguridad",
+    title: "Sistema de seguridad",
+    description: "Monitoreo e integración visual para entornos críticos.",
+    brands: demoBrands,
+    images: [ledImages[0], videowallImages[2], ledImages[1]],
+    span: "standard",
   },
   {
-    title: "Alquileres",
+    id: "tvs",
+    kind: "collection",
+    category: "TVs",
+    title: "Señalización e institucionales",
     description:
-      "Equipamiento temporal para ferias, congresos, conferencias y activaciones corporativas.",
-    image: "/site/works/alquileres/01.jpg",
-    images: [
-      "/site/works/alquileres/01.jpg",
-      "/site/works/alquileres/02.jpg",
-      "/site/works/alquileres/03.jpg",
-      "/site/works/alquileres/04.jpg",
-      "/site/works/alquileres/05.jpg",
-    ],
+      "Pantallas profesionales para contenidos, presentaciones y comunicación continua.",
+    brands: demoBrands,
+    images: tvImages,
+    span: "standard",
+  },
+  {
+    id: "totems",
+    kind: "collection",
+    category: "Tótems",
+    title: "Interacción en el punto de contacto",
+    description: "Equipos digitales para ferias, retail e información de marca.",
+    brands: demoBrands,
+    images: totemImages,
+    span: "standard",
+  },
+  {
+    id: "led",
+    kind: "collection",
+    category: "LED",
+    title: "Gran formato indoor y outdoor",
+    description: "Soluciones LED en distintas escalas y configuraciones visuales.",
+    brands: demoBrands,
+    images: ledImages,
+    span: "standard",
+  },
+  {
+    id: "alquileres",
+    kind: "collection",
+    category: "Alquileres",
+    title: "Equipamiento para eventos",
+    description:
+      "Soluciones temporales para ferias, congresos y activaciones corporativas.",
+    brands: demoBrands,
+    images: alquilerImages,
+    span: "standard",
   },
 ];
+
+/** Collection-only cases (deep-link targets and legacy consumers) */
+export const works: WorkCase[] = bentoCases.filter((item) => item.kind === "collection");
