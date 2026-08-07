@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { site } from "@content/site";
-import { HomeCta } from "../../components/home/HomeCta";
 import { Button } from "../../components/ui/Button";
 import { Container } from "../../components/ui/Container";
 import { PageHero } from "../../components/ui/PageHero";
@@ -101,8 +100,6 @@ export default function NosotrosPage() {
           </div>
         </Container>
       </section>
-
-      <HomeCta />
     </>
   );
 }

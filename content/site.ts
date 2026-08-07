@@ -143,7 +143,7 @@ export const site = {
     { name: "Intel", image: "/partners/intel.png" },
   ],
   home: {
-    eyebrow: "Cartelería digital · Buenos Aires",
+    eyebrow: "Cartelería digital · Argentina",
     headline: "Tecnología que convierte espacios en experiencias.",
     supporting:
       "Fabricamos, alquilamos y vendemos tótems, pantallas LED, kioscos, sistemas interactivos y software para proyectos corporativos en toda la Argentina.",
@@ -168,11 +168,6 @@ export const site = {
       "Instalación y puesta en marcha",
       "Soluciones personalizadas",
     ],
-  },
-  customWork: {
-    title: "Cuando el producto estándar no alcanza",
-    description:
-      "Diseñamos y fabricamos equipamiento a medida según las necesidades físicas, técnicas y visuales de cada proyecto.",
   },
   contact: {
     title: "Contacto",

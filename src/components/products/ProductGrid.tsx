@@ -14,9 +14,7 @@ import { categories } from "@content/categories";
 import type {
   CatalogProductSummary,
   ProductCategoryId,
-  ProductEnvironment,
   ProductFamilyId,
-  ProductInteraction,
 } from "@content/types";
 import { catalogImageSizes } from "./CatalogPreload";
 
@@ -50,61 +48,6 @@ function writeCatalogUrl(url: string, mode: "push" | "replace") {
   else window.history.pushState(null, "", url);
   window.dispatchEvent(new Event(catalogUrlEvent));
 }
-
-const environmentOptions = [
-  { value: "", label: "Todos los entornos" },
-  { value: "indoor", label: "Interior" },
-  { value: "outdoor", label: "Exterior" },
-] as const;
-
-const interactionOptions = [
-  { value: "", label: "Toda interacción" },
-  { value: "touch", label: "Táctil" },
-  { value: "non-touch", label: "No táctil" },
-  { value: "mixed", label: "Configurable" },
-] as const;
-
-const modalityOptions = [
-  { value: "", label: "Venta y alquiler" },
-  { value: "sale", label: "Venta" },
-  { value: "rental", label: "Alquiler" },
-] as const;
-
-const environmentFromUrl: Record<string, ProductEnvironment> = {
-  indoor: "indoor",
-  interior: "indoor",
-  outdoor: "outdoor",
-  exterior: "outdoor",
-};
-
-const interactionFromUrl: Record<string, ProductInteraction> = {
-  touch: "touch",
-  tactil: "touch",
-  "non-touch": "non-touch",
-  "no-tactil": "non-touch",
-  mixed: "mixed",
-  mixta: "mixed",
-};
-
-const modalityFromUrl = {
-  sale: "sale",
-  venta: "sale",
-  rental: "rental",
-  alquiler: "rental",
-} as const;
-
-const environmentToUrl: Record<ProductEnvironment, string> = {
-  indoor: "interior",
-  outdoor: "exterior",
-};
-
-const interactionToUrl: Record<ProductInteraction, string> = {
-  touch: "tactil",
-  "non-touch": "no-tactil",
-  mixed: "mixta",
-};
-
-const modalityToUrl = { sale: "venta", rental: "alquiler" } as const;
 
 function normalizeSearch(value: string): string {
   return value
@@ -226,35 +169,18 @@ function ProductGridState({
   const family = validFamilies.has(requestedFamily as ProductFamilyId)
     ? (requestedFamily as ProductFamilyId)
     : legacyFamily;
-  const environment =
-    environmentFromUrl[searchParams.get("entorno") ?? ""];
-  const interaction =
-    interactionFromUrl[searchParams.get("interaccion") ?? ""];
-  const modality =
-    modalityFromUrl[
-      (searchParams.get("modalidad") ?? "") as keyof typeof modalityFromUrl
-    ];
 
   const filteredProducts = useMemo(() => {
     const normalizedQuery = normalizeSearch(query);
     return products.filter((product) => {
       if (family && product.family !== family) return false;
-      if (environment && !product.environments.includes(environment)) {
-        return false;
-      }
-      if (interaction && product.interaction !== interaction) return false;
-      if (modality && !product.availability[modality]) return false;
       return !normalizedQuery || product.searchText.includes(normalizedQuery);
     });
-  }, [environment, family, interaction, modality, products, query]);
+  }, [family, products, query]);
 
-  const activeFilterCount = [
-    family,
-    environment,
-    interaction,
-    modality,
-    query.trim() || undefined,
-  ].filter(Boolean).length;
+  const activeFilterCount = [family, query.trim() || undefined].filter(
+    Boolean,
+  ).length;
 
   function updateParam(name: string, value?: string) {
     const params = new URLSearchParams(searchParamsString);
@@ -382,51 +308,6 @@ function ProductGridState({
             </div>
           </fieldset>
 
-          <div className="mt-7 grid gap-4 border-t border-border pt-6 sm:grid-cols-3 lg:grid-cols-1">
-            <FilterSelect
-              id="environment-filter"
-              label="Entorno"
-              value={environment ?? ""}
-              options={environmentOptions}
-              onChange={(value) =>
-                updateParam(
-                  "entorno",
-                  value
-                    ? environmentToUrl[value as ProductEnvironment]
-                    : undefined,
-                )
-              }
-            />
-            <FilterSelect
-              id="interaction-filter"
-              label="Interacción"
-              value={interaction ?? ""}
-              options={interactionOptions}
-              onChange={(value) =>
-                updateParam(
-                  "interaccion",
-                  value
-                    ? interactionToUrl[value as ProductInteraction]
-                    : undefined,
-                )
-              }
-            />
-            <FilterSelect
-              id="modality-filter"
-              label="Modalidad"
-              value={modality ?? ""}
-              options={modalityOptions}
-              onChange={(value) =>
-                updateParam(
-                  "modalidad",
-                  value
-                    ? modalityToUrl[value as "sale" | "rental"]
-                    : undefined,
-                )
-              }
-            />
-          </div>
-
           {activeFilterCount > 0 ? (
             <button
               type="button"
@@ -483,44 +364,6 @@ function ProductGridState({
           </div>
         )}
       </section>
-    </div>
-  );
-}
-
-function FilterSelect({
-  id,
-  label,
-  value,
-  options,
-  onChange,
-}: {
-  id: string;
-  label: string;
-  value: string;
-  options: ReadonlyArray<{ value: string; label: string }>;
-  onChange: (value: string) => void;
-}) {
-  return (
-    <div>
-      <label
-        htmlFor={id}
-        className="text-[0.68rem] font-semibold uppercase tracking-[0.17em] text-foreground"
-      >
-        {label}
-      </label>
-      <select
-        id={id}
-        name={id}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        className="mt-2 h-11 w-full border border-navy/50 bg-background px-3 text-sm text-foreground transition-colors focus-visible:border-accent"
-      >
-        {options.map((option) => (
-          <option key={option.value || "all"} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
     </div>
   );
 }

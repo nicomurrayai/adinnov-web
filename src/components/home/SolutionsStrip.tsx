@@ -10,8 +10,8 @@ export function SolutionsStrip() {
       <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
         <SectionHeading
           eyebrow="Arquitectura de soluciones"
-          title="Una tecnología para cada punto de contacto"
-          description="Fabricamos soluciones a medida, disponibles para venta o alquiler, y nos ocupamos de toda la implementación, desde la logística hasta el soporte."
+          title="Tecnología que convierte cada espacio en una oportunidad"
+          description="Creamos soluciones de cartelería digital a medida para potenciar la comunicación de tu marca y mejorar la experiencia de tus clientes. Venta o alquiler, con un servicio integral que incluye fabricación, logística, instalación y soporte."
           className="lg:col-span-9"
         />
         <p className="font-mono border-l border-border pl-5 text-xs leading-6 text-muted lg:col-span-3">

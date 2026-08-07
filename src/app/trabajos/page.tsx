@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { works, worksIntro } from "@content/works";
-import { HomeCta } from "../../components/home/HomeCta";
 import { Button } from "../../components/ui/Button";
 import { Container } from "../../components/ui/Container";
 import { PageHero } from "../../components/ui/PageHero";
@@ -136,8 +135,6 @@ export default function TrabajosPage() {
           </div>
         </Container>
       </section>
-
-      <HomeCta />
     </>
   );
 }

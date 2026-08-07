@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { Clients } from "../components/home/Clients";
-import { CustomWork } from "../components/home/CustomWork";
 import { Hero } from "../components/home/Hero";
-import { HomeCta } from "../components/home/HomeCta";
 import { Partners } from "../components/home/Partners";
 import { Process } from "../components/home/Process";
-import { RentalsSection } from "../components/home/RentalsSection";
 import { SolutionsStrip } from "../components/home/SolutionsStrip";
 import { Verticals } from "../components/home/Verticals";
 
@@ -21,13 +18,10 @@ export default function HomePage() {
     <>
       <Hero />
       <SolutionsStrip />
-      <RentalsSection />
-      <CustomWork />
       <Verticals />
       <Process />
       <Clients />
       <Partners />
-      <HomeCta />
     </>
   );
 }

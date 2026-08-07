@@ -14,7 +14,7 @@ async function openMobileFilters(
 }
 
 test.describe("catálogo interactivo", () => {
-  test("combina filtros, sincroniza la URL y restaura historial", async ({
+  test("filtra por familia, sincroniza la URL y restaura historial", async ({
     page,
     isMobile,
   }) => {
@@ -25,51 +25,48 @@ test.describe("catálogo interactivo", () => {
     const family = page.getByRole("group", { name: "Familia" });
     await family.getByRole("button", { name: /LED/ }).click();
     await expect(page).toHaveURL(/familia=led/);
+    await expect(page.getByText(/^10 resultados$/)).toBeVisible();
 
-    await page.getByLabel("Modalidad").selectOption("rental");
-    await expect(page).toHaveURL(/modalidad=alquiler/);
-    await expect(page.getByText(/^2 resultados$/)).toBeVisible();
-
-    await page.getByLabel("Entorno").selectOption("outdoor");
-    await expect(page).toHaveURL(/entorno=exterior/);
-    await expect(page.getByText(/^1 resultado$/)).toBeVisible();
+    await family.getByRole("button", { name: /Tótems/ }).click();
+    await expect(page).toHaveURL(/familia=totems-terminales/);
+    await expect(page).not.toHaveURL(/familia=led/);
 
     await page.goBack();
-    await expect(page).not.toHaveURL(/entorno=/);
-    await expect(page).toHaveURL(/modalidad=alquiler/);
-    await expect(page.getByLabel("Modalidad")).toHaveValue("rental");
-
-    await page.goBack();
-    await expect(page).not.toHaveURL(/modalidad=/);
     await expect(page).toHaveURL(/familia=led/);
     await expect(family.getByRole("button", { name: /LED/ })).toHaveAttribute(
       "aria-pressed",
       "true",
     );
+    await expect(page.getByText(/^10 resultados$/)).toBeVisible();
+
+    await page.goBack();
+    await expect(page).not.toHaveURL(/familia=/);
+    await expect(page.getByText(/^47 resultados$/)).toBeVisible();
   });
 
   test("una URL compartible conserva filtros al volver desde una ficha", async ({
     page,
     isMobile,
   }) => {
-    const filteredUrl =
-      "/productos?familia=led&entorno=exterior&interaccion=no-tactil&modalidad=alquiler";
+    const filteredUrl = "/productos?familia=led";
     await page.goto(filteredUrl);
     await openMobileFilters(page, isMobile);
 
-    await expect(page.getByText(/^1 resultado$/)).toBeVisible();
-    await expect(page.getByLabel("Entorno")).toHaveValue("outdoor");
-    await expect(page.getByLabel("Interacción")).toHaveValue("non-touch");
-    await expect(page.getByLabel("Modalidad")).toHaveValue("rental");
+    await expect(page.getByText(/^10 resultados$/)).toBeVisible();
+    await expect(
+      page.getByRole("group", { name: "Familia" }).getByRole("button", {
+        name: /LED/,
+      }),
+    ).toHaveAttribute("aria-pressed", "true");
 
     await page.getByRole("link", { name: /^Ver / }).first().click();
-    await expect(page).toHaveURL(/\/productos\/pantallas-led$/);
+    await expect(page).toHaveURL(/\/productos\//);
     await page.goBack();
 
     await expect(page).toHaveURL(
       (url) => `${url.pathname}${url.search}` === filteredUrl,
     );
-    await expect(page.getByText(/^1 resultado$/)).toBeVisible();
+    await expect(page.getByText(/^10 resultados$/)).toBeVisible();
   });
 
   test("muestra estado vacío y permite limpiar la búsqueda", async ({

@@ -114,26 +114,6 @@ export function Hero() {
                 Tecnología que convierte espacios en experiencias.
               </m.h1>
             </div>
-
-            <m.aside
-              className="motion-hero hidden border-l border-white/18 pl-6 lg:col-span-3 lg:block xl:col-span-4 xl:col-start-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: reducedMotion ? 0 : 0.35 }}
-            >
-              <p className="font-mono text-[0.66rem] uppercase tracking-[0.12em] text-white/60">
-                Sistema Adinnov
-              </p>
-              <p className="font-display mt-4 max-w-xs text-2xl font-medium leading-tight tracking-[-0.03em]">
-                Hardware + software + implementación
-              </p>
-              <div className="mt-8 flex items-center gap-3">
-                <span className="h-2 w-2 rounded-full bg-[#36d27e]" />
-                <span className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-white/52">
-                  Soluciones activas
-                </span>
-              </div>
-            </m.aside>
           </div>
 
           <m.div

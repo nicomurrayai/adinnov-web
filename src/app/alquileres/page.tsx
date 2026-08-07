@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { rentalItems, rentalsIntro, rentalServices } from "@content/rentals";
 import { site } from "@content/site";
-import { HomeCta } from "../../components/home/HomeCta";
 import { Button } from "../../components/ui/Button";
 import { PageHero } from "../../components/ui/PageHero";
 import { Reveal } from "../../components/ui/Reveal";
@@ -152,7 +151,6 @@ export default function AlquileresPage() {
         </div>
       </Section>
 
-      <HomeCta />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(rentalSchema) }}
