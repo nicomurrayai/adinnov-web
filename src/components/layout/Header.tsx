@@ -180,14 +180,14 @@ export function Header() {
     firstLink?.focus();
   }
 
-  const navIdle = "border-transparent text-navy/66 hover:text-navy";
-  const navActive = "border-signal text-navy";
+  const navIdle = "border-transparent text-black hover:text-black";
+  const navActive = "border-signal text-black";
   const navItemClass = (active: boolean) =>
-    `inline-flex h-full items-center border-b-2 border-solid px-3 font-sans text-[0.76rem] font-semibold uppercase leading-none tracking-[0.08em] transition-colors ${
+    `inline-flex h-full items-center border-b-2 border-solid px-3 font-sans text-[0.76rem] font-bold uppercase leading-none tracking-[0.08em] transition-colors ${
       active ? navActive : navIdle
     }`;
   const shellClass =
-    "border-border/80 bg-white text-navy shadow-[var(--shadow-card)]";
+    "border-border/80 bg-white text-black shadow-[var(--shadow-card)]";
 
   return (
     <header ref={headerRef} className="pointer-events-none fixed inset-x-0 top-0 z-50">
