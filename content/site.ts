@@ -67,27 +67,6 @@ export const productFamilies = [
   },
 ] as const;
 
-export const processSteps = [
-  {
-    index: "01",
-    title: "Entender el espacio",
-    description:
-      "Relevamos el entorno, la audiencia y el objetivo de comunicación antes de definir un equipo.",
-  },
-  {
-    index: "02",
-    title: "Diseñar la solución",
-    description:
-      "Combinamos hardware, estructura, software y contenidos en una propuesta adaptada al proyecto.",
-  },
-  {
-    index: "03",
-    title: "Implementar",
-    description:
-      "Coordinamos fabricación, logística, instalación y puesta en marcha para dejar la solución operativa.",
-  },
-] as const;
-
 export const site = {
   name: "Adinnov",
   tagline: "Cartelería digital",

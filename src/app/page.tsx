@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { Clients } from "../components/home/Clients";
 import { Hero } from "../components/home/Hero";
-import { Partners } from "../components/home/Partners";
-import { Process } from "../components/home/Process";
 import { SolutionsStrip } from "../components/home/SolutionsStrip";
 
 export const metadata: Metadata = {
@@ -17,9 +14,6 @@ export default function HomePage() {
     <>
       <Hero />
       <SolutionsStrip />
-      <Process />
-      <Clients />
-      <Partners />
     </>
   );
 }

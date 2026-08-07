@@ -3,7 +3,6 @@
 import { getImageProps } from "next/image";
 import { domAnimation, LazyMotion, m, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
-import { site } from "@content/site";
 import { Container } from "../ui/Container";
 
 const posterCommon = {
@@ -95,19 +94,11 @@ export function Hero() {
 
         <Container className="relative flex min-h-[50rem] flex-col items-center justify-end pb-20 pt-32 text-center md:min-h-[52rem] md:pb-12 lg:min-h-[100svh] lg:pb-10">
           <div className="mx-auto w-full max-w-5xl">
-            <m.p
-              className="motion-hero eyebrow text-white/58"
+            <m.h1
+              className="motion-hero font-display text-balance text-[clamp(2.4rem,5.2vw,4.75rem)] font-medium leading-[0.9] tracking-[-0.045em] text-white"
               initial={enter}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {site.home.eyebrow}
-            </m.p>
-            <m.h1
-              className="motion-hero font-display mt-6 text-balance text-[clamp(2.4rem,5.2vw,4.75rem)] font-medium leading-[0.9] tracking-[-0.045em] text-white"
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.78, delay: reducedMotion ? 0 : 0.08, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: reducedMotion ? 0 : 0.78, ease: [0.22, 1, 0.36, 1] }}
             >
               Tecnología que convierte espacios en experiencias.
             </m.h1>
