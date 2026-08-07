@@ -146,12 +146,6 @@ export type RentalItem = {
   image?: string;
 };
 
-export type Vertical = {
-  id: string;
-  title: string;
-  description: string;
-};
-
 export type ClientLogo = {
   name: string;
   image: string;

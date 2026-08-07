@@ -148,7 +148,6 @@ export const site = {
     supporting:
       "Fabricamos, alquilamos y vendemos tótems, pantallas LED, kioscos, sistemas interactivos y software para proyectos corporativos en toda la Argentina.",
     ctaPrimary: { label: "Cotizar un proyecto", href: "/contacto?intent=venta" },
-    ctaSecondary: { label: "Explorar Productos", href: "/productos" },
   },
   about: {
     title: "Tecnología aplicada a espacios reales",

@@ -4,7 +4,6 @@ import { getImageProps } from "next/image";
 import { domAnimation, LazyMotion, m, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import { site } from "@content/site";
-import { Button } from "../ui/Button";
 import { Container } from "../ui/Container";
 
 const posterCommon = {
@@ -95,7 +94,7 @@ export function Hero() {
         </div>
 
         <Container className="relative flex min-h-[50rem] flex-col items-center justify-end pb-20 pt-32 text-center md:min-h-[52rem] md:pb-12 lg:min-h-[100svh] lg:pb-10">
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto w-full max-w-5xl">
             <m.p
               className="motion-hero eyebrow text-white/58"
               initial={enter}
@@ -115,7 +114,7 @@ export function Hero() {
           </div>
 
           <m.div
-            className="motion-hero mt-12 flex w-full max-w-2xl flex-col items-center gap-6 border-t border-white/20 pt-7 lg:mt-14"
+            className="motion-hero mt-12 w-full max-w-4xl border-t border-white/20 pt-7 lg:mt-14"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: reducedMotion ? 0 : 0.28 }}
@@ -127,13 +126,6 @@ export function Hero() {
               </strong>{" "}
               para proyectos corporativos en toda la Argentina.
             </p>
-            <Button
-              href={site.home.ctaSecondary.href}
-              variant="secondary"
-              className="border-white/32 text-white hover:border-white hover:bg-white hover:!text-ink"
-            >
-              {site.home.ctaSecondary.label}
-            </Button>
           </m.div>
         </Container>
       </section>

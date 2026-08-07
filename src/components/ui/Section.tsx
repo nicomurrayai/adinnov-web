@@ -46,19 +46,19 @@ export function SectionHeading({
 
   return (
     <header
-      className={`max-w-3xl ${centered ? "mx-auto text-center" : ""} ${className}`}
+      className={`max-w-5xl ${centered ? "mx-auto text-center" : ""} ${className}`}
     >
       {eyebrow ? (
         <p className={`eyebrow ${light ? "text-white/56" : "text-signal"}`}>{eyebrow}</p>
       ) : null}
       <h2
-        className={`font-display mt-5 text-balance text-[clamp(2.35rem,5vw,5.6rem)] font-medium leading-[0.94] tracking-[-0.045em] ${light ? "text-white" : "text-navy"}`}
+        className={`font-display mt-5 text-balance text-[clamp(1.85rem,3.2vw,3.15rem)] font-medium leading-[1.05] tracking-[-0.035em] ${light ? "text-white" : "text-navy"}`}
       >
         {title}
       </h2>
       {description ? (
         <p
-          className={`mt-6 max-w-2xl text-base leading-7 md:text-lg md:leading-8 ${centered ? "mx-auto" : ""} ${light ? "text-white/68" : "text-muted"}`}
+          className={`mt-6 max-w-4xl text-base leading-7 md:text-lg md:leading-8 ${centered ? "mx-auto" : ""} ${light ? "text-white/68" : "text-muted"}`}
         >
           {description}
         </p>
