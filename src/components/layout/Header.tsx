@@ -187,13 +187,13 @@ export function Header() {
       active ? navActive : navIdle
     }`;
   const shellClass =
-    "border-border/80 bg-white/88 text-navy shadow-[var(--shadow-card)]";
+    "border-border/80 bg-white text-navy shadow-[var(--shadow-card)]";
 
   return (
     <header ref={headerRef} className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div className="pointer-events-auto mx-auto w-full max-w-[90rem] px-3 pt-3 sm:px-5 lg:px-8 xl:px-10">
         <div
-          className={`relative rounded-[1.35rem] border backdrop-blur-2xl transition-[background-color,border-color,box-shadow,color] duration-300 ${shellClass}`}
+          className={`relative rounded-[1.35rem] border transition-[background-color,border-color,box-shadow,color] duration-300 ${shellClass}`}
         >
           <div className="relative flex h-[4.5rem] items-center justify-between gap-3 px-3 sm:h-[5rem] sm:px-5">
             <Link

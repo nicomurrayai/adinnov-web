@@ -26,25 +26,6 @@ function galleryItemClass(index: number, total: number) {
 export default function TrabajosPage() {
   return (
     <>
-      <div className="sticky top-[4.75rem] z-20 border-b border-border bg-paper/94 backdrop-blur-xl">
-        <Container className="overflow-x-auto">
-          <nav aria-label="Colecciones de trabajos" className="flex min-w-max">
-            {works.map((work, index) => (
-              <a
-                key={work.title}
-                href={`#${collectionIds[index]}`}
-                className="border-r border-border px-5 py-4 text-xs font-semibold uppercase tracking-[0.08em] text-muted transition-colors first:border-l hover:bg-ivory hover:text-navy"
-              >
-                <span className="font-mono mr-2 text-[0.6rem] text-signal">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                {work.title}
-              </a>
-            ))}
-          </nav>
-        </Container>
-      </div>
-
       <Section>
         <SectionHeading
           title="Casos de éxito"
@@ -56,7 +37,7 @@ export default function TrabajosPage() {
             <article
               key={work.title}
               id={collectionIds[collectionIndex]}
-              className="scroll-mt-40"
+              className="scroll-mt-28"
             >
               <Reveal className="grid gap-8 border-t border-navy pt-6 lg:grid-cols-12 lg:items-end">
                 <div className="lg:col-span-3">
