@@ -4,7 +4,6 @@ import Link from "next/link";
 import { works, worksIntro } from "@content/works";
 import { Button } from "../../components/ui/Button";
 import { Container } from "../../components/ui/Container";
-import { PageHero } from "../../components/ui/PageHero";
 import { Reveal } from "../../components/ui/Reveal";
 import { Section, SectionHeading } from "../../components/ui/Section";
 
@@ -27,15 +26,6 @@ function galleryItemClass(index: number, total: number) {
 export default function TrabajosPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Trabajos"
-        title="Tecnología puesta en contexto"
-        description={worksIntro}
-        index="03"
-      >
-        <Button href="/contacto?intent=venta">Cotizar un proyecto</Button>
-      </PageHero>
-
       <div className="sticky top-[4.75rem] z-20 border-b border-border bg-paper/94 backdrop-blur-xl">
         <Container className="overflow-x-auto">
           <nav aria-label="Colecciones de trabajos" className="flex min-w-max">
@@ -57,9 +47,8 @@ export default function TrabajosPage() {
 
       <Section>
         <SectionHeading
-          eyebrow="Cinco colecciones"
-          title="Del gran formato al punto de interacción"
-          description="Explorá el archivo por tipología de instalación. Todas las imágenes pertenecen al material real disponible de cada línea."
+          title="Casos de éxito"
+          description="Así se ven nuestras soluciones instaladas: pantallas, tótems, LED y más, en proyectos reales."
         />
 
         <div className="mt-16 space-y-24 lg:mt-28 lg:space-y-36">
