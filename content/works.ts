@@ -4,11 +4,16 @@ export const worksIntro =
   "Soluciones que ya están funcionando en el mundo real. Conocé algunos de los proyectos que desarrollamos e implementamos para marcas, empresas e instituciones.";
 
 /** Demo brands until real per-case client data is available */
-const demoBrands: WorkBrand[] = [
-  { name: "Mercado Libre", logo: "/clients/mercado-libre.png" },
-  { name: "Coca-Cola", logo: "/clients/coca-cola.png" },
-  { name: "Unilever", logo: "/clients/unilever.png" },
-];
+const brand = {
+  techint: { name: "Techint", logo: "/clients/techint.png" },
+  ypf: { name: "YPF", logo: "/clients/ypf.png" },
+  google: { name: "Google", logo: "/clients/google.png" },
+  buenosAires: { name: "Buenos Aires Ciudad", logo: "/clients/buenos-aires-ciudad.png" },
+  osde: { name: "OSDE", logo: "/clients/osde.png" },
+  mercadoLibre: { name: "Mercado Libre", logo: "/clients/mercado-libre.png" },
+  netflix: { name: "Netflix", logo: "/clients/netflix.png" },
+  cocaCola: { name: "Coca-Cola", logo: "/clients/coca-cola.png" },
+} as const satisfies Record<string, WorkBrand>;
 
 const videowallImages = [
   "/site/works/videowalls/01.jpg",
@@ -62,7 +67,7 @@ export const bentoCases: WorkCase[] = [
     title: "Multipantalla que organiza el espacio",
     description:
       "Configuraciones para centros de monitoreo, comunicación corporativa y espacios de atención.",
-    brands: demoBrands,
+    brands: [brand.techint],
     images: videowallImages,
     span: "standard",
   },
@@ -72,7 +77,7 @@ export const bentoCases: WorkCase[] = [
     category: "Videowalls",
     title: "Videowall de 12–18 pantallas",
     description: "Implementación multipantalla a escala corporativa.",
-    brands: demoBrands,
+    brands: [brand.ypf],
     images: [videowallImages[0], videowallImages[1], videowallImages[2]],
     span: "standard",
   },
@@ -82,7 +87,7 @@ export const bentoCases: WorkCase[] = [
     category: "Monitoreo",
     title: "Centro de monitoreo",
     description: "Operación visual continua para centros de control.",
-    brands: demoBrands,
+    brands: [brand.google],
     images: [videowallImages[3], tvImages[0], videowallImages[4]],
     span: "standard",
   },
@@ -92,7 +97,7 @@ export const bentoCases: WorkCase[] = [
     category: "Seguridad",
     title: "Sistema de seguridad",
     description: "Monitoreo e integración visual para entornos críticos.",
-    brands: demoBrands,
+    brands: [brand.buenosAires],
     images: [ledImages[0], videowallImages[2], ledImages[1]],
     span: "standard",
   },
@@ -103,7 +108,7 @@ export const bentoCases: WorkCase[] = [
     title: "Señalización e institucionales",
     description:
       "Pantallas profesionales para contenidos, presentaciones y comunicación continua.",
-    brands: demoBrands,
+    brands: [brand.osde],
     images: tvImages,
     span: "standard",
   },
@@ -113,7 +118,7 @@ export const bentoCases: WorkCase[] = [
     category: "Tótems",
     title: "Interacción en el punto de contacto",
     description: "Equipos digitales para ferias, retail e información de marca.",
-    brands: demoBrands,
+    brands: [brand.mercadoLibre],
     images: totemImages,
     span: "standard",
   },
@@ -123,7 +128,7 @@ export const bentoCases: WorkCase[] = [
     category: "LED",
     title: "Gran formato indoor y outdoor",
     description: "Soluciones LED en distintas escalas y configuraciones visuales.",
-    brands: demoBrands,
+    brands: [brand.netflix],
     images: ledImages,
     span: "standard",
   },
@@ -134,7 +139,7 @@ export const bentoCases: WorkCase[] = [
     title: "Equipamiento para eventos",
     description:
       "Soluciones temporales para ferias, congresos y activaciones corporativas.",
-    brands: demoBrands,
+    brands: [brand.cocaCola],
     images: alquilerImages,
     span: "standard",
   },
