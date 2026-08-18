@@ -79,12 +79,7 @@ export function Hero() {
               tabIndex={-1}
               onCanPlay={() => setVideoReady(true)}
             >
-              <source
-                media="(max-width: 767px)"
-                src="/videos/hero-adinnov-mobile.mp4"
-                type="video/mp4"
-              />
-              <source src="/videos/hero-adinnov-desktop.mp4" type="video/mp4" />
+              <source src="/videos/hero-video.mp4" type="video/mp4" />
             </video>
           ) : null}
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,23,43,.45)_0%,rgba(7,23,43,.55)_40%,rgba(7,23,43,.92)_100%)]" />
