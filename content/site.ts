@@ -121,13 +121,6 @@ export const site = {
     { name: "Hikvision", image: "/partners/hikvision.png" },
     { name: "Intel", image: "/partners/intel.png" },
   ],
-  home: {
-    eyebrow: "Cartelería digital · Argentina",
-    headline: "Tecnología que convierte espacios en experiencias.",
-    supporting:
-      "Fabricamos, alquilamos y vendemos tótems, pantallas LED, kioscos, sistemas interactivos y software para proyectos corporativos en toda la Argentina.",
-    ctaPrimary: { label: "Cotizar un proyecto", href: "/contacto?intent=venta" },
-  },
   about: {
     title: "Tecnología aplicada a espacios reales",
     lead:
