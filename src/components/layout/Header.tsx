@@ -40,6 +40,7 @@ function isCurrent(pathname: string, href: string) {
 const headerNav = [
   { label: "Productos", href: "/productos" },
   { label: "Casos de éxito", href: "/trabajos" },
+  { label: "Nosotros", href: "/nosotros" },
 ] as const;
 
 type ProductFamilyId = (typeof productFamilies)[number]["id"];
@@ -69,10 +70,26 @@ export function Header() {
     setProductsOpen(true);
   }
 
+  function closeProductsMenu() {
+    clearProductsCloseTimer();
+    setProductsOpen(false);
+    setActiveFamilyId(DEFAULT_FAMILY_ID);
+  }
+
+  function toggleProductsMenu() {
+    if (productsOpen) {
+      closeProductsMenu();
+      return;
+    }
+
+    openProductsMenu();
+  }
+
   function scheduleCloseProductsMenu() {
     clearProductsCloseTimer();
     productsCloseTimerRef.current = window.setTimeout(() => {
       setProductsOpen(false);
+      setActiveFamilyId(DEFAULT_FAMILY_ID);
       productsCloseTimerRef.current = null;
     }, 140);
   }
@@ -84,6 +101,7 @@ export function Header() {
     function handlePointerDown(event: PointerEvent) {
       if (!headerRef.current?.contains(event.target as Node)) {
         setProductsOpen(false);
+        setActiveFamilyId(DEFAULT_FAMILY_ID);
         setMobileOpen(false);
       }
     }
@@ -99,6 +117,7 @@ export function Header() {
 
       if (productsOpen) {
         setProductsOpen(false);
+        setActiveFamilyId(DEFAULT_FAMILY_ID);
         productButtonRef.current?.focus();
       }
     }
@@ -120,19 +139,6 @@ export function Header() {
     desktop.addEventListener("change", closeMobileMenu);
     return () => desktop.removeEventListener("change", closeMobileMenu);
   }, []);
-
-  useEffect(() => {
-    setProductsOpen(false);
-    setMobileOpen(false);
-    setActiveFamilyId(DEFAULT_FAMILY_ID);
-    clearProductsCloseTimer();
-  }, [pathname]);
-
-  useEffect(() => {
-    if (!productsOpen) {
-      setActiveFamilyId(DEFAULT_FAMILY_ID);
-    }
-  }, [productsOpen]);
 
   useEffect(() => {
     return () => clearProductsCloseTimer();
@@ -201,7 +207,7 @@ export function Header() {
               aria-label="Adinnov, ir al inicio"
               className="relative z-10 flex shrink-0 items-center"
               onClick={() => {
-                setProductsOpen(false);
+                closeProductsMenu();
                 setMobileOpen(false);
               }}
             >
@@ -237,7 +243,7 @@ export function Header() {
                           aria-haspopup="true"
                           aria-controls="familias-productos"
                           aria-current={pathname.startsWith("/productos") ? "page" : undefined}
-                          onClick={() => setProductsOpen((value) => !value)}
+                          onClick={toggleProductsMenu}
                           onFocus={openProductsMenu}
                           onKeyDown={(event) => {
                             if (event.key === "ArrowDown") {
@@ -291,7 +297,7 @@ export function Header() {
                                     href="/productos"
                                     prefetch={false}
                                     className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy underline decoration-signal decoration-2 underline-offset-4"
-                                    onClick={() => setProductsOpen(false)}
+                                    onClick={closeProductsMenu}
                                   >
                                     Ver catálogo completo
                                     <span aria-hidden="true">↗</span>
@@ -308,7 +314,7 @@ export function Header() {
                                           ? "bg-ivory"
                                           : "bg-paper hover:bg-ivory"
                                       }`}
-                                      onClick={() => setProductsOpen(false)}
+                                      onClick={closeProductsMenu}
                                       onFocus={() => setActiveFamilyId(family.id)}
                                       onMouseEnter={() => setActiveFamilyId(family.id)}
                                     >
@@ -336,8 +342,8 @@ export function Header() {
                       href={item.href}
                       aria-current={isCurrent(pathname, item.href) ? "page" : undefined}
                       className={navItemClass(isCurrent(pathname, item.href))}
-                      onClick={() => setProductsOpen(false)}
-                      onFocus={() => setProductsOpen(false)}
+                      onClick={closeProductsMenu}
+                      onFocus={closeProductsMenu}
                     >
                       {item.label}
                     </Link>
@@ -349,7 +355,7 @@ export function Header() {
                 href="/contacto"
                 aria-current={isCurrent(pathname, "/contacto") ? "page" : undefined}
                 className="ml-2 inline-flex min-h-11 items-center rounded-full bg-signal px-5 text-[0.73rem] font-semibold uppercase tracking-[0.09em] text-white transition-colors hover:bg-signal-dark"
-                onClick={() => setProductsOpen(false)}
+                onClick={closeProductsMenu}
               >
                 Cotizar
               </Link>

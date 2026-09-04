@@ -17,7 +17,7 @@ export function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Contactar a Adinnov por WhatsApp al ${whatsapp.display}`}
-      className="group fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-40 flex min-h-12 items-center gap-2.5 rounded-full border border-white/20 bg-[#25D366] px-3.5 text-white shadow-[var(--shadow-float)] transition-[background-color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-[#1EBE57] hover:shadow-[0_12px_28px_rgba(37,211,102,0.35)] focus-visible:outline-white md:bottom-6 md:right-6 md:px-4"
+      className="group fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-40 flex min-h-12 items-center gap-2.5 rounded-full border border-white/20 bg-[#0B7A43] px-3.5 text-white shadow-[var(--shadow-float)] transition-[background-color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-[#086536] hover:shadow-[0_12px_28px_rgba(11,122,67,0.35)] focus-visible:outline-white md:bottom-6 md:right-6 md:px-4"
     >
       <WhatsAppIcon />
       <span className="hidden text-xs font-semibold uppercase tracking-[0.08em] sm:inline">Contactanos</span>

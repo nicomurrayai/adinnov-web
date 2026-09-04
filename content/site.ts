@@ -122,23 +122,57 @@ export const site = {
     { name: "Intel", image: "/partners/intel.png" },
   ],
   about: {
-    title: "Tecnología aplicada a espacios reales",
+    title: "Tecnología propia para ideas que avanzan",
     lead:
-      "Somos una empresa de la Ciudad de Buenos Aires especializada en cartelería digital para instituciones y empresas de distintas escalas.",
-    paragraphs: [
-      "Desde hace más de diez años desarrollamos soluciones para comunicar, informar y crear experiencias interactivas. Nos especializamos en la fabricación de tótems digitales e interactivos, terminales, kioscos, atriles y formatos a medida.",
-      "También integramos pantallas profesionales y tecnología LED indoor y outdoor para empresas, locales comerciales, instituciones y vía pública.",
-      "La fabricación propia nos permite trabajar tanto en venta como en alquiler. Para eventos coordinamos la logística, la instalación y la puesta en marcha de los equipos.",
-      "Nuestro equipo de software desarrolla aplicaciones, juegos interactivos y sistemas de gestión de contenidos para acompañar el hardware con una experiencia completa.",
+      "Somos una empresa de la Ciudad de Buenos Aires con más de 10 años de experiencia en productos y servicios de cartelería digital para organizaciones de toda escala.",
+    pillars: [
+      {
+        title: "Experiencia",
+        description: "Más de una década convirtiendo necesidades de comunicación en soluciones concretas.",
+      },
+      {
+        title: "Fabricación propia",
+        description: "Diseñamos y producimos equipamiento para responder con precisión a cada proyecto.",
+      },
+      {
+        title: "Tecnología",
+        description: "Integramos hardware, pantallas, interacción y software en una experiencia completa.",
+      },
+      {
+        title: "Innovación",
+        description: "Creamos nuevos formatos aplicados al marketing, la publicidad y la comunicación.",
+      },
     ],
-    capabilities: [
-      "Fabricación de equipamiento",
-      "Integración audiovisual",
-      "Desarrollo de software",
-      "Alquiler para eventos",
-      "Instalación y puesta en marcha",
-      "Soluciones personalizadas",
-    ],
+    manufacturing: {
+      title: "Fabricamos tecnología que se adapta al mundo real",
+      description:
+        "Nos especializamos en tótems digitales e interactivos con pantalla táctil. Entre ellos, un modelo único en el mercado, diseñado por nuestro equipo y patentado ante el INPI.",
+      products:
+        "También fabricamos terminales y kioscos interactivos, POS All-in-One, atriles digitales y mini tótems digitales.",
+    },
+    led: {
+      title: "Soluciones LED, de interiores a gran escala",
+      description:
+        "Incorporamos una amplia gama de productos LED: pantallas Outdoor de gran formato para vía pública y soluciones Indoor para empresas, locales comerciales e instituciones.",
+    },
+    operations: {
+      title: "Una solución integral, de principio a fin",
+      description:
+        "Al ser fabricantes, ofrecemos nuestros productos tanto para venta como para alquiler en exposiciones, conferencias y eventos corporativos.",
+      steps: ["Logística", "Entrega", "Instalación", "Configuración", "Puesta en marcha"],
+    },
+    clients: {
+      title: "La misma dedicación en cada escala",
+      description:
+        "Trabajamos con emprendedores, PyMEs y grandes empresas multinacionales. También somos proveedores de organismos del Estado, incluyendo Ministerios y Municipios.",
+    },
+    software: {
+      title: "Hardware y software, pensados como uno",
+      description:
+        "Contamos con un equipo propio de desarrollo de software especializado en soluciones a medida, especialmente aplicaciones y juegos interactivos para tótems y terminales.",
+    },
+    closing:
+      "Nuestra identidad nace de una profunda vocación por la innovación. Desarrollamos constantemente nuevos productos y soluciones tecnológicas aplicadas al marketing, la publicidad y la comunicación.",
   },
   contact: {
     title: "Contacto",

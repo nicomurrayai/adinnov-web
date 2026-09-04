@@ -11,6 +11,7 @@ const representativePages = [
   ["Catálogo", "/productos"],
   ["Ficha", "/productos/totem-digital"],
   ["Alquileres", "/alquileres"],
+  ["Nosotros", "/nosotros"],
   ["Contacto", "/contacto"],
 ] as const;
 

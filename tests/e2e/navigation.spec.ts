@@ -77,4 +77,27 @@ test.describe("navegación pública", () => {
     await skipLink.press("Enter");
     await expect(page).toHaveURL(/#contenido-principal$/);
   });
+
+  test("Nosotros está disponible en el navbar y refleja la página activa", async ({
+    page,
+    isMobile,
+  }) => {
+    await page.goto("/nosotros", { waitUntil: "domcontentloaded" });
+
+    if (isMobile) {
+      await page.locator('button[aria-controls="navegacion-movil"]').click();
+      const link = page
+        .getByRole("navigation", { name: "Navegación móvil" })
+        .getByRole("link", { name: "Nosotros", exact: true });
+      await expect(link).toBeVisible();
+      await expect(link).toHaveAttribute("aria-current", "page");
+      return;
+    }
+
+    const link = page
+      .getByRole("navigation", { name: "Navegación principal" })
+      .getByRole("link", { name: "Nosotros", exact: true });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute("aria-current", "page");
+  });
 });
