@@ -357,7 +357,7 @@ export function Header() {
                 className="ml-2 inline-flex min-h-11 items-center rounded-full bg-signal px-5 text-[0.73rem] font-semibold uppercase tracking-[0.09em] text-white transition-colors hover:bg-signal-dark"
                 onClick={closeProductsMenu}
               >
-                Cotizar
+                Contacto
               </Link>
             </div>
 
@@ -430,7 +430,7 @@ export function Header() {
                   className="mt-6 flex min-h-14 items-center justify-between rounded-full bg-signal px-5 text-sm font-semibold uppercase tracking-[0.09em] text-white"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Cotizar
+                  Contacto
                   <span aria-hidden="true">→</span>
                 </Link>
               </nav>
