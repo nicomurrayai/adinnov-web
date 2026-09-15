@@ -289,12 +289,16 @@ export function Header() {
                           <div
                             ref={productsPanelRef}
                             id="familias-productos"
-                            className="absolute inset-x-0 top-full pt-2"
+                            className="absolute inset-x-0 top-full"
                             onMouseEnter={openProductsMenuFromPointer}
                             onMouseLeave={scheduleCloseProductsMenu}
                           >
-                            <div className="max-h-[calc(100dvh-7.5rem)] overflow-y-auto rounded-[1.25rem] border border-border bg-paper text-navy shadow-[var(--shadow-float)]">
-                              <div className="grid grid-cols-5 px-7 pb-6 pt-7">
+                            <div className="flex max-h-[calc(100dvh-5.75rem)] flex-col overflow-hidden rounded-[1.25rem] border border-border bg-paper text-navy shadow-[var(--shadow-float)]">
+                              <div
+                                data-mega-menu-products-scroll="true"
+                                className="min-h-0 overflow-y-auto"
+                              >
+                                <div className="grid grid-cols-5 px-7 pb-6 pt-7">
                                 {megaMenuColumns.map((column, columnIndex) => (
                                   <section
                                     key={column.title}
@@ -351,24 +355,14 @@ export function Header() {
                                     </ul>
                                   </section>
                                 ))}
+                                </div>
                               </div>
 
                               <div
                                 data-mega-menu-preview="true"
-                                className="relative grid min-h-[clamp(8.5rem,18vh,11rem)] grid-cols-[1fr_minmax(22rem,2fr)_1fr] items-center border-t border-border bg-white px-7"
-                                aria-live="polite"
-                                aria-atomic="true"
+                                className="relative flex min-h-[clamp(8.5rem,18vh,11rem)] shrink-0 items-center justify-center border-t border-border bg-white px-7"
                               >
-                                <div className="min-w-0 pr-6">
-                                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-signal">
-                                    Producto seleccionado
-                                  </p>
-                                  <p className="font-display mt-2 text-lg font-medium leading-tight tracking-[-0.025em] text-ink">
-                                    {displayedProduct.label}
-                                  </p>
-                                </div>
-
-                                <div className="relative h-[clamp(7.5rem,16vh,10rem)] overflow-hidden">
+                                <div className="relative h-[clamp(7.5rem,16vh,10rem)] w-full max-w-[32rem] overflow-hidden">
                                   {!previewUnavailable ? (
                                     <Image
                                       key={displayedProduct.image}
@@ -398,18 +392,6 @@ export function Header() {
                                       }}
                                     />
                                   ) : null}
-                                </div>
-
-                                <div className="justify-self-end pl-6 text-right">
-                                  <Link
-                                    href={displayedProduct.href}
-                                    prefetch={false}
-                                    className="inline-flex items-center gap-2 text-xs font-semibold text-ink underline decoration-signal decoration-2 underline-offset-4"
-                                    onClick={closeProductsMenu}
-                                  >
-                                    Ver producto
-                                    <span aria-hidden="true">↗</span>
-                                  </Link>
                                 </div>
                               </div>
                             </div>

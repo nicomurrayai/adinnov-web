@@ -7,9 +7,9 @@ Reemplazar en escritorio la navegación por seis familias por un mega menú de c
 ## Estructura e interacción
 
 - Las columnas son Productos, Samsung, Soluciones LED, Software y Otras soluciones, respetando el orden de `content/megaMenu.ts`.
-- Una franja inferior estable muestra la imagen y el nombre del producto activo; Tótem Digital es el estado inicial.
+- Una franja inferior estable muestra únicamente la imagen centrada del producto activo; Tótem Digital es el estado inicial.
 - Hover y foco actualizan la selección. `ArrowDown` desde el disparador enfoca el primer producto, `Tab` mantiene el orden visual y Escape devuelve el foco al disparador.
-- El panel conserva el cierre por salida del puntero, click exterior y navegación, limita su altura al viewport y permite scroll interno.
+- El panel queda unido al navbar, conserva el cierre por salida del puntero, click exterior y navegación, y mantiene la preview fija mientras las columnas permiten scroll interno cuando falta altura.
 - Solo se renderiza la preview visible y, durante un cambio, se conserva la anterior hasta que cargue la siguiente.
 
 ## Dirección visual

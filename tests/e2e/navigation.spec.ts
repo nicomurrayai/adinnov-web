@@ -87,12 +87,13 @@ test.describe("navegación pública", () => {
 
     const preview = page.locator('[data-mega-menu-preview="true"]');
     const image = preview.locator('[data-mega-menu-preview-image="true"]');
-    await expect(preview).toContainText("Totem Digital");
+    await expect(preview).not.toContainText("Producto seleccionado");
+    await expect(preview).not.toContainText("Ver producto");
+    await expect(preview.getByRole("link")).toHaveCount(0);
     await expect(image).toHaveAttribute("src", /totem-digital\.webp/);
 
     const poster = page.getByRole("link", { name: "POSTER LED", exact: true });
     await poster.hover();
-    await expect(preview).toContainText("POSTER LED");
     await expect(image).toHaveAttribute("src", /poster-led\.webp/);
 
     const software = page.getByRole("link", {
@@ -100,7 +101,6 @@ test.describe("navegación pública", () => {
       exact: true,
     });
     await software.focus();
-    await expect(preview).toContainText("Software de CARTELERIA DIGITAL");
     await expect(image).toHaveAttribute("src", /software-carteleria-digital\.webp/);
 
     await page.mouse.click(10, (page.viewportSize()?.height ?? 1000) - 10);
@@ -122,12 +122,15 @@ test.describe("navegación pública", () => {
     await trigger.focus();
     await page.keyboard.press("ArrowDown");
     const panel = page.locator("#familias-productos > div");
+    const productScroll = panel.locator('[data-mega-menu-products-scroll="true"]');
+    const preview = panel.locator('[data-mega-menu-preview="true"]');
     await expect(panel).toBeVisible();
-    await expect(panel).toHaveCSS("overflow-y", "auto");
-    await page.getByRole("link", { name: "Lustrador automático de calzado" }).scrollIntoViewIfNeeded();
-    await expect(
-      page.getByRole("link", { name: "Lustrador automático de calzado" }),
-    ).toBeVisible();
+    await expect(productScroll).toHaveCSS("overflow-y", "auto");
+    await expect(preview).toBeInViewport();
+
+    await page.getByRole("link", { name: "Mesa interactiva" }).scrollIntoViewIfNeeded();
+    await expect(page.getByRole("link", { name: "Mesa interactiva" })).toBeVisible();
+    await expect(preview).toBeInViewport();
   });
 
   test("el enlace de salto lleva el foco al contenido principal", async ({ page }) => {
