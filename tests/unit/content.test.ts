@@ -1,5 +1,8 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { categories } from "../../content/categories";
+import { megaMenuColumns } from "../../content/megaMenu";
 import { RENTAL_PRODUCT_SLUGS } from "../../content/productMeta";
 import {
   filterProducts,
@@ -30,6 +33,21 @@ describe("catálogo público", () => {
     expect(slugs).toHaveLength(47);
     expect(new Set(slugs).size).toBe(47);
     expect(products.every((product) => product.slug.length > 0)).toBe(true);
+  });
+
+  it("representa cada ficha una sola vez en el mega menú con una preview local", () => {
+    const productSlugs = new Set(getProductSlugs());
+    const menuItems = megaMenuColumns.flatMap((column) => column.items);
+    const menuSlugs = menuItems.map((item) => item.href.split("/").at(-1));
+
+    expect(menuItems).toHaveLength(47);
+    expect(new Set(menuSlugs).size).toBe(47);
+    expect(new Set(menuSlugs)).toEqual(productSlugs);
+
+    for (const item of menuItems) {
+      expect(item.image).toMatch(/^\/navigation\/products\/[a-z0-9-]+\.webp$/);
+      expect(existsSync(path.join(process.cwd(), "public", item.image))).toBe(true);
+    }
   });
 
   it("expone disponibilidad explícita y exactamente ocho alquileres", () => {

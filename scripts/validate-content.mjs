@@ -1,6 +1,7 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { categories } from "../content/categories.ts";
+import { megaMenuColumns } from "../content/megaMenu.ts";
 import {
   RENTAL_PRODUCT_SLUGS,
 } from "../content/productMeta.ts";
@@ -8,6 +9,9 @@ import { isPendingEditorialClaim } from "../content/product-review.ts";
 import { getAllProducts } from "../src/lib/content.ts";
 
 const publicDirectory = path.resolve(process.cwd(), "public");
+const imageDimensions = JSON.parse(
+  readFileSync(path.resolve(process.cwd(), "content", "imageDimensions.json"), "utf8"),
+);
 const products = getAllProducts();
 const errors = [];
 const warnings = [];
@@ -258,6 +262,52 @@ for (const product of products) {
       error(`${prefix}: relación duplicada ${relatedSlug}.`);
     }
     relatedSlugs.add(relatedSlug);
+  }
+}
+
+const megaMenuItems = megaMenuColumns.flatMap((column) => column.items);
+if (megaMenuItems.length !== products.length) {
+  error(
+    `Mega menú: se esperaban ${products.length} productos y se encontraron ${megaMenuItems.length}.`,
+  );
+}
+
+const megaMenuSlugs = new Set();
+for (const [index, item] of megaMenuItems.entries()) {
+  const prefix = `Mega menú / elemento ${index + 1}`;
+  validateText(item.label, `${prefix} / etiqueta`);
+  validateText(item.href, `${prefix} / href`);
+  validateText(item.image, `${prefix} / imagen`);
+
+  const match = item.href.match(/^\/productos\/([^/?#]+)$/);
+  if (!match) {
+    error(`${prefix}: href inválido ${item.href}.`);
+    continue;
+  }
+
+  const slug = match[1];
+  if (!productSlugs.has(slug)) {
+    error(`${prefix}: el producto ${slug} no existe.`);
+  }
+  if (megaMenuSlugs.has(slug)) {
+    error(`${prefix}: producto duplicado ${slug}.`);
+  }
+  megaMenuSlugs.add(slug);
+
+  validateAsset(item.image, `${prefix} / imagen`);
+  const dimensions = imageDimensions[item.image];
+  if (!dimensions) {
+    error(`${prefix}: faltan dimensiones registradas para ${item.image}.`);
+  } else if (dimensions.width !== 640 || dimensions.height !== 320) {
+    error(
+      `${prefix}: ${item.image} debe medir 640x320 y mide ${dimensions.width}x${dimensions.height}.`,
+    );
+  }
+}
+
+for (const slug of productSlugs) {
+  if (!megaMenuSlugs.has(slug)) {
+    error(`Mega menú: falta el producto ${slug}.`);
   }
 }
 

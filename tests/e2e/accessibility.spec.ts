@@ -32,4 +32,18 @@ test.describe("accesibilidad automatizada", () => {
       expect(runtimeErrors, `Errores de runtime en ${name}`).toEqual([]);
     });
   }
+
+  test("el mega menú abierto no introduce errores serios", async ({ page, isMobile }) => {
+    test.skip(isMobile, "El mega menú completo solo se muestra en escritorio.");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await waitForStablePage(page);
+    const trigger = page
+      .getByRole("navigation", { name: "Navegación principal" })
+      .getByRole("button", { name: "Productos" });
+    await trigger.focus();
+    await page.keyboard.press("ArrowDown");
+    await expect(page.locator("#familias-productos")).toBeVisible();
+    await expectNoSeriousA11yViolations(page);
+  });
 });

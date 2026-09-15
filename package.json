@@ -14,6 +14,7 @@
     "test:e2e": "playwright test",
     "measure:vitals": "node scripts/measure-local-vitals.mjs",
     "generate:image-dimensions": "node scripts/generate-image-dimensions.mjs",
+    "generate:navbar-previews": "tsx scripts/generate-navbar-previews.mjs",
     "manifest:assets": "node scripts/generate-asset-manifest.mjs",
     "mine": "node scripts/mine-content.mjs",
     "clean:products": "node scripts/clean-products.mjs"

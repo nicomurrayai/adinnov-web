@@ -34,4 +34,24 @@ test.describe("regresión visual", () => {
       });
     });
   }
+
+  test("mega menú de productos abierto", async ({ page, isMobile }) => {
+    test.skip(isMobile, "La referencia del mega menú corresponde a escritorio.");
+    await page.emulateMedia({ reducedMotion: "reduce", colorScheme: "light" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await waitForStablePage(page);
+    const trigger = page
+      .getByRole("navigation", { name: "Navegación principal" })
+      .getByRole("button", { name: "Productos" });
+    await trigger.focus();
+    await page.keyboard.press("ArrowDown");
+    await waitForImages(page);
+    await page.addStyleTag({
+      content: "video { visibility: hidden !important; }",
+    });
+
+    await expect(page).toHaveScreenshot("mega-menu-productos-desktop.png", {
+      fullPage: false,
+    });
+  });
 });

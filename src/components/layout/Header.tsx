@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { megaMenuColumns, type MegaMenuItem } from "@content/megaMenu";
 import { productFamilies } from "@content/site";
 
 function Chevron({ open }: { open: boolean }) {
@@ -43,20 +44,36 @@ const headerNav = [
   { label: "Nosotros", href: "/nosotros" },
 ] as const;
 
-type ProductFamilyId = (typeof productFamilies)[number]["id"];
-const DEFAULT_FAMILY_ID: ProductFamilyId = "totems-terminales";
+const DEFAULT_PRODUCT = megaMenuColumns[0]!.items[0]!;
 
 export function Header() {
   const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeFamilyId, setActiveFamilyId] = useState<ProductFamilyId>(DEFAULT_FAMILY_ID);
+  const [activeProduct, setActiveProduct] = useState<MegaMenuItem>(DEFAULT_PRODUCT);
+  const [displayedProduct, setDisplayedProduct] = useState<MegaMenuItem>(DEFAULT_PRODUCT);
+  const [previewUnavailable, setPreviewUnavailable] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const productButtonRef = useRef<HTMLButtonElement>(null);
   const productsPanelRef = useRef<HTMLDivElement>(null);
   const productsCloseTimerRef = useRef<number | null>(null);
+  const suppressProductFocusOpenRef = useRef(false);
+  const suppressProductPointerOpenRef = useRef(false);
   const mobileButtonRef = useRef<HTMLButtonElement>(null);
   const mobilePanelRef = useRef<HTMLDivElement>(null);
+  const activeProductHrefRef = useRef(DEFAULT_PRODUCT.href);
+
+  function resetProductPreview() {
+    activeProductHrefRef.current = DEFAULT_PRODUCT.href;
+    setActiveProduct(DEFAULT_PRODUCT);
+    setDisplayedProduct(DEFAULT_PRODUCT);
+    setPreviewUnavailable(false);
+  }
+
+  function activateProduct(product: MegaMenuItem) {
+    activeProductHrefRef.current = product.href;
+    setActiveProduct(product);
+  }
 
   function clearProductsCloseTimer() {
     if (productsCloseTimerRef.current !== null) {
@@ -70,10 +87,14 @@ export function Header() {
     setProductsOpen(true);
   }
 
+  function openProductsMenuFromPointer() {
+    if (!suppressProductPointerOpenRef.current) openProductsMenu();
+  }
+
   function closeProductsMenu() {
     clearProductsCloseTimer();
     setProductsOpen(false);
-    setActiveFamilyId(DEFAULT_FAMILY_ID);
+    resetProductPreview();
   }
 
   function toggleProductsMenu() {
@@ -89,19 +110,16 @@ export function Header() {
     clearProductsCloseTimer();
     productsCloseTimerRef.current = window.setTimeout(() => {
       setProductsOpen(false);
-      setActiveFamilyId(DEFAULT_FAMILY_ID);
+      resetProductPreview();
       productsCloseTimerRef.current = null;
     }, 140);
   }
-
-  const activeFamily =
-    productFamilies.find((family) => family.id === activeFamilyId) ?? productFamilies[0]!;
 
   useEffect(() => {
     function handlePointerDown(event: PointerEvent) {
       if (!headerRef.current?.contains(event.target as Node)) {
         setProductsOpen(false);
-        setActiveFamilyId(DEFAULT_FAMILY_ID);
+        resetProductPreview();
         setMobileOpen(false);
       }
     }
@@ -117,8 +135,11 @@ export function Header() {
 
       if (productsOpen) {
         setProductsOpen(false);
-        setActiveFamilyId(DEFAULT_FAMILY_ID);
+        resetProductPreview();
+        suppressProductFocusOpenRef.current = true;
+        suppressProductPointerOpenRef.current = true;
         productButtonRef.current?.focus();
+        suppressProductFocusOpenRef.current = false;
       }
     }
 
@@ -182,7 +203,9 @@ export function Header() {
   }, [mobileOpen]);
 
   function focusFirstProduct() {
-    const firstLink = productsPanelRef.current?.querySelector<HTMLAnchorElement>("a[href]");
+    const firstLink = productsPanelRef.current?.querySelector<HTMLAnchorElement>(
+      '[data-mega-menu-product="true"]',
+    );
     firstLink?.focus();
   }
 
@@ -230,8 +253,11 @@ export function Header() {
                       <div
                         key={item.href}
                         className="static flex h-full items-center"
-                        onMouseEnter={openProductsMenu}
-                        onMouseLeave={scheduleCloseProductsMenu}
+                        onMouseEnter={openProductsMenuFromPointer}
+                        onMouseLeave={() => {
+                          suppressProductPointerOpenRef.current = false;
+                          scheduleCloseProductsMenu();
+                        }}
                       >
                         <button
                           ref={productButtonRef}
@@ -244,7 +270,9 @@ export function Header() {
                           aria-controls="familias-productos"
                           aria-current={pathname.startsWith("/productos") ? "page" : undefined}
                           onClick={toggleProductsMenu}
-                          onFocus={openProductsMenu}
+                          onFocus={() => {
+                            if (!suppressProductFocusOpenRef.current) openProductsMenu();
+                          }}
                           onKeyDown={(event) => {
                             if (event.key === "ArrowDown") {
                               event.preventDefault();
@@ -262,71 +290,126 @@ export function Header() {
                             ref={productsPanelRef}
                             id="familias-productos"
                             className="absolute inset-x-0 top-full pt-2"
-                            onMouseEnter={openProductsMenu}
+                            onMouseEnter={openProductsMenuFromPointer}
                             onMouseLeave={scheduleCloseProductsMenu}
                           >
-                            <div className="overflow-hidden rounded-[1.25rem] border border-border bg-paper text-navy shadow-[var(--shadow-float)]">
-                              <div className="grid grid-cols-12 gap-x-8 p-8">
-                                <div className="col-span-3 flex flex-col border-r border-border pr-8">
-                                  <div className="relative min-h-[22rem] flex-1 overflow-hidden bg-aluminum-light">
-                                    {productFamilies.map((family) => (
-                                      <Image
-                                        key={family.id}
-                                        src={family.image}
-                                        alt=""
-                                        fill
-                                        sizes="280px"
-                                        className={`object-cover transition-opacity duration-300 ${
-                                          family.id === activeFamilyId
-                                            ? "opacity-100"
-                                            : "opacity-0"
-                                        }`}
-                                        aria-hidden={family.id !== activeFamilyId}
-                                      />
-                                    ))}
-                                    <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent px-4 pb-4 pt-16">
-                                      <p className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-white/70">
-                                        {activeFamily.index}
-                                      </p>
-                                      <p className="font-display mt-1 text-lg font-medium leading-tight tracking-[-0.025em] text-white">
-                                        {activeFamily.title}
-                                      </p>
-                                    </div>
-                                  </div>
+                            <div className="max-h-[calc(100dvh-7.5rem)] overflow-y-auto rounded-[1.25rem] border border-border bg-paper text-navy shadow-[var(--shadow-float)]">
+                              <div className="grid grid-cols-5 px-7 pb-6 pt-7">
+                                {megaMenuColumns.map((column, columnIndex) => (
+                                  <section
+                                    key={column.title}
+                                    aria-labelledby={`mega-menu-column-${columnIndex}`}
+                                    className={`min-w-0 px-5 first:pl-0 last:pr-0 ${
+                                      columnIndex > 0 ? "border-l border-border" : ""
+                                    }`}
+                                  >
+                                    {column.href ? (
+                                      <Link
+                                        id={`mega-menu-column-${columnIndex}`}
+                                        href={column.href}
+                                        prefetch={false}
+                                        className="font-display inline-flex text-[0.94rem] font-semibold leading-tight tracking-[-0.02em] text-ink transition-colors hover:text-signal"
+                                        onClick={closeProductsMenu}
+                                      >
+                                        {column.title}
+                                      </Link>
+                                    ) : (
+                                      <h2
+                                        id={`mega-menu-column-${columnIndex}`}
+                                        className="font-display text-[0.94rem] font-semibold leading-tight tracking-[-0.02em] text-ink"
+                                      >
+                                        {column.title}
+                                      </h2>
+                                    )}
+
+                                    <ul className="mt-3 space-y-0.5">
+                                      {column.items.map((product) => {
+                                        const active = product.href === activeProduct.href;
+                                        return (
+                                          <li key={product.href}>
+                                            <Link
+                                              href={product.href}
+                                              prefetch={false}
+                                              data-mega-menu-product="true"
+                                              aria-current={
+                                                pathname === product.href ? "page" : undefined
+                                              }
+                                              className={`block border-l-2 py-1 pl-2 pr-1 text-[0.7rem] leading-[1.05rem] transition-[border-color,color,background-color] ${
+                                                active
+                                                  ? "border-signal bg-signal-pale/55 text-ink"
+                                                  : "border-transparent text-muted hover:border-border hover:text-ink"
+                                              }`}
+                                              onClick={closeProductsMenu}
+                                              onFocus={() => activateProduct(product)}
+                                              onMouseEnter={() => activateProduct(product)}
+                                            >
+                                              {product.label}
+                                            </Link>
+                                          </li>
+                                        );
+                                      })}
+                                    </ul>
+                                  </section>
+                                ))}
+                              </div>
+
+                              <div
+                                data-mega-menu-preview="true"
+                                className="relative grid min-h-[clamp(8.5rem,18vh,11rem)] grid-cols-[1fr_minmax(22rem,2fr)_1fr] items-center border-t border-border bg-white px-7"
+                                aria-live="polite"
+                                aria-atomic="true"
+                              >
+                                <div className="min-w-0 pr-6">
+                                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-signal">
+                                    Producto seleccionado
+                                  </p>
+                                  <p className="font-display mt-2 text-lg font-medium leading-tight tracking-[-0.025em] text-ink">
+                                    {displayedProduct.label}
+                                  </p>
+                                </div>
+
+                                <div className="relative h-[clamp(7.5rem,16vh,10rem)] overflow-hidden">
+                                  {!previewUnavailable ? (
+                                    <Image
+                                      key={displayedProduct.image}
+                                      data-mega-menu-preview-image="true"
+                                      src={displayedProduct.image}
+                                      alt=""
+                                      fill
+                                      sizes="440px"
+                                      className="animate-fade-in object-contain"
+                                      onError={() => setPreviewUnavailable(true)}
+                                    />
+                                  ) : null}
+
+                                  {activeProduct.image !== displayedProduct.image ? (
+                                    <Image
+                                      key={`preload-${activeProduct.image}`}
+                                      src={activeProduct.image}
+                                      alt=""
+                                      width={1}
+                                      height={1}
+                                      sizes="1px"
+                                      className="pointer-events-none absolute h-px w-px opacity-0"
+                                      onLoad={() => {
+                                        if (activeProductHrefRef.current !== activeProduct.href) return;
+                                        setPreviewUnavailable(false);
+                                        setDisplayedProduct(activeProduct);
+                                      }}
+                                    />
+                                  ) : null}
+                                </div>
+
+                                <div className="justify-self-end pl-6 text-right">
                                   <Link
-                                    href="/productos"
+                                    href={displayedProduct.href}
                                     prefetch={false}
-                                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-navy underline decoration-signal decoration-2 underline-offset-4"
+                                    className="inline-flex items-center gap-2 text-xs font-semibold text-ink underline decoration-signal decoration-2 underline-offset-4"
                                     onClick={closeProductsMenu}
                                   >
-                                    Ver catálogo completo
+                                    Ver producto
                                     <span aria-hidden="true">↗</span>
                                   </Link>
-                                </div>
-                                <div className="col-span-9 grid grid-cols-3 gap-px bg-border">
-                                  {productFamilies.map((family) => (
-                                    <Link
-                                      key={family.id}
-                                      href={family.href}
-                                      prefetch={false}
-                                      className={`group p-5 transition-colors focus-visible:relative ${
-                                        family.id === activeFamilyId
-                                          ? "bg-ivory"
-                                          : "bg-paper hover:bg-ivory"
-                                      }`}
-                                      onClick={closeProductsMenu}
-                                      onFocus={() => setActiveFamilyId(family.id)}
-                                      onMouseEnter={() => setActiveFamilyId(family.id)}
-                                    >
-                                      <span className="font-mono text-[0.65rem] text-signal">{family.index}</span>
-                                      <span className="font-display mt-3 block text-lg font-medium leading-tight tracking-[-0.025em] text-navy">
-                                        {family.title}
-                                      </span>
-                                      <span className="mt-3 block text-sm leading-5 text-muted">
-                                        {family.description}
-                                      </span>
-                                    </Link>
-                                  ))}
                                 </div>
                               </div>
                             </div>

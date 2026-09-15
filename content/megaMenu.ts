@@ -1,6 +1,7 @@
 export type MegaMenuItem = {
   label: string;
   href: string;
+  image: string;
 };
 
 export type MegaMenuColumn = {
@@ -9,7 +10,11 @@ export type MegaMenuColumn = {
   items: MegaMenuItem[];
 };
 
-export const megaMenuColumns: MegaMenuColumn[] = [
+type MegaMenuColumnDefinition = Omit<MegaMenuColumn, "items"> & {
+  items: Omit<MegaMenuItem, "image">[];
+};
+
+const megaMenuColumnDefinitions: MegaMenuColumnDefinition[] = [
   {
     title: "Productos",
     href: "/productos",
@@ -181,3 +186,21 @@ export const megaMenuColumns: MegaMenuColumn[] = [
     ],
   },
 ];
+
+function getProductSlug(href: string): string {
+  const match = href.match(/^\/productos\/([^/?#]+)$/);
+  if (!match) {
+    throw new Error(`El enlace del mega menú no apunta a una ficha de producto: ${href}`);
+  }
+  return match[1];
+}
+
+export const megaMenuColumns: MegaMenuColumn[] = megaMenuColumnDefinitions.map(
+  (column) => ({
+    ...column,
+    items: column.items.map((item) => ({
+      ...item,
+      image: `/navigation/products/${getProductSlug(item.href)}.webp`,
+    })),
+  }),
+);
