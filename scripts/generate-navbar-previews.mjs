@@ -8,13 +8,16 @@ const projectRoot = process.cwd();
 const publicRoot = path.join(projectRoot, "public");
 const outputRoot = path.join(publicRoot, "navigation", "products");
 const auditRoot = path.join(projectRoot, "output", "navbar-preview-audit");
-const paper = "#fbfaf6";
+const paper = "#ffffff";
 
 // Prefer the first catalog image unless a later source is demonstrably clearer
 // when isolated on the navbar's neutral canvas.
 const sourceOverrides = new Map([
   ["totem-digital", "/products/totem-digital/02.jpg"],
-  ["totem-interactivo", "/products/totem-interactivo/02.jpeg"],
+  [
+    "totem-interactivo",
+    "/navigation/product-clean-sources/totem-interactivo.png",
+  ],
   [
     "pantallas-y-pizarras-interactivas",
     "/products/pantallas-y-pizarras-interactivas/05.jpg",
@@ -23,7 +26,10 @@ const sourceOverrides = new Map([
     "terminales-interactivas-pantallas-pequenas",
     "/products/terminales-interactivas-pantallas-pequenas/02.jpg",
   ],
-  ["pantalla-dual-solum-49-55", "/products/pantalla-dual-solum-49-55/01.png"],
+  [
+    "pantalla-dual-solum-49-55",
+    "/navigation/product-clean-sources/pantalla-dual-solum-49-55.png",
+  ],
   [
     "bar-display-pantallas-stretch-solum",
     "/products/bar-display-pantallas-stretch-solum/01.png",
@@ -42,8 +48,58 @@ const sourceOverrides = new Map([
   ["shelf-led", "/products/shelf-led/05.png"],
   ["totem-led-outdoor-pedestal", "/products/totem-led-outdoor-pedestal/04.png"],
   ["gestion-turnos", "/products/gestion-turnos/02.png"],
-  ["lustrador-calzado", "/products/lustrador-calzado/02.jpg"],
+  [
+    "lustrador-calzado",
+    "/navigation/product-clean-sources/lustrador-calzado.png",
+  ],
+  [
+    "terminal-interactiva-sillas-ruedas",
+    "/navigation/product-clean-sources/terminal-interactiva-sillas-ruedas.png",
+  ],
+  [
+    "totem-cargador-celulares",
+    "/navigation/product-clean-sources/totem-cargador-celulares.png",
+  ],
+  [
+    "videoconferencias",
+    "/navigation/product-clean-sources/videoconferencias.png",
+  ],
+  [
+    "videowalls-samsung",
+    "/navigation/product-clean-sources/videowalls-samsung.png",
+  ],
 ]);
+
+async function normalizeWhiteCanvas(input) {
+  const { data, info } = await sharp(input)
+    .removeAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+
+  for (let offset = 0; offset < data.length; offset += info.channels) {
+    const red = data[offset];
+    const green = data[offset + 1];
+    const blue = data[offset + 2];
+    const brightest = Math.max(red, green, blue);
+    const darkest = Math.min(red, green, blue);
+
+    if (darkest >= 245 && brightest - darkest <= 14) {
+      data[offset] = 255;
+      data[offset + 1] = 255;
+      data[offset + 2] = 255;
+    }
+  }
+
+  return sharp(data, {
+    raw: {
+      width: info.width,
+      height: info.height,
+      channels: info.channels,
+    },
+  })
+    .png()
+    .toBuffer();
+}
 
 function slugFromHref(href) {
   return href.split("/").at(-1);
@@ -67,16 +123,21 @@ function truncate(value, limit) {
 }
 
 async function renderPreview(sourcePath, destinationPath) {
-  const product = await sharp(sourcePath)
-    .rotate()
+  let source = sharp(sourcePath).rotate();
+
+  if (sourcePath.includes(`${path.sep}product-clean-sources${path.sep}`)) {
+    source = source.trim({ background: paper, threshold: 8 });
+  }
+
+  const resizedProduct = await source
     .resize(544, 272, {
       fit: "contain",
       background: paper,
       withoutEnlargement: true,
     })
     .flatten({ background: paper })
-    .webp({ quality: 84, smartSubsample: true })
     .toBuffer();
+  const product = await normalizeWhiteCanvas(resizedProduct);
 
   await sharp({
     create: { width: 640, height: 320, channels: 3, background: paper },
