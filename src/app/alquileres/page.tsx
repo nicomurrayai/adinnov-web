@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { rentalItems, rentalsIntro, rentalServices } from "@content/rentals";
 import { site } from "@content/site";
+import { getProductSlugs } from "@/lib/content";
 import { Button } from "../../components/ui/Button";
 import { PageHero } from "../../components/ui/PageHero";
 import { Reveal } from "../../components/ui/Reveal";
@@ -55,7 +56,9 @@ const rentalSchema = {
   areaServed: { "@type": "Country", name: "Argentina" },
 };
 
-export default function AlquileresPage() {
+export default async function AlquileresPage() {
+  const visibleSlugs = new Set(await getProductSlugs());
+
   return (
     <>
       <PageHero
@@ -111,7 +114,10 @@ export default function AlquileresPage() {
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-muted">{item.description}</p>
                     <div className="mt-auto flex items-center justify-between gap-3 border-t border-border pt-5 text-xs font-semibold uppercase tracking-[0.07em]">
-                      <Link href={product?.href ?? "/productos"} className="text-navy hover:text-signal">
+                      <Link
+                        href={product && visibleSlugs.has(product.productSlug) ? product.href : "/productos"}
+                        className="text-navy hover:text-signal"
+                      >
                         Ver equipo
                       </Link>
                       <Link

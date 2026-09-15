@@ -49,7 +49,7 @@ async function ContactFormPanel({ searchParams }: { searchParams: SearchParams }
   const queryIntent = firstValue(query.intent);
   const requestedSlug = firstValue(query.product);
   const intent: ContactIntent = isContactIntent(queryIntent) ? queryIntent : "contacto";
-  const requestedProduct = requestedSlug ? getProduct(requestedSlug) : undefined;
+  const requestedProduct = requestedSlug ? await getProduct(requestedSlug) : undefined;
   const validProduct =
     requestedProduct &&
     (intent !== "alquiler" || requestedProduct.availability.rental) &&
@@ -57,7 +57,7 @@ async function ContactFormPanel({ searchParams }: { searchParams: SearchParams }
       ? requestedProduct
       : undefined;
 
-  const products: ContactProductOption[] = getAllProducts().map((product) => ({
+  const products: ContactProductOption[] = (await getAllProducts()).map((product) => ({
     slug: product.slug,
     title: product.title,
     sale: product.availability.sale,

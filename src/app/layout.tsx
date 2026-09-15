@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
 import { WhatsAppFloat } from "../components/layout/WhatsAppFloat";
+import { getMegaMenuColumns } from "../lib/content";
 import { site } from "@content/site";
 import "./globals.css";
 
@@ -128,7 +129,9 @@ const organizationSchema = {
   ],
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const megaMenuColumns = await getMegaMenuColumns();
+
   return (
     <html
       lang="es-AR"
@@ -139,7 +142,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a className="skip-link" href="#contenido-principal">
           Saltar al contenido
         </a>
-        <Header />
+        <Header megaMenuColumns={megaMenuColumns} />
         <main id="contenido-principal" tabIndex={-1}>{children}</main>
         <Footer />
         <WhatsAppFloat />

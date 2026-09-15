@@ -10,6 +10,15 @@ vi.mock("resend", () => ({
   },
 }));
 
+// El catálogo vive en Supabase: el test de la ruta usa un producto fijo.
+vi.mock("@/lib/content", () => ({
+  getProduct: vi.fn(async (slug: string) =>
+    slug === "totem-digital"
+      ? { slug, title: "Tótem Digital", availability: { sale: true, rental: true } }
+      : undefined,
+  ),
+}));
+
 import { POST } from "../../src/app/api/contact/route";
 
 const validPayload = {

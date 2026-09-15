@@ -113,8 +113,16 @@ export type Product = {
   shortLabel?: string;
 } & Partial<ProductEnrichment>;
 
+export type ProductFile = {
+  label: string;
+  url: string;
+  sizeBytes: number;
+};
+
 export type EnrichedProduct = Omit<Product, keyof ProductEnrichment> &
-  ProductEnrichment;
+  ProductEnrichment & {
+    files?: ProductFile[];
+  };
 
 export type CatalogProductSummary = Pick<
   EnrichedProduct,

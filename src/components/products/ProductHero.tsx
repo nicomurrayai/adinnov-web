@@ -31,6 +31,24 @@ export function ProductHero({ product }: { product: EnrichedProduct }) {
           {product.availability.rental ? <AvailabilityBadge>Disponible para alquiler</AvailabilityBadge> : null}
         </div>
 
+        {product.files && product.files.length > 0 ? (
+          <div className="mt-6 flex flex-col items-start gap-3">
+            {product.files.map((file) => (
+              <a
+                key={file.url}
+                href={file.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center gap-3 border-b border-navy pb-1 text-sm font-semibold text-navy transition-colors hover:border-accent hover:text-accent"
+              >
+                {product.files!.length === 1 ? "Descargar ficha técnica" : `Descargar ${file.label}`}
+                <span className="font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-muted">PDF</span>
+                <span aria-hidden="true">↓</span>
+              </a>
+            ))}
+          </div>
+        ) : null}
+
         {product.highlights.length > 0 ? (
           <dl className="mt-8 grid grid-cols-2 border-y border-border">
             {product.highlights.slice(0, 4).map((highlight, index) => (

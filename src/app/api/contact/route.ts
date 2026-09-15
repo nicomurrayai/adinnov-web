@@ -82,7 +82,7 @@ export async function POST(request: Request) {
     );
   }
 
-  const product = payload.productSlug ? getProduct(payload.productSlug) : undefined;
+  const product = payload.productSlug ? await getProduct(payload.productSlug) : undefined;
   if (payload.productSlug && !product) {
     return NextResponse.json(
       {

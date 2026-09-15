@@ -1,41 +1,58 @@
-import { expect, test } from "@playwright/test";
-import { products } from "../../content/products";
+import { expect, test, type APIRequestContext } from "@playwright/test";
 
 test.describe.configure({ mode: "serial" });
+
+/** Las fichas publicadas salen del sitemap: sólo incluye productos visibles en Supabase. */
+async function getPublishedProductSlugs(request: APIRequestContext) {
+  const response = await request.get("/sitemap.xml");
+  expect(response.status()).toBe(200);
+  const xml = await response.text();
+  return Array.from(
+    xml.matchAll(/<loc>https:\/\/adinnov\.com\.ar\/productos\/([a-z0-9-]+)<\/loc>/g),
+    (match) => match[1],
+  );
+}
 
 test.describe("fichas de producto", () => {
   test.beforeEach(({ isMobile }) => {
     test.skip(isMobile, "El smoke HTTP se ejecuta una sola vez en el proyecto desktop.");
   });
 
-  test("las 47 fichas responden, publican metadata y muestran CTAs correctos", async ({
+  test("las fichas publicadas responden, publican metadata y muestran CTAs correctos", async ({
     request,
   }) => {
     test.setTimeout(120_000);
-    expect(products).toHaveLength(47);
+    const slugs = await getPublishedProductSlugs(request);
+    expect(slugs.length).toBeGreaterThan(0);
+    expect(new Set(slugs).size).toBe(slugs.length);
 
     const batchSize = 6;
-    for (let offset = 0; offset < products.length; offset += batchSize) {
-      const batch = products.slice(offset, offset + batchSize);
+    for (let offset = 0; offset < slugs.length; offset += batchSize) {
+      const batch = slugs.slice(offset, offset + batchSize);
       const responses = await Promise.all(
-        batch.map(async (product) => ({
-          product,
-          response: await request.get(`/productos/${product.slug}`),
+        batch.map(async (slug) => ({
+          slug,
+          response: await request.get(`/productos/${slug}`),
         })),
       );
 
-      for (const { product, response } of responses) {
+      for (const { slug, response } of responses) {
         const html = await response.text();
-        expect.soft(response.status(), product.slug).toBe(200);
-        expect.soft(html, product.slug).toContain("<h1");
+        expect.soft(response.status(), slug).toBe(200);
+        expect.soft(html, slug).toContain("<h1");
         expect
-          .soft(html, `${product.slug}: canonical`)
-          .toContain(`https://adinnov.com.ar/productos/${product.slug}`);
-        expect.soft(html, `${product.slug}: JSON-LD Product`).toContain('"@type":"Product"');
-        expect.soft(html, `${product.slug}: CTA WhatsApp`).toContain("Consultar por WhatsApp");
-        expect.soft(html, `${product.slug}: sin CTA alquiler`).not.toContain("Cotizar alquiler");
+          .soft(html, `${slug}: canonical`)
+          .toContain(`https://adinnov.com.ar/productos/${slug}`);
+        expect.soft(html, `${slug}: JSON-LD Product`).toContain('"@type":"Product"');
+        expect.soft(html, `${slug}: CTA WhatsApp`).toContain("Consultar por WhatsApp");
+        expect.soft(html, `${slug}: sin CTA alquiler`).not.toContain("Cotizar alquiler");
       }
     }
+  });
+
+  test("un slug inexistente responde 404", async ({ request }) => {
+    const response = await request.get("/productos/slug-inexistente-adinnov");
+    expect(response.status()).toBe(404);
   });
 });
 
@@ -71,7 +88,8 @@ test.describe("interacciones de ficha", () => {
   }) => {
     await page.route("**/_next/image?*", async (route) => {
       const optimizedSource = new URL(route.request().url()).searchParams.get("url") ?? "";
-      if (optimizedSource === "/products/totem-digital/01.jpg") {
+      // Local (/products/…) o Supabase Storage (…/product-media/products/…).
+      if (optimizedSource.endsWith("/products/totem-digital/01.jpg")) {
         await route.abort("failed");
         return;
       }

@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { megaMenuColumns, type MegaMenuItem } from "@content/megaMenu";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { MegaMenuColumn, MegaMenuItem } from "@content/megaMenu";
 import { productFamilies } from "@content/site";
 
 function Chevron({ open }: { open: boolean }) {
@@ -44,9 +44,13 @@ const headerNav = [
   { label: "Nosotros", href: "/nosotros" },
 ] as const;
 
-const DEFAULT_PRODUCT = megaMenuColumns[0]!.items[0]!;
+const EMPTY_PRODUCT: MegaMenuItem = { label: "", href: "/productos", image: "" };
 
-export function Header() {
+export function Header({ megaMenuColumns }: { megaMenuColumns: MegaMenuColumn[] }) {
+  const DEFAULT_PRODUCT = useMemo(
+    () => megaMenuColumns.flatMap((column) => column.items)[0] ?? EMPTY_PRODUCT,
+    [megaMenuColumns],
+  );
   const pathname = usePathname();
   const [productsOpen, setProductsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -63,12 +67,12 @@ export function Header() {
   const mobilePanelRef = useRef<HTMLDivElement>(null);
   const activeProductHrefRef = useRef(DEFAULT_PRODUCT.href);
 
-  function resetProductPreview() {
+  const resetProductPreview = useCallback(() => {
     activeProductHrefRef.current = DEFAULT_PRODUCT.href;
     setActiveProduct(DEFAULT_PRODUCT);
     setDisplayedProduct(DEFAULT_PRODUCT);
     setPreviewUnavailable(false);
-  }
+  }, [DEFAULT_PRODUCT]);
 
   function activateProduct(product: MegaMenuItem) {
     activeProductHrefRef.current = product.href;
@@ -149,7 +153,7 @@ export function Header() {
       document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [mobileOpen, productsOpen]);
+  }, [mobileOpen, productsOpen, resetProductPreview]);
 
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 1280px)");
@@ -363,7 +367,7 @@ export function Header() {
                                 className="relative flex min-h-[clamp(8.5rem,18vh,11rem)] shrink-0 items-center justify-center border-t border-border bg-white px-7"
                               >
                                 <div className="relative h-[clamp(7.5rem,16vh,10rem)] w-full max-w-[32rem] overflow-hidden">
-                                  {!previewUnavailable ? (
+                                  {!previewUnavailable && displayedProduct.image ? (
                                     <Image
                                       key={displayedProduct.image}
                                       data-mega-menu-preview-image="true"
@@ -376,7 +380,7 @@ export function Header() {
                                     />
                                   ) : null}
 
-                                  {activeProduct.image !== displayedProduct.image ? (
+                                  {activeProduct.image && activeProduct.image !== displayedProduct.image ? (
                                     <Image
                                       key={`preload-${activeProduct.image}`}
                                       src={activeProduct.image}

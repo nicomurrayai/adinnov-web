@@ -2,8 +2,7 @@ import {
   categories,
   productFamilyByCategory,
 } from "@content/categories";
-import { enrichProducts } from "@content/productMeta";
-import { products as sourceProducts } from "@content/products";
+import { buildMegaMenuColumns, type MegaMenuColumn } from "@content/megaMenu";
 import type {
   CatalogProductSummary,
   EnrichedProduct,
@@ -12,23 +11,22 @@ import type {
   ProductFamilyId,
   ProductInteraction,
 } from "@content/types";
-
-const products = enrichProducts(sourceProducts);
-const productsBySlug = new Map(products.map((product) => [product.slug, product]));
+import { getCatalog } from "@/lib/catalog/queries";
 
 function normalizeSearch(value: string): string {
   return value
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[̀-ͯ]/g, "")
     .toLocaleLowerCase("es-AR")
     .trim();
 }
 
-export function getAllProducts(): EnrichedProduct[] {
-  return products;
+export async function getAllProducts(): Promise<EnrichedProduct[]> {
+  return (await getCatalog()).products;
 }
 
-export function getCatalogProducts(): CatalogProductSummary[] {
+export async function getCatalogProducts(): Promise<CatalogProductSummary[]> {
+  const products = await getAllProducts();
   return products.map((product) => ({
     slug: product.slug,
     title: product.title,
@@ -48,19 +46,29 @@ export function getCatalogProducts(): CatalogProductSummary[] {
   }));
 }
 
-export function getProduct(slug: string): EnrichedProduct | undefined {
-  return productsBySlug.get(slug);
+export async function getProduct(slug: string): Promise<EnrichedProduct | undefined> {
+  return (await getCatalog()).bySlug.get(slug);
 }
 
-export function getProductsByCategory(category: string): EnrichedProduct[] {
+/** Slug actual de un producto cuya URL cambió desde el panel. */
+export async function getProductRedirect(slug: string): Promise<string | undefined> {
+  return (await getCatalog()).redirects.get(slug);
+}
+
+export async function getProductsByCategory(category: string): Promise<EnrichedProduct[]> {
+  const products = await getAllProducts();
   const family = getProductFamily(category);
   return family
     ? products.filter((product) => product.family === family)
     : products.filter((product) => product.category === category);
 }
 
-export function getProductSlugs(): string[] {
-  return products.map((product) => product.slug);
+export async function getProductSlugs(): Promise<string[]> {
+  return (await getAllProducts()).map((product) => product.slug);
+}
+
+export async function getMegaMenuColumns(): Promise<MegaMenuColumn[]> {
+  return buildMegaMenuColumns((await getCatalog()).menuEntries);
 }
 
 export function getCategory(id: string) {
@@ -78,15 +86,15 @@ export function getCategoryLabel(id: string): string {
   return getCategory(id)?.name ?? id;
 }
 
-export function filterProducts(opts: {
+export async function filterProducts(opts: {
   category?: string;
   family?: ProductFamilyId | string;
   environment?: ProductEnvironment | string;
   interaction?: ProductInteraction | string;
   modality?: "sale" | "rental" | string;
   q?: string;
-}): EnrichedProduct[] {
-  let list = products;
+}): Promise<EnrichedProduct[]> {
+  let list = await getAllProducts();
   const family = getProductFamily(opts.family ?? opts.category ?? "");
 
   if (family) {
@@ -123,15 +131,16 @@ export function filterProducts(opts: {
   return list;
 }
 
-export function getRelatedProducts(
+export async function getRelatedProducts(
   slug: string,
   limit = 3,
-): EnrichedProduct[] {
-  const product = getProduct(slug);
+): Promise<EnrichedProduct[]> {
+  const { bySlug } = await getCatalog();
+  const product = bySlug.get(slug);
   if (!product) return [];
 
   return product.relatedSlugs
-    .map((relatedSlug) => productsBySlug.get(relatedSlug))
+    .map((relatedSlug) => bySlug.get(relatedSlug))
     .filter((related): related is EnrichedProduct => Boolean(related))
     .slice(0, limit);
 }

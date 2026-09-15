@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { site } from "@content/site";
 import type { ProductFamilyId } from "@content/types";
 import { Container } from "@/components/ui/Container";
@@ -13,6 +13,7 @@ import { StructuredData } from "@/components/seo/StructuredData";
 import {
   getCategoryLabel,
   getProduct,
+  getProductRedirect,
   getProductSlugs,
   getRelatedProducts,
 } from "@/lib/content";
@@ -63,13 +64,15 @@ const relatedProjects: Record<
   },
 };
 
-export function generateStaticParams() {
-  return getProductSlugs().map((slug) => ({ slug }));
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  return (await getProductSlugs()).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProduct(slug);
   if (!product) return { title: "Producto no encontrado" };
 
   const shareMedia =
@@ -102,11 +105,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const product = getProduct(slug);
-  if (!product) notFound();
+  const product = await getProduct(slug);
+  if (!product) {
+    const currentSlug = await getProductRedirect(slug);
+    if (currentSlug) permanentRedirect(`/productos/${currentSlug}`);
+    notFound();
+  }
 
-  const related = getRelatedProducts(slug, 3);
-  const relatedProject = relatedProjects[product.family];
+  const related = await getRelatedProducts(slug, 3);
+  const relatedProject =
+    relatedProjects[product.family] ?? relatedProjects["software-servicios"];
   const canonicalUrl = `${site.url}/productos/${product.slug}`;
   const images = product.media
     .map((item) => (item.type === "image" ? item.src : item.poster))

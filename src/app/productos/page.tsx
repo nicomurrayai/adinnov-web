@@ -49,8 +49,8 @@ function CatalogFallback() {
   );
 }
 
-export default function ProductosPage() {
-  const products = getCatalogProducts();
+export default async function ProductosPage() {
+  const products = await getCatalogProducts();
   const firstMedia = products[0]?.media[0];
 
   return (
