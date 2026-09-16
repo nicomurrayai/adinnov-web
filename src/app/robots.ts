@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: "/casos-de-exito/vista-previa/",
     },
     sitemap: `${site.url}/sitemap.xml`,
   };

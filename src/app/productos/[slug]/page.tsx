@@ -10,6 +10,8 @@ import { ProductDetails } from "@/components/products/ProductDetails";
 import { ProductCard } from "@/components/products/ProductCard";
 import { StickyProductActions } from "@/components/products/StickyProductActions";
 import { StructuredData } from "@/components/seo/StructuredData";
+import { CASE_BASE_PATH, casePath } from "@/lib/case-studies/map";
+import { getCaseStudyForProduct } from "@/lib/case-studies/queries";
 import {
   getCategoryLabel,
   getProduct,
@@ -30,37 +32,37 @@ const relatedProjects: Record<
     title: "Tótems en espacios reales",
     description: "Una selección de equipos digitales e interactivos implementados para atención, información y experiencias de marca.",
     image: "/site/works/totems/01.jpg",
-    href: "/trabajos#totems",
+    href: CASE_BASE_PATH,
   },
   "pantallas-profesionales": {
     title: "Videowalls e integración multipantalla",
     description: "Configuraciones audiovisuales aplicadas a comunicación corporativa, monitoreo y espacios de atención.",
     image: "/site/works/videowalls/01.jpg",
-    href: "/trabajos#videowalls",
+    href: CASE_BASE_PATH,
   },
   led: {
     title: "LED en diferentes escalas",
     description: "Implementaciones reales de tecnología LED para escenarios, espacios comerciales y comunicación de gran formato.",
     image: "/site/works/led/01.jpg",
-    href: "/trabajos#led",
+    href: CASE_BASE_PATH,
   },
   "pizarras-interaccion": {
     title: "Pantallas en entornos corporativos",
     description: "Proyectos con superficies profesionales para presentar, colaborar y comunicar dentro de espacios de trabajo.",
     image: "/site/works/tvs/01.jpg",
-    href: "/trabajos#tvs",
+    href: CASE_BASE_PATH,
   },
   "kioscos-autogestion": {
     title: "Terminales en contexto",
     description: "Equipos aplicados a experiencias de autogestión, orientación e interacción en puntos de atención.",
     image: "/site/works/totems/02.jpg",
-    href: "/trabajos#totems",
+    href: CASE_BASE_PATH,
   },
   "software-servicios": {
     title: "Sistemas visuales integrados",
     description: "Implementaciones donde hardware, contenidos y operación remota trabajan como una única solución.",
     image: "/site/works/videowalls/02.jpg",
-    href: "/trabajos#videowalls",
+    href: CASE_BASE_PATH,
   },
 };
 
@@ -112,9 +114,27 @@ export default async function ProductPage({ params }: Props) {
     notFound();
   }
 
-  const related = await getRelatedProducts(slug, 3);
+  const [related, relatedCase] = await Promise.all([
+    getRelatedProducts(slug, 3),
+    // Un fallo al leer los casos no debe romper la ficha: se usa el bloque genérico.
+    getCaseStudyForProduct(product.slug).catch(() => undefined),
+  ]);
+  const fallbackProject = relatedProjects[product.family] ?? relatedProjects["software-servicios"];
   const relatedProject =
-    relatedProjects[product.family] ?? relatedProjects["software-servicios"];
+    relatedCase?.cover
+      ? {
+          title: relatedCase.title,
+          description: relatedCase.summary,
+          image: relatedCase.cover.src,
+          imageAlt: relatedCase.cover.alt,
+          href: casePath(relatedCase.slug),
+          cta: "Ver caso de éxito",
+        }
+      : {
+          ...fallbackProject,
+          imageAlt: `${fallbackProject.title}: implementación real de Adinnov`,
+          cta: "Ver casos de éxito",
+        };
   const canonicalUrl = `${site.url}/productos/${product.slug}`;
   const images = product.media
     .map((item) => (item.type === "image" ? item.src : item.poster))
@@ -225,7 +245,7 @@ export default async function ProductPage({ params }: Props) {
             <div className="relative min-h-72 lg:col-span-7 lg:min-h-[30rem]">
               <Image
                 src={relatedProject.image}
-                alt={`${relatedProject.title}: implementación real de Adinnov`}
+                alt={relatedProject.imageAlt}
                 fill
                 sizes="(max-width: 1023px) 100vw, 58vw"
                 className="object-cover"
@@ -251,7 +271,7 @@ export default async function ProductPage({ params }: Props) {
                 href={relatedProject.href}
                 className="mt-10 inline-flex min-h-11 items-center justify-between border-t border-white/22 pt-5 text-xs font-semibold uppercase tracking-[0.1em] text-white transition-colors hover:text-signal"
               >
-                Ver implementaciones reales
+                {relatedProject.cta}
                 <span aria-hidden="true">→</span>
               </Link>
             </div>

@@ -7,7 +7,7 @@ const publicRoutes = [
   "/",
   "/productos",
   "/alquileres",
-  "/trabajos",
+  "/casos-de-exito",
   "/clientes",
   "/nosotros",
   "/contacto",

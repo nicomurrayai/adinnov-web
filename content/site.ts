@@ -67,6 +67,9 @@ export const productFamilies = [
   },
 ] as const;
 
+export const caseStudiesIntro =
+  "Soluciones que ya están funcionando en el mundo real. Conocé algunos de los proyectos que desarrollamos e implementamos para marcas, empresas e instituciones.";
+
 export const site = {
   name: "Adinnov",
   tagline: "Cartelería digital",
@@ -183,7 +186,7 @@ export const site = {
   nav: [
     { label: "Productos", href: "/productos" },
     { label: "Alquileres", href: "/alquileres" },
-    { label: "Casos de éxito", href: "/trabajos" },
+    { label: "Casos de éxito", href: "/casos-de-exito" },
     { label: "Clientes", href: "/clientes" },
     { label: "Nosotros", href: "/nosotros" },
   ],

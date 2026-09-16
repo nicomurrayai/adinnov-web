@@ -18,7 +18,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/nuestros-trabajos",
-        destination: "/trabajos",
+        destination: "/casos-de-exito",
+        statusCode: 301,
+      },
+      {
+        source: "/trabajos",
+        destination: "/casos-de-exito",
+        statusCode: 301,
+      },
+      {
+        source: "/trabajos/:slug",
+        destination: "/casos-de-exito/:slug",
         statusCode: 301,
       },
       {

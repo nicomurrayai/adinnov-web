@@ -40,7 +40,7 @@ function isCurrent(pathname: string, href: string) {
 
 const headerNav = [
   { label: "Productos", href: "/productos" },
-  { label: "Casos de éxito", href: "/trabajos" },
+  { label: "Casos de éxito", href: "/casos-de-exito" },
   { label: "Nosotros", href: "/nosotros" },
 ] as const;
 

@@ -2,7 +2,8 @@ import { expect, test } from "@playwright/test";
 
 const redirects = [
   ["/producto/totem-digital", "/productos/totem-digital"],
-  ["/nuestros-trabajos", "/trabajos"],
+  ["/nuestros-trabajos", "/casos-de-exito"],
+  ["/trabajos", "/casos-de-exito"],
   ["/nuestros-clientes", "/clientes"],
   ["/servicios", "/productos"],
   ["/soluciones", "/productos"],
