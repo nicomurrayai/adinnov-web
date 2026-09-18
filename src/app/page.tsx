@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "../components/home/Hero";
-import { SolutionsStrip } from "../components/home/SolutionsStrip";
+import { SolutionsTabs } from "../components/home/SolutionsTabs";
 
 export const metadata: Metadata = {
   title: "Cartelería digital, interacción y LED",
@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <SolutionsStrip />
+      <SolutionsTabs />
     </>
   );
 }
