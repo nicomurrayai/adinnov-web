@@ -1,0 +1,101 @@
+.section {
+  padding-block: 48px 56px;
+  background: #fff;
+}
+
+.container {
+  margin-inline: auto;
+  width: calc(100% - clamp(40px, 5vw, 96px));
+}
+
+.heading {
+  margin: 0 0 24px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.heading span {
+  display: inline-block;
+  border-radius: 999px;
+  background: #0271af;
+  padding: 2px 16px;
+  color: #fff;
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  border: 2px solid #0271af;
+  border-radius: 16px;
+  padding-block: 32px;
+  /* Fade the artwork at the edges without fading the blue border. */
+  position: relative;
+}
+
+.marquee::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to right, #fff, transparent 12%, transparent 88%, #fff);
+  content: "";
+}
+
+.group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-around;
+  gap: 48px;
+  min-width: 100%;
+  margin: 0;
+  padding: 0 24px;
+  list-style: none;
+  animation: scroll 15s linear infinite;
+}
+
+.partner {
+  flex-shrink: 0;
+}
+
+.logo {
+  display: block;
+  width: auto;
+  height: 32px;
+  max-width: none;
+}
+
+.marquee:hover .group,
+.marquee:focus-within .group {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .logo {
+    height: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group {
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    gap: 32px;
+    width: 100%;
+    animation: none;
+  }
+
+  .group[aria-hidden="true"],
+  .marquee::after {
+    display: none;
+  }
+}

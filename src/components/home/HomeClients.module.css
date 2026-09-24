@@ -1,0 +1,6 @@
+.section { padding: 24px 0 70px; background: #fff; }
+.marquee ul { animation-duration: 20s; }
+.overlayLink { position: absolute; inset: 0; z-index: 2; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee ul { animation: none; }
+}

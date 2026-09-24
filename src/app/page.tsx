@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Hero } from "../components/home/Hero";
+import { Partners } from "../components/home/Partners";
+import { HomeRentals } from "../components/home/HomeRentals";
+import { Verticals } from "../components/home/Verticals";
+import { HomeClients } from "../components/home/HomeClients";
 import { SolutionsTabs } from "../components/home/SolutionsTabs";
 
 export const metadata: Metadata = {
@@ -14,6 +18,10 @@ export default function HomePage() {
     <>
       <Hero />
       <SolutionsTabs />
+      <Partners />
+      <HomeRentals />
+      <Verticals />
+      <HomeClients />
     </>
   );
 }
