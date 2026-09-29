@@ -79,36 +79,36 @@ export function CaseStudyArticle({
           </nav>
         )}
 
-        <header className="grid gap-8 border-b border-border pb-10 lg:grid-cols-12 lg:items-end lg:pb-14">
-          <div className="lg:col-span-8">
-            <div className="flex flex-wrap items-center gap-2">
-              {caseStudy.category ? (
-                <span className="inline-flex border border-signal/25 bg-signal-pale px-2 py-1 font-mono text-[0.62rem] font-medium uppercase tracking-[0.14em] text-signal">
-                  {caseStudy.category}
-                </span>
-              ) : null}
-              <span className="eyebrow text-muted">Caso de éxito</span>
-            </div>
-            <h1 className="font-display mt-6 text-balance text-[clamp(2.4rem,5.4vw,5.2rem)] font-medium leading-[0.95] tracking-[-0.05em] text-navy">
-              {caseStudy.title}
-            </h1>
+        <header className="mx-auto flex max-w-4xl flex-col items-center border-b border-border pb-10 text-center lg:pb-14">
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {caseStudy.category ? (
+              <span className="inline-flex border border-signal/25 bg-signal-pale px-2 py-1 font-mono text-[0.62rem] font-medium uppercase tracking-[0.14em] text-signal">
+                {caseStudy.category}
+              </span>
+            ) : null}
+            <span className="eyebrow text-muted">Caso de éxito</span>
           </div>
+          <h1 className="font-display mt-6 text-balance text-[clamp(2.4rem,5.4vw,5.2rem)] font-medium leading-[0.95] tracking-[-0.05em] text-navy">
+            {caseStudy.title}
+          </h1>
           {caseStudy.summary ? (
-            <p className="text-lg leading-8 text-muted lg:col-span-4 md:text-xl md:leading-9">{caseStudy.summary}</p>
+            <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-muted md:text-xl md:leading-9">
+              {caseStudy.summary}
+            </p>
           ) : null}
         </header>
 
         {caseStudy.cover ? (
-          <figure className="mt-10 overflow-hidden bg-surface md:mt-14">
+          <figure className="mx-auto mt-10 max-w-4xl overflow-hidden bg-surface md:mt-14">
             <Image
               src={caseStudy.cover.src}
               alt={caseStudy.cover.alt}
               width={caseStudy.cover.width}
               height={caseStudy.cover.height}
-              sizes="(max-width: 1440px) 100vw, 1440px"
+              sizes="(max-width: 896px) 100vw, 896px"
               preload
               quality={84}
-              className="h-auto max-h-[78vh] w-full object-cover"
+              className="h-auto max-h-[28rem] w-full object-cover"
             />
           </figure>
         ) : null}
@@ -224,23 +224,19 @@ export function CaseStudyArticle({
             >
               Galería del proyecto
             </h2>
-            <ul className="mt-9 grid gap-4 sm:grid-cols-2 md:gap-6">
-              {caseStudy.gallery.map((image, index) => (
-                <li key={image.src} className={caseStudy.gallery.length % 2 === 1 && index === 0 ? "sm:col-span-2" : ""}>
+            <ul className="mt-9 grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+              {caseStudy.gallery.map((image) => (
+                <li key={image.src}>
                   <figure className="h-full">
-                    <div className="overflow-hidden bg-surface">
+                    <div className="aspect-[4/3] overflow-hidden bg-surface">
                       <Image
                         src={image.src}
                         alt={image.alt}
                         width={image.width}
                         height={image.height}
                         loading="lazy"
-                        sizes={
-                          caseStudy.gallery.length % 2 === 1 && index === 0
-                            ? "(max-width: 1440px) 100vw, 1440px"
-                            : "(max-width: 640px) 100vw, 50vw"
-                        }
-                        className="h-auto w-full"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="h-full w-full object-cover"
                       />
                     </div>
                     {image.caption ? (
