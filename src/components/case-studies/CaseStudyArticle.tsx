@@ -88,7 +88,7 @@ export function CaseStudyArticle({
             ) : null}
             <span className="eyebrow text-muted">Caso de éxito</span>
           </div>
-          <h1 className="font-display mt-6 text-balance text-[clamp(2.4rem,5.4vw,5.2rem)] font-medium leading-[0.95] tracking-[-0.05em] text-navy">
+          <h1 className="font-display mt-6 text-balance text-[clamp(2rem,4vw,3.6rem)] font-medium leading-[1.02] tracking-[-0.045em] text-navy">
             {caseStudy.title}
           </h1>
           {caseStudy.summary ? (
