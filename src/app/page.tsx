@@ -5,6 +5,7 @@ import { HomeRentals } from "../components/home/HomeRentals";
 import { Verticals } from "../components/home/Verticals";
 import { HomeClients } from "../components/home/HomeClients";
 import { SolutionsTabs } from "../components/home/SolutionsTabs";
+import { CustomSolutions } from "../components/home/CustomSolutions";
 
 export const metadata: Metadata = {
   title: "Cartelería digital, interacción y LED",
@@ -22,6 +23,7 @@ export default function HomePage() {
       <HomeRentals />
       <Verticals />
       <HomeClients />
+      <CustomSolutions />
     </>
   );
 }
