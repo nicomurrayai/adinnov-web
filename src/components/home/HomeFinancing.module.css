@@ -1,0 +1,237 @@
+.section {
+  background: #f7f9fa;
+  padding: clamp(64px, 6vw, 100px) 0;
+}
+
+.container {
+  width: calc(100% - clamp(40px, 5vw, 96px));
+  max-width: 1500px;
+  margin-inline: auto;
+}
+
+.intro {
+  max-width: 850px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin: 0 0 22px;
+  border-radius: 999px;
+  background: #0271af;
+  padding: 5px 18px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  line-height: 1.4;
+}
+
+.heading {
+  margin: 0;
+  color: #112235;
+  font-family: var(--font-familjen), sans-serif;
+  font-size: clamp(32px, 3.5vw, 54px);
+  font-weight: 650;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.lead {
+  max-width: 670px;
+  margin: 18px auto 0;
+  color: #506275;
+  font-size: clamp(16px, 1.25vw, 19px);
+  line-height: 1.5;
+}
+
+.bankBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 124px;
+  border-radius: 18px;
+  background: linear-gradient(106deg, #145fff 0%, #1552ba 33%, #202d43 100%);
+  padding: 24px clamp(24px, 3vw, 42px);
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(16, 58, 134, .12);
+}
+
+.bankIdentity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.bankMark {
+  display: grid;
+  flex: 0 0 auto;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border-radius: 11px;
+  background: #fff;
+  color: #057899;
+}
+
+.bankMark svg { width: 32px; height: 32px; }
+.bankIdentity div { display: grid; gap: 4px; }
+.bankIdentity strong { font-size: clamp(19px, 1.4vw, 24px); line-height: 1.1; }
+.bankIdentity div > span { color: #dceaff; font-size: clamp(14px, 1.05vw, 17px); }
+
+.bankHelp {
+  display: grid;
+  gap: 3px;
+  min-width: 270px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  background: rgba(255,255,255,.11);
+  padding: 12px 18px;
+  text-align: center;
+}
+
+.bankHelp span { color: #8df0dd; font-size: 14px; font-weight: 650; }
+.bankHelp strong { font-size: 16px; }
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin: 28px 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 246px;
+  overflow: hidden;
+  border: 1px solid #dbe3e8;
+  border-radius: 15px;
+  background: #fff;
+  padding: 25px 24px 28px;
+  box-shadow: 0 3px 7px rgba(11, 37, 61, .045);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.option::before {
+  position: absolute;
+  top: -72px;
+  left: -45px;
+  width: 240px;
+  height: 220px;
+  border-radius: 50%;
+  background: var(--glow);
+  content: "";
+  filter: blur(30px);
+  opacity: .45;
+  pointer-events: none;
+}
+
+.option[data-tone="blue"] { --accent: #3f8deb; --glow: #d8e9ff; }
+.option[data-tone="mint"] { --accent: #2bbf93; --glow: #d7f5eb; }
+.option[data-tone="aqua"] { --accent: #23aaa5; --glow: #d8f6f3; }
+.option[data-tone="slate"] { --accent: #788b9d; --glow: #e3e9ee; }
+.option:hover { transform: translateY(-4px); box-shadow: 0 16px 28px rgba(11, 37, 61, .1); }
+
+.optionTop {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.iconFrame {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border: 1px solid #fff;
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .85);
+  color: var(--accent);
+  box-shadow: 0 6px 16px rgba(23, 56, 76, .08);
+}
+
+.icon { width: 29px; height: 29px; }
+.optionNumber { color: #a9b5c0; font-family: var(--font-plex-mono), monospace; font-size: 12px; }
+.option h3 { position: relative; margin: 0 0 12px; color: #132331; font-size: clamp(19px, 1.3vw, 22px); line-height: 1.17; font-weight: 750; }
+.option p { position: relative; margin: 0; color: #586775; font-size: 15px; line-height: 1.5; }
+
+.benefits {
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(112deg, #155cf0, #1747a4 49%, #202c42);
+  padding: clamp(32px, 4vw, 58px) clamp(25px, 4vw, 60px) 30px;
+  color: #fff;
+}
+
+.benefitHeading { text-align: center; }
+.benefitEyebrow { margin: 0 0 12px; color: #a1f0e2; font-family: var(--font-plex-mono), monospace; font-size: 11px; font-weight: 600; letter-spacing: .14em; }
+.benefitHeading h3 { margin: 0; font-family: var(--font-familjen), sans-serif; font-size: clamp(26px, 2.4vw, 38px); font-weight: 650; letter-spacing: -.025em; line-height: 1.1; }
+
+.benefitList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  margin: 46px 0 36px;
+  padding: 0;
+  list-style: none;
+}
+
+.benefitList li { display: grid; justify-items: center; gap: 8px; text-align: center; }
+.benefitList li > span { display: grid; width: 44px; height: 44px; place-items: center; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; background: rgba(255,255,255,.14); font-family: var(--font-plex-mono), monospace; font-size: 12px; }
+.benefitList strong { font-size: 17px; }
+.benefitList small { max-width: 240px; color: #d4e4f6; font-size: 14px; line-height: 1.4; }
+
+.benefitFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-top: 1px solid rgba(255,255,255,.22);
+  padding-top: 27px;
+}
+
+.benefitFooter p { max-width: 570px; margin: 0; color: #d7e3f4; font-size: 12px; line-height: 1.5; }
+.cta { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 44px; border-radius: 999px; background: #fff; padding: 10px 18px; color: #143672; font-size: 13px; font-weight: 750; text-decoration: none; white-space: nowrap; transition: background .2s ease, transform .2s ease; }
+.cta:hover { background: #e4f4ff; transform: translateY(-2px); }
+.cta:focus-visible { outline-color: #fff; }
+.cta span { font-size: 20px; line-height: 1; font-weight: 400; }
+
+@media (max-width: 1100px) {
+  .options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .option { min-height: 218px; }
+}
+
+@media (max-width: 700px) {
+  .section { padding-block: 58px; }
+  .intro { margin-bottom: 28px; }
+  .bankBanner { align-items: stretch; flex-direction: column; gap: 22px; }
+  .bankHelp { min-width: 0; text-align: left; }
+  .options { gap: 12px; margin-block: 18px 22px; }
+  .option { min-height: 0; padding: 21px; }
+  .benefitList { gap: 25px; margin-block: 34px; }
+  .benefitFooter { align-items: stretch; flex-direction: column; }
+  .cta { align-self: flex-start; }
+}
+
+@media (max-width: 540px) {
+  .options, .benefitList { grid-template-columns: 1fr; }
+  .optionTop { margin-bottom: 18px; }
+  .benefitList li { justify-items: start; grid-template-columns: 44px 1fr; column-gap: 14px; text-align: left; }
+  .benefitList li > span { grid-row: span 2; }
+  .benefitList small { max-width: none; }
+  .cta { width: 100%; white-space: normal; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option, .cta { transition: none; }
+  .option:hover, .cta:hover { transform: none; }
+}
