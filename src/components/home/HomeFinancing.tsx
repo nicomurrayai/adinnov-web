@@ -83,10 +83,6 @@ export function HomeFinancing() {
               <span>Financiamiento preferencial para tecnología</span>
             </div>
           </div>
-          <div className={styles.bankHelp}>
-            <span>¿Todavía no tenés cuenta?</span>
-            <strong>Te ayudamos a abrirla.</strong>
-          </div>
         </div>
 
         <ul className={styles.options}>

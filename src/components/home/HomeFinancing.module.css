@@ -50,8 +50,6 @@
 .bankBanner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
   min-height: 124px;
   border-radius: 18px;
   background: linear-gradient(106deg, #145fff 0%, #1552ba 33%, #202d43 100%);
@@ -81,20 +79,6 @@
 .bankIdentity div { display: grid; gap: 4px; }
 .bankIdentity strong { font-size: clamp(19px, 1.4vw, 24px); line-height: 1.1; }
 .bankIdentity div > span { color: #dceaff; font-size: clamp(14px, 1.05vw, 17px); }
-
-.bankHelp {
-  display: grid;
-  gap: 3px;
-  min-width: 270px;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 14px;
-  background: rgba(255,255,255,.11);
-  padding: 12px 18px;
-  text-align: center;
-}
-
-.bankHelp span { color: #8df0dd; font-size: 14px; font-weight: 650; }
-.bankHelp strong { font-size: 16px; }
 
 .options {
   display: grid;
@@ -212,8 +196,6 @@
 @media (max-width: 700px) {
   .section { padding-block: 58px; }
   .intro { margin-bottom: 28px; }
-  .bankBanner { align-items: stretch; flex-direction: column; gap: 22px; }
-  .bankHelp { min-width: 0; text-align: left; }
   .options { gap: 12px; margin-block: 18px 22px; }
   .option { min-height: 0; padding: 21px; }
   .benefitList { gap: 25px; margin-block: 34px; }
