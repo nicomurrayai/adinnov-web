@@ -3,13 +3,6 @@ import styles from "./HomeFinancing.module.css";
 
 const options = [
   {
-    title: "Leasing tecnológico",
-    description:
-      "Usá el equipamiento con pagos mensuales flexibles y opción de compra al finalizar.",
-    icon: "leasing",
-    tone: "blue",
-  },
-  {
     title: "Pago diferido BNA",
     description:
       "Hasta 12 cuotas con pago diferido a través de Banco Nación.",
@@ -43,12 +36,6 @@ function Icon({ kind }: { kind: (typeof options)[number]["icon"] }) {
 
   return (
     <svg aria-hidden="true" viewBox="0 0 32 32" className={styles.icon} {...common}>
-      {kind === "leasing" && (
-        <>
-          <rect x="4.5" y="8" width="23" height="16" rx="2.5" />
-          <path d="M4.5 13h23M9 19h5" />
-        </>
-      )}
       {kind === "calendar" && (
         <>
           <rect x="6" y="6.5" width="20" height="20" rx="2.5" />
