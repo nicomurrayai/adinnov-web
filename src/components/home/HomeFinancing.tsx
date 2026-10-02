@@ -63,7 +63,7 @@ export function HomeFinancing() {
         <div className={styles.intro}>
           <p className={styles.eyebrow}>FINANCIAMIENTO</p>
           <h2 id="financing-heading" className={styles.heading}>
-            Tu próximo tótem, con más formas de hacerlo posible.
+            Tu próximo proyecto, con más formas de hacerlo posible.
           </h2>
           <p className={styles.lead}>
             Elegí la alternativa de pago que mejor acompañe tu proyecto y equipá tu espacio con tecnología Adinnov.
