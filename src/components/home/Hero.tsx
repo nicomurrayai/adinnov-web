@@ -77,8 +77,6 @@ export function Hero() {
           </video>
         ) : null}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,23,43,.45)_0%,rgba(7,23,43,.55)_40%,rgba(7,23,43,.92)_100%)]" />
-        <div className="absolute inset-y-0 left-[8.33%] hidden w-px bg-white/10 lg:block" />
-        <div className="absolute inset-y-0 right-[8.33%] hidden w-px bg-white/10 lg:block" />
       </div>
     </section>
   );

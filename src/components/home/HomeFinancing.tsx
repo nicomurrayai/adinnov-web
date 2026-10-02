@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./HomeFinancing.module.css";
 
 const options = [
@@ -71,20 +70,6 @@ export function HomeFinancing() {
           </p>
         </div>
 
-        <div className={styles.bankBanner}>
-          <div className={styles.bankIdentity}>
-            <span className={styles.bankMark} aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="m3.5 12 12.5-7 12.5 7M5.5 14h21M8 24V15M13.5 24V15M19 24V15M24.5 24V15M4 26h24" />
-              </svg>
-            </span>
-            <div>
-              <strong>Banco Nación</strong>
-              <span>Financiamiento preferencial para tecnología</span>
-            </div>
-          </div>
-        </div>
-
         <ul className={styles.options}>
           {options.map((option, index) => (
             <li key={option.title} className={styles.option} data-tone={option.tone}>
@@ -97,24 +82,6 @@ export function HomeFinancing() {
             </li>
           ))}
         </ul>
-
-        <div className={styles.benefits}>
-          <div className={styles.benefitHeading}>
-            <p className={styles.benefitEyebrow}>PENSADO PARA TU NEGOCIO</p>
-            <h3>¿Por qué elegir financiamiento?</h3>
-          </div>
-          <ul className={styles.benefitList}>
-            <li><span aria-hidden="true">01</span><strong>Escalabilidad total</strong><small>Incorporá tecnología a medida que crece tu proyecto.</small></li>
-            <li><span aria-hidden="true">02</span><strong>Tecnología actualizada</strong><small>Equipá hoy tus espacios con soluciones actuales.</small></li>
-            <li><span aria-hidden="true">03</span><strong>Pagos flexibles</strong><small>Elegí un esquema que acompañe tu inversión.</small></li>
-          </ul>
-          <div className={styles.benefitFooter}>
-            <p>Opciones sujetas a evaluación crediticia, disponibilidad y condiciones vigentes.</p>
-            <Link href="/contacto?intent=venta" className={styles.cta}>
-              Consultá por financiación <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        </div>
       </div>
     </section>
   );
