@@ -83,6 +83,7 @@ const socialLinks = [
 const affiliationLogos = [
   {
     src: "/brand/affiliations/avixa-member.png",
+    href: "https://www.avixa.org/",
     alt: "Miembro de AVIXA",
     width: 227,
     height: 148,
@@ -90,6 +91,7 @@ const affiliationLogos = [
   },
   {
     src: "/brand/affiliations/iot-innov.png",
+    href: "https://iotinnov.com.ar/",
     alt: "IoT Innov, Internet de las Cosas",
     width: 2200,
     height: 429,
@@ -97,6 +99,7 @@ const affiliationLogos = [
   },
   {
     src: "/brand/affiliations/tech-innov.png",
+    href: "https://techinnov.com.ar/",
     alt: "Tech Innov, Real Estate Tech Solutions",
     width: 2775,
     height: 428,
@@ -209,15 +212,22 @@ export function Footer() {
             <p className="eyebrow text-navy/55 lg:text-center">Membresías y marcas</p>
             <div className="mt-6 flex flex-col items-start gap-7 lg:items-center">
               {affiliationLogos.map((logo) => (
-                <Image
+                <a
                   key={logo.src}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.width}
-                  height={logo.height}
-                  sizes="(max-width: 1024px) 12rem, 11rem"
-                  className={`h-auto max-w-full object-contain ${logo.className}`}
-                />
+                  href={logo.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`block max-w-full transition-[opacity,transform] duration-300 hover:-translate-y-0.5 hover:opacity-80 ${logo.className}`}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    sizes="(max-width: 1024px) 12rem, 11rem"
+                    className="h-auto w-full object-contain"
+                  />
+                </a>
               ))}
             </div>
           </section>
