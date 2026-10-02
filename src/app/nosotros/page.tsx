@@ -1,184 +1,165 @@
 import type { Metadata } from "next";
-import { site } from "@content/site";
+import Image from "next/image";
 import { Button } from "../../components/ui/Button";
 import { Container } from "../../components/ui/Container";
-import { PageHero } from "../../components/ui/PageHero";
 import { Reveal } from "../../components/ui/Reveal";
-import { Section, SectionHeading } from "../../components/ui/Section";
+import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Nosotros",
-  description: site.about.lead,
+  description: "Conocé al equipo de Adinnov. Diseñamos, fabricamos e integramos cartelería digital, tótems, pantallas y experiencias interactivas desde Buenos Aires.",
   alternates: { canonical: "/nosotros" },
 };
+
+function Photo({ src, alt, sizes, position, priority = false }: {
+  src: string; alt: string; sizes: string; position?: string; priority?: boolean;
+}) {
+  return (
+    <Image src={src} alt={alt} fill sizes={sizes} priority={priority}
+      quality={75} className={styles.photo} style={{ objectPosition: position }} />
+  );
+}
 
 export default function NosotrosPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Nosotros"
-        title={site.about.title}
-        description={site.about.lead}
-        index="05"
-      >
-        <div className="flex items-end gap-4 border-l-2 border-signal pl-5 md:justify-end">
-          <span className="font-display text-6xl font-medium leading-[0.75] tracking-[-0.06em] text-navy md:text-7xl">
-            +10
-          </span>
-          <span className="max-w-28 pb-0.5 font-mono text-[0.65rem] uppercase leading-4 tracking-[0.12em] text-muted">
-            años creando soluciones
-          </span>
-        </div>
-      </PageHero>
-
-      <Section>
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-16">
-          <div className="lg:col-span-8">
-            <p className="eyebrow text-signal">Fabricación propia</p>
-            <h2 className="font-display mt-5 text-balance text-[clamp(2.7rem,5vw,5.4rem)] font-medium leading-[0.92] tracking-[-0.052em] text-navy">
-              {site.about.manufacturing.title}
-            </h2>
+      <section className={`${styles.hero} paper-grid`} aria-labelledby="nosotros-titulo">
+        <Container>
+          <div className={styles.topline}>
+            <p className="eyebrow text-signal">Nosotros / Adinnov</p>
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.13em] text-muted">Buenos Aires · Argentina</p>
           </div>
-          <div className="border-l-2 border-signal pl-5 lg:col-span-4 lg:justify-self-end">
-            <p className="font-mono text-[0.63rem] uppercase tracking-[0.12em] text-muted">
-              Buenos Aires · Argentina
-            </p>
-            <p className="font-display mt-3 max-w-xs text-2xl font-medium leading-tight tracking-[-0.03em] text-navy md:text-3xl">
-              Diseñamos. Fabricamos. Integramos.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-12 grid gap-10 border-t border-border pt-10 lg:mt-16 lg:grid-cols-12 lg:items-stretch lg:gap-16 lg:pt-12">
-          <div className="space-y-6 text-lg leading-8 text-muted lg:col-span-7">
-            <p>{site.about.manufacturing.description}</p>
-            <p>{site.about.manufacturing.products}</p>
-          </div>
-          <div className="flex flex-col justify-between bg-ivory p-7 md:p-9 lg:col-span-5">
-            <div className="flex items-center justify-between gap-5">
-              <p className="eyebrow text-signal">Diseño protegido</p>
-              <span className="font-mono text-xs text-muted">INPI · ARG</span>
+          <div className={styles.heroGrid}>
+            <div className={styles.heroCopy}>
+              <p className="eyebrow text-muted">Personas, ideas y tecnología</p>
+              <h1 id="nosotros-titulo" className={styles.heroTitle}>Detrás de cada pantalla, <span>hay un equipo.</span></h1>
+              <p className={styles.heroLead}>Somos Adinnov. Diseñamos, fabricamos e integramos soluciones digitales que cobran sentido cuando llegan a los espacios y a las personas.</p>
+              <a className={styles.textLink} href="#como-trabajamos">Conocé cómo trabajamos <span aria-hidden="true">↘</span></a>
             </div>
-            <p className="font-display mt-8 max-w-xl text-2xl font-medium leading-tight tracking-[-0.035em] text-navy md:text-3xl">
-              Un modelo de tótem único en el mercado, desarrollado y patentado por Adinnov.
-            </p>
+            <div className={styles.heroVisual} aria-label="El equipo y los proyectos de Adinnov">
+              <Reveal className={styles.heroMain} delay={0.08} y={22}>
+                <figure className={styles.frame}>
+                  <Photo src="/nosotros/equipo.webp" alt="Integrantes del equipo Adinnov reunidos en su espacio de trabajo" sizes="(max-width: 700px) 78vw, (max-width: 1100px) 48vw, 39vw" position="center 39%" priority />
+                  <figcaption className={styles.photoLabel}>Equipo Adinnov</figcaption>
+                </figure>
+              </Reveal>
+              <Reveal className={styles.heroSmallLeft} delay={0.18} y={30}>
+                <figure className={styles.frame}>
+                  <Photo src="/nosotros/reunion.webp" alt="Tres integrantes del equipo trabajando juntos alrededor de una mesa" sizes="(max-width: 700px) 42vw, 24vw" position="center 48%" />
+                </figure>
+              </Reveal>
+              <Reveal className={styles.heroSmallRight} delay={0.26} y={36}>
+                <figure className={styles.frame}>
+                  <Photo src="/nosotros/proyecto.webp" alt="Pantallas y soluciones interactivas de Adinnov en el showroom" sizes="(max-width: 700px) 44vw, 24vw" />
+                </figure>
+              </Reveal>
+              <span className={styles.visualIndex} aria-hidden="true">01 / 03</span>
+            </div>
           </div>
-        </div>
-
-        <div className="mt-16 grid gap-8 border-t border-border pt-10 lg:mt-20 lg:grid-cols-12 lg:items-end lg:gap-16 lg:pt-12">
-          <div className="lg:col-span-5">
-            <p className="eyebrow text-signal">Indoor + Outdoor</p>
-            <h3 className="font-display mt-5 text-balance text-3xl font-medium leading-tight tracking-[-0.04em] text-navy md:text-4xl">
-              {site.about.led.title}
-            </h3>
+          <div className={styles.facts}>
+            <div><strong>+10</strong><span>Años de experiencia</span></div>
+            <div><strong>01</strong><span>Equipo, de la idea a la puesta en marcha</span></div>
+            <p>Diseño propio <span aria-hidden="true">/</span> fabricación <span aria-hidden="true">/</span> integración</p>
           </div>
-          <p className="text-lg leading-8 text-muted lg:col-span-7">
-            {site.about.led.description}
-          </p>
-        </div>
-      </Section>
+        </Container>
+      </section>
 
-      <Section tone="surface" className="border-y border-border">
-        <SectionHeading
-          eyebrow="Lo que nos define"
-          title="Cuatro ideas. Una forma de trabajar."
-          description="Cada proyecto combina conocimiento acumulado, control sobre el producto y una mirada siempre puesta en lo que viene."
-        />
-        <div className="mt-14 grid gap-px bg-border sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
-          {site.about.pillars.map((pillar, index) => (
-            <Reveal key={pillar.title} delay={index * 0.06}>
-              <article className="group flex min-h-72 flex-col justify-between bg-ivory p-6 transition-colors duration-300 hover:bg-paper md:p-8">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[0.65rem] text-signal">0{index + 1}</span>
-                  <span aria-hidden="true" className="h-2 w-2 rounded-full bg-signal transition-transform duration-300 group-hover:scale-[1.8]" />
-                </div>
-                <div>
-                  <h3 className="font-display text-3xl font-medium leading-none tracking-[-0.04em] text-navy">
-                    {pillar.title}
-                  </h3>
-                  <p className="mt-4 text-sm leading-6 text-muted">{pillar.description}</p>
-                </div>
-              </article>
+      <section className={styles.madeSection} aria-labelledby="hacemos-titulo">
+        <Container>
+          <div className={styles.sectionIntro}>
+            <Reveal>
+              <p className="eyebrow text-signal">Lo que hacemos</p>
+              <h2 id="hacemos-titulo" className={styles.sectionTitle}>De la primera idea <em>al último detalle.</em></h2>
             </Reveal>
-          ))}
-        </div>
-      </Section>
+            <Reveal delay={0.1}>
+              <p className={styles.sectionLead}>Escuchamos qué necesita cada espacio y elegimos la tecnología que mejor lo resuelve. Diseñamos el equipo, desarrollamos la experiencia e integramos cada pieza para que todo funcione en conjunto.</p>
+            </Reveal>
+          </div>
+          <div className={styles.productLayout}>
+            <div className={styles.productMosaic}>
+              <Reveal className={styles.productMain}>
+                <figure className={styles.frame}>
+                  <Photo src="/nosotros/totems.webp" alt="Tótems digitales e interactivos desarrollados por Adinnov" sizes="(max-width: 700px) 88vw, 46vw" />
+                  <figcaption className={styles.photoLabel}>Tótems Adinnov</figcaption>
+                </figure>
+              </Reveal>
+              <Reveal className={styles.productDetail} delay={0.1} y={32}>
+                <figure className={styles.frame}>
+                  <Photo src="/nosotros/detalle.webp" alt="Detalle de una terminal interactiva Adinnov" sizes="(max-width: 700px) 36vw, 20vw" />
+                </figure>
+              </Reveal>
+              <Reveal className={styles.productTouch} delay={0.18} y={28}>
+                <figure className={styles.frame}>
+                  <Photo src="/nosotros/interaccion.webp" alt="Una persona usando una aplicación en un tótem táctil" sizes="(max-width: 700px) 52vw, 25vw" />
+                </figure>
+              </Reveal>
+            </div>
+            <Reveal className={styles.productCopy} delay={0.12}>
+              <div className={styles.sideRule} />
+              <p className="eyebrow text-signal">Fabricación e integración</p>
+              <h3>Una solución completa toma muchas formas.</h3>
+              <p>Fabricamos tótems digitales, kioscos, terminales y atriles. Sumamos pantallas profesionales, LED y software desarrollado por nuestro equipo para que cada proyecto tenga una respuesta a medida.</p>
+              <p>Uno de nuestros modelos de tótem fue diseñado por Adinnov y cuenta con patente del INPI.</p>
+              <span className={styles.microLabel}>Pensado, hecho y acompañado por Adinnov.</span>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
 
-      <Section tone="navy" className="editorial-grid overflow-hidden">
-        <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
-          <Reveal className="lg:col-span-5">
-            <p className="eyebrow text-signal-pale">Venta + alquiler</p>
-            <h2 className="font-display mt-5 text-balance text-[clamp(2.8rem,5vw,5.5rem)] font-medium leading-[0.92] tracking-[-0.052em]">
-              {site.about.operations.title}
-            </h2>
-            <p className="mt-8 max-w-xl text-lg leading-8 text-white/68">
-              {site.about.operations.description}
-            </p>
-          </Reveal>
-
-          <div className="lg:col-span-6 lg:col-start-7">
-            <ol className="border-t border-white/20">
-              {site.about.operations.steps.map((step, index) => (
-                <li key={step} className="group flex items-center gap-5 border-b border-white/20 py-5 md:py-6">
-                  <span className="font-mono text-[0.65rem] text-signal-pale/60">0{index + 1}</span>
-                  <span className="font-display text-2xl font-medium tracking-[-0.03em] md:text-3xl">
-                    {step}
-                  </span>
-                  <span aria-hidden="true" className="ml-auto text-signal-pale transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </li>
+      <section id="como-trabajamos" className={styles.processSection} aria-labelledby="proceso-titulo">
+        <Container>
+          <div className={styles.processHeading}>
+            <Reveal>
+              <p className="eyebrow text-signal-pale">Nuestra forma de trabajar</p>
+              <h2 id="proceso-titulo" className={styles.sectionTitle}>Estamos en cada paso. <em>Hasta que funciona.</em></h2>
+            </Reveal>
+            <p>En venta o alquiler, conectamos la idea con la logística, la instalación, la configuración y la puesta en marcha.</p>
+          </div>
+          <div className={styles.processGrid}>
+            <div className={styles.processList}>
+              {[
+                ["Entendemos el contexto.", "Escuchamos el objetivo, el lugar y las personas que van a usar la solución."],
+                ["Diseñamos e integramos.", "Combinamos equipamiento, contenido e interacción en una propuesta concreta."],
+                ["Lo ponemos a funcionar.", "Coordinamos la entrega, instalación y configuración para llevarlo al espacio real."],
+              ].map(([title, description], index) => (
+                <Reveal key={title} delay={index * 0.08}>
+                  <article>
+                    <span>0{index + 1}</span>
+                    <div><h3>{title}</h3><p>{description}</p></div>
+                  </article>
+                </Reveal>
               ))}
-            </ol>
+            </div>
+            <div className={styles.processPhotos}>
+              <Reveal className={styles.processPhotoMain}>
+                <figure className={styles.frame}>
+                  <Photo src="/nosotros/pantalla.webp" alt="Integrante del equipo probando una pantalla interactiva" sizes="(max-width: 700px) 78vw, 35vw" />
+                </figure>
+              </Reveal>
+              <Reveal className={styles.processPhotoSmall} delay={0.12} y={30}>
+                <figure className={styles.frame}>
+                  <Photo src="/nosotros/instalacion.webp" alt="Integrantes de Adinnov junto a tótems digitales en el showroom" sizes="(max-width: 700px) 48vw, 23vw" />
+                </figure>
+              </Reveal>
+              <span className={styles.processMark} aria-hidden="true">AD / 02</span>
+            </div>
           </div>
-        </div>
-      </Section>
+        </Container>
+      </section>
 
-      <Section>
-        <div className="grid gap-px bg-border lg:grid-cols-2">
-          <Reveal>
-            <article className="flex h-full min-h-[28rem] flex-col justify-between bg-paper p-7 md:p-10 lg:p-12">
-              <div className="flex items-center justify-between gap-4">
-                <p className="eyebrow text-signal">Clientes</p>
-                <span className="font-mono text-[0.65rem] text-muted">01 / 02</span>
-              </div>
-              <div className="mt-16">
-                <h2 className="font-display max-w-xl text-balance text-4xl font-medium leading-[0.98] tracking-[-0.045em] text-navy md:text-5xl">
-                  {site.about.clients.title}
-                </h2>
-                <p className="mt-7 max-w-xl text-lg leading-8 text-muted">{site.about.clients.description}</p>
-              </div>
-            </article>
+      <section className={styles.closingSection} aria-labelledby="cierre-titulo">
+        <Container className={styles.closingGrid}>
+          <Reveal className={styles.closingPhoto}>
+            <figure className={styles.frame}>
+              <Photo src="/nosotros/colaboracion.webp" alt="El equipo de Adinnov revisando un proyecto alrededor de una pantalla" sizes="(max-width: 900px) 90vw, 44vw" />
+            </figure>
           </Reveal>
-
-          <Reveal delay={0.08}>
-            <article className="flex h-full min-h-[28rem] flex-col justify-between bg-ivory p-7 md:p-10 lg:p-12">
-              <div className="flex items-center justify-between gap-4">
-                <p className="eyebrow text-signal">Desarrollo propio</p>
-                <span className="font-mono text-[0.65rem] text-muted">02 / 02</span>
-              </div>
-              <div className="mt-16">
-                <h2 className="font-display max-w-xl text-balance text-4xl font-medium leading-[0.98] tracking-[-0.045em] text-navy md:text-5xl">
-                  {site.about.software.title}
-                </h2>
-                <p className="mt-7 max-w-xl text-lg leading-8 text-muted">{site.about.software.description}</p>
-              </div>
-            </article>
-          </Reveal>
-        </div>
-      </Section>
-
-      <section className="relative overflow-hidden border-y border-border bg-ivory py-20 md:py-28">
-        <div aria-hidden="true" className="absolute -right-20 -top-20 h-72 w-72 rounded-full border-[5rem] border-signal/5 md:h-[30rem] md:w-[30rem] md:border-[8rem]" />
-        <Container className="relative grid gap-12 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8">
-            <p className="eyebrow text-signal">Vocación innovadora</p>
-            <h2 className="font-display mt-6 text-balance text-[clamp(2.8rem,5.5vw,6rem)] font-medium leading-[0.92] tracking-[-0.052em] text-navy">
-              Crear lo que sigue también es parte de nuestro trabajo.
-            </h2>
-            <p className="mt-8 max-w-3xl text-lg leading-8 text-muted">{site.about.closing}</p>
-          </div>
-          <div className="lg:col-span-4 lg:flex lg:justify-end">
+          <Reveal className={styles.closingCopy} delay={0.1}>
+            <p className="eyebrow text-signal">Lo que nos mueve</p>
+            <h2 id="cierre-titulo" className={styles.sectionTitle}>Nos gusta ver las ideas <em>en uso.</em></h2>
+            <p>Trabajamos con emprendimientos, PyMEs, grandes empresas e instituciones. En cada escala nos importa lo mismo: que la tecnología sea útil, cercana y esté bien resuelta.</p>
             <Button href="/contacto">Hablemos de tu proyecto</Button>
-          </div>
+          </Reveal>
         </Container>
       </section>
     </>
