@@ -99,7 +99,16 @@ export function CaseStudyArticle({
         </header>
 
         {caseStudy.cover ? (
-          <figure className="mx-auto mt-10 max-w-4xl overflow-hidden bg-surface md:mt-14">
+          <figure className="relative mx-auto mt-10 flex max-w-4xl justify-center overflow-hidden bg-surface md:mt-14">
+            <Image
+              src={caseStudy.cover.src}
+              alt=""
+              aria-hidden="true"
+              fill
+              sizes="(max-width: 896px) 100vw, 896px"
+              quality={84}
+              className="scale-110 object-cover opacity-60 blur-2xl"
+            />
             <Image
               src={caseStudy.cover.src}
               alt={caseStudy.cover.alt}
@@ -108,7 +117,7 @@ export function CaseStudyArticle({
               sizes="(max-width: 896px) 100vw, 896px"
               preload
               quality={84}
-              className="h-auto max-h-[28rem] w-full object-cover"
+              className="relative h-auto max-h-[36rem] w-auto max-w-full"
             />
           </figure>
         ) : null}
@@ -224,11 +233,11 @@ export function CaseStudyArticle({
             >
               Galería del proyecto
             </h2>
-            <ul className="mt-9 grid gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+            <ul className="mt-9 columns-1 gap-4 sm:columns-2 md:gap-6 lg:columns-3">
               {caseStudy.gallery.map((image) => (
-                <li key={image.src}>
-                  <figure className="h-full">
-                    <div className="aspect-[4/3] overflow-hidden bg-surface">
+                <li key={image.src} className="mb-4 break-inside-avoid md:mb-6">
+                  <figure>
+                    <div className="overflow-hidden bg-surface">
                       <Image
                         src={image.src}
                         alt={image.alt}
@@ -236,7 +245,7 @@ export function CaseStudyArticle({
                         height={image.height}
                         loading="lazy"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="h-full w-full object-cover"
+                        className="h-auto w-full"
                       />
                     </div>
                     {image.caption ? (
