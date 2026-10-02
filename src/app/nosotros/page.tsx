@@ -58,7 +58,6 @@ export default function NosotrosPage() {
           </div>
           <div className={styles.facts}>
             <div><strong>+10</strong><span>Años de experiencia</span></div>
-            <div><strong>01</strong><span>Equipo, de la idea a la puesta en marcha</span></div>
             <p>Diseño propio <span aria-hidden="true">/</span> fabricación <span aria-hidden="true">/</span> integración</p>
           </div>
         </Container>

@@ -171,7 +171,7 @@
 
 .facts {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1.2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: center;
   border-top: 1px solid var(--line);
