@@ -68,7 +68,7 @@ export default function NosotrosPage() {
           <div className={styles.sectionIntro}>
             <Reveal>
               <p className="eyebrow text-signal">Nuestro showroom / Buenos Aires</p>
-              <h2 id="showroom-titulo" className={styles.sectionTitle}>Las ideas, <em>en acción.</em></h2>
+              <h2 id="showroom-titulo" className={styles.sectionTitle}>Conocé nuestro <em>showroom.</em></h2>
             </Reveal>
             <Reveal delay={0.1}>
               <p className={styles.sectionLead}>Nuestro showroom reúne pantallas, tótems y experiencias interactivas en un mismo espacio. Ahí se aprecian de cerca la escala, los detalles y la forma en que cada solución cobra vida.</p>
