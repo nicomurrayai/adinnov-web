@@ -11,11 +11,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/nosotros" },
 };
 
-function Photo({ src, alt, sizes, position, priority = false }: {
-  src: string; alt: string; sizes: string; position?: string; priority?: boolean;
+function Photo({ src, alt, sizes, position, preload = false }: {
+  src: string; alt: string; sizes: string; position?: string; preload?: boolean;
 }) {
   return (
-    <Image src={src} alt={alt} fill sizes={sizes} priority={priority}
+    <Image src={src} alt={alt} fill sizes={sizes} preload={preload}
       quality={75} className={styles.photo} style={{ objectPosition: position }} />
   );
 }
@@ -34,12 +34,12 @@ export default function NosotrosPage() {
               <p className="eyebrow text-muted">Personas, ideas y tecnología</p>
               <h1 id="nosotros-titulo" className={styles.heroTitle}>Detrás de cada pantalla, <span>hay un equipo.</span></h1>
               <p className={styles.heroLead}>Somos Adinnov. Diseñamos, fabricamos e integramos soluciones digitales que cobran sentido cuando llegan a los espacios y a las personas.</p>
-              <a className={styles.textLink} href="#como-trabajamos">Conocé cómo trabajamos <span aria-hidden="true">↘</span></a>
+              <a className={styles.textLink} href="#showroom">Explorá nuestro showroom <span aria-hidden="true">↘</span></a>
             </div>
             <div className={styles.heroVisual} aria-label="El equipo y los proyectos de Adinnov">
               <Reveal className={styles.heroMain} delay={0.08} y={22}>
                 <figure className={styles.frame}>
-                  <Photo src="/nosotros/equipo.webp" alt="Integrantes del equipo Adinnov reunidos en su espacio de trabajo" sizes="(max-width: 700px) 78vw, (max-width: 1100px) 48vw, 39vw" position="center 39%" priority />
+                  <Photo src="/nosotros/equipo.webp" alt="Integrantes del equipo Adinnov reunidos en su espacio de trabajo" sizes="(max-width: 700px) 78vw, (max-width: 1100px) 48vw, 39vw" position="center 39%" preload />
                   <figcaption className={styles.photoLabel}>Equipo Adinnov</figcaption>
                 </figure>
               </Reveal>
@@ -50,7 +50,7 @@ export default function NosotrosPage() {
               </Reveal>
               <Reveal className={styles.heroSmallRight} delay={0.26} y={36}>
                 <figure className={styles.frame}>
-                  <Photo src="/nosotros/proyecto.webp" alt="Pantallas y soluciones interactivas de Adinnov en el showroom" sizes="(max-width: 700px) 44vw, 24vw" />
+                  <Photo src="/nosotros/interaccion.webp" alt="Una persona explorando una experiencia interactiva en una pantalla táctil" sizes="(max-width: 700px) 44vw, 24vw" />
                 </figure>
               </Reveal>
               <span className={styles.visualIndex} aria-hidden="true">01 / 03</span>
@@ -63,43 +63,44 @@ export default function NosotrosPage() {
         </Container>
       </section>
 
-      <section className={styles.madeSection} aria-labelledby="hacemos-titulo">
+      <section id="showroom" className={styles.madeSection} aria-labelledby="showroom-titulo">
         <Container>
           <div className={styles.sectionIntro}>
             <Reveal>
-              <p className="eyebrow text-signal">Lo que hacemos</p>
-              <h2 id="hacemos-titulo" className={styles.sectionTitle}>De la primera idea <em>al último detalle.</em></h2>
+              <p className="eyebrow text-signal">Nuestro showroom / Buenos Aires</p>
+              <h2 id="showroom-titulo" className={styles.sectionTitle}>Las ideas, <em>en acción.</em></h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className={styles.sectionLead}>Escuchamos qué necesita cada espacio y elegimos la tecnología que mejor lo resuelve. Diseñamos el equipo, desarrollamos la experiencia e integramos cada pieza para que todo funcione en conjunto.</p>
+              <p className={styles.sectionLead}>Nuestro showroom reúne pantallas, tótems y experiencias interactivas en un mismo espacio. Ahí se aprecian de cerca la escala, los detalles y la forma en que cada solución cobra vida.</p>
             </Reveal>
           </div>
           <div className={styles.productLayout}>
             <div className={styles.productMosaic}>
               <Reveal className={styles.productMain}>
                 <figure className={styles.frame}>
-                  <Photo src="/nosotros/totems.webp" alt="Tótems digitales e interactivos desarrollados por Adinnov" sizes="(max-width: 700px) 88vw, 46vw" />
-                  <figcaption className={styles.photoLabel}>Tótems Adinnov</figcaption>
+                  <Photo src="/nosotros/proyecto.webp" alt="Vista amplia del showroom Adinnov con pantallas, tótems y soluciones interactivas en exhibición" sizes="(max-width: 700px) 88vw, 46vw" />
+                  <figcaption className={styles.photoLabel}>Showroom Adinnov</figcaption>
                 </figure>
               </Reveal>
               <Reveal className={styles.productDetail} delay={0.1} y={32}>
                 <figure className={styles.frame}>
-                  <Photo src="/nosotros/detalle.webp" alt="Detalle de una terminal interactiva Adinnov" sizes="(max-width: 700px) 36vw, 20vw" />
+                  <Photo src="/nosotros/detalle.webp" alt="Detalle de una pantalla táctil en uso dentro del showroom" sizes="(max-width: 700px) 36vw, 20vw" />
                 </figure>
               </Reveal>
               <Reveal className={styles.productTouch} delay={0.18} y={28}>
                 <figure className={styles.frame}>
-                  <Photo src="/nosotros/interaccion.webp" alt="Una persona usando una aplicación en un tótem táctil" sizes="(max-width: 700px) 52vw, 25vw" />
+                  <Photo src="/nosotros/totems.webp" alt="Tótems digitales exhibidos juntos en el showroom Adinnov" sizes="(max-width: 700px) 52vw, 25vw" />
                 </figure>
               </Reveal>
             </div>
             <Reveal className={styles.productCopy} delay={0.12}>
               <div className={styles.sideRule} />
-              <p className="eyebrow text-signal">Fabricación e integración</p>
-              <h3>Una solución completa toma muchas formas.</h3>
-              <p>Fabricamos tótems digitales, kioscos, terminales y atriles. Sumamos pantallas profesionales, LED y software desarrollado por nuestro equipo para que cada proyecto tenga una respuesta a medida.</p>
+              <p className="eyebrow text-signal">Ver, explorar, imaginar</p>
+              <h3>La tecnología se entiende mejor de cerca.</h3>
+              <p>El showroom permite ver cómo conviven los equipos y cómo responde cada experiencia en un espacio real. Es una forma concreta de imaginar qué puede funcionar en cada proyecto.</p>
+              <p>Fabricamos tótems digitales, kioscos, terminales y atriles. Integramos pantallas profesionales, LED y software desarrollado por nuestro equipo para crear soluciones a medida.</p>
               <p>Uno de nuestros modelos de tótem fue diseñado por Adinnov y cuenta con patente del INPI.</p>
-              <span className={styles.microLabel}>Pensado, hecho y acompañado por Adinnov.</span>
+              <span className={styles.microLabel}>Diseño, fabricación e integración propios.</span>
             </Reveal>
           </div>
         </Container>
