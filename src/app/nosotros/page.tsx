@@ -72,6 +72,11 @@ export default function NosotrosPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className={styles.sectionLead}>Nuestro showroom reúne pantallas, tótems y experiencias interactivas en un mismo espacio. Ahí se aprecian de cerca la escala, los detalles y la forma en que cada solución cobra vida.</p>
+              <div className={styles.showroomInvite}>
+                <p>Te invitamos a recorrer el espacio, probar nuestras soluciones y conversar sobre tu proyecto.</p>
+                <address><strong>Membrillar 74, Ciudad de Buenos Aires</strong></address>
+                <a href="/contacto">Coordiná tu visita <span aria-hidden="true">↗</span></a>
+              </div>
             </Reveal>
           </div>
           <div className={styles.productLayout}>

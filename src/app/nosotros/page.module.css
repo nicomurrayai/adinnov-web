@@ -249,6 +249,47 @@
   line-height: 1.65;
 }
 
+.showroomInvite {
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+
+.showroomInvite p {
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.showroomInvite address {
+  margin-top: .75rem;
+  color: var(--ink);
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.showroomInvite a {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  margin-top: 1rem;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: .3rem;
+  color: var(--signal);
+  font-family: var(--font-plex-mono), monospace;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.showroomInvite a:hover {
+  color: var(--signal-dark);
+}
+
 .productLayout {
   display: grid;
   grid-template-columns: minmax(0, 1.28fr) minmax(0, .72fr);
