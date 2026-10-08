@@ -53,7 +53,6 @@ export default function NosotrosPage() {
                   <Photo src="/nosotros/interaccion.webp" alt="Una persona explorando una experiencia interactiva en una pantalla táctil" sizes="(max-width: 700px) 44vw, 24vw" />
                 </figure>
               </Reveal>
-              <span className={styles.visualIndex} aria-hidden="true">01 / 03</span>
             </div>
           </div>
           <div className={styles.facts}>

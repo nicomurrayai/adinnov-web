@@ -12,7 +12,7 @@
 
 1. Identificar el correo y las organizaciones de Adinnov que serán propietarias de GitHub, Vercel, Supabase y Resend. El repositorio actual tiene como remoto `nicomurrayai/adinnov-web` y el proyecto local está vinculado a Vercel como `adinnov-web`.
 2. Transferir el repositorio o invitar a la organización de Adinnov con el acceso acordado. Vincular el repositorio desde la organización de Vercel de Adinnov.
-3. Mantener el proyecto de Supabase y transferir su administración, o migrar base de datos y Storage a otro proyecto con un plan de corte. En una migración de proyecto hay que actualizar las claves y URL en la web y en el panel.
+3. Supabase ya está en la organización Adinnov: el 8 de octubre de 2026 se migraron base de datos, Auth y Storage al proyecto `inyzbjajuqmbnzvuphpa` ("Base de datos - Adinnov") y se actualizaron las claves y la URL en la web y en el panel. El proyecto anterior, `ofhtpbxnokzqunpgjbcl`, quedó sin cambios como respaldo hasta darlo de baja.
 4. Configurar en Vercel `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, `RESEND_API_KEY`, `RESEND_FROM`, `CONTACT_TO` y `REVALIDATE_SECRET`. El último debe coincidir con el del panel. No subir valores secretos al repositorio.
 5. Verificar el dominio remitente de Resend y probar un envío real al destinatario acordado.
 6. Asociar `adinnov.com.ar` al proyecto de Vercel y aplicar los registros DNS que indique Vercel para ese dominio. Comprobar HTTPS, redirección del dominio y rutas principales antes de cambiar el tráfico.
