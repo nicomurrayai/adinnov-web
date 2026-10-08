@@ -1,6 +1,7 @@
 "use client";
 
 import { getImageProps } from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const posterCommon = {
@@ -50,7 +51,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="noise-overlay editorial-grid relative min-h-[50rem] overflow-hidden bg-navy text-white md:min-h-[52rem] lg:min-h-[100svh]">
+    <section className="noise-overlay editorial-grid relative flex min-h-[43rem] items-end overflow-hidden bg-navy text-white md:min-h-[48rem] lg:min-h-[100svh]">
       <div className="absolute inset-0">
         <picture>
           <source media="(max-width: 767px)" srcSet={mobilePosterSrcSet} />
@@ -76,7 +77,15 @@ export function Hero() {
             <source src="/videos/hero-video.mp4" type="video/mp4" />
           </video>
         ) : null}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,23,43,.45)_0%,rgba(7,23,43,.55)_40%,rgba(7,23,43,.92)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,23,43,.82)_0%,rgba(7,23,43,.46)_65%,rgba(7,23,43,.22)_100%)] md:bg-[linear-gradient(90deg,rgba(7,23,43,.78)_0%,rgba(7,23,43,.42)_58%,rgba(7,23,43,.18)_100%)]" />
+      </div>
+      <div className="relative z-10 mx-auto flex w-full max-w-[90rem] flex-col gap-8 px-6 pb-16 pt-40 sm:px-10 md:pb-24 lg:flex-row lg:items-end lg:justify-between lg:gap-16 lg:px-16 lg:pb-28">
+        <div className="max-w-[58rem]">
+          <p className="mb-5 text-sm font-medium tracking-[0.02em] text-white/90 md:text-base">Adinnov · Especialistas en cartelería digital</p>
+          <h1 className="font-display max-w-[14ch] text-balance text-[clamp(3.3rem,7.7vw,7.5rem)] font-semibold leading-[0.92] tracking-[-0.055em]">Tecnología al servicio de tu empresa</h1>
+          <p className="mt-7 text-base font-medium text-white/90 md:text-lg">+10 años y 200 casos de éxito</p>
+        </div>
+        <Link href="/contacto?intent=venta" className="inline-flex min-h-14 shrink-0 items-center justify-center rounded-full bg-signal px-8 text-base font-semibold text-white transition-colors hover:bg-signal-dark focus-visible:outline-white">Cotizar ya <span aria-hidden="true" className="ml-5">↗</span></Link>
       </div>
     </section>
   );

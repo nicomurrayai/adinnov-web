@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { Hero } from "../components/home/Hero";
 import { Partners } from "../components/home/Partners";
 import { HomeRentals } from "../components/home/HomeRentals";
-import { Verticals } from "../components/home/Verticals";
 import { HomeClients } from "../components/home/HomeClients";
-import { SolutionsTabs } from "../components/home/SolutionsTabs";
 import { CustomSolutions } from "../components/home/CustomSolutions";
 import { HomeFinancing } from "../components/home/HomeFinancing";
+import { HomeCaseStudies } from "../components/home/HomeCaseStudies";
+import { HomeShowroom } from "../components/home/HomeShowroom";
+import { HomeContact } from "../components/home/HomeContact";
+import { getCaseStudies } from "../lib/case-studies/queries";
 
 export const metadata: Metadata = {
   title: "Cartelería digital, interacción y LED",
@@ -15,17 +17,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const caseStudies = await getCaseStudies();
   return (
     <>
       <Hero />
-      <SolutionsTabs />
-      <HomeFinancing />
-      <Partners />
-      <HomeRentals />
-      <Verticals />
       <HomeClients />
+      <HomeCaseStudies caseStudies={caseStudies.slice(0, 3)} />
+      <HomeRentals />
+      <Partners />
       <CustomSolutions />
+      <HomeShowroom />
+      <HomeFinancing />
+      <HomeContact />
     </>
   );
 }

@@ -11,7 +11,7 @@
 .heading {
   margin: 0 0 24px;
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: var(--font-clash), sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: 22px;
@@ -20,7 +20,7 @@
 .heading span {
   display: inline-block;
   border-radius: 999px;
-  background: #0271af;
+  background: var(--signal);
   padding: 2px 16px;
   color: #fff;
 }
@@ -28,7 +28,7 @@
 .marquee {
   display: flex;
   overflow: hidden;
-  border: 2px solid #0271af;
+  border: 2px solid var(--signal);
   border-radius: 16px;
   padding-block: 32px;
   /* Fade the artwork at the edges without fading the blue border. */

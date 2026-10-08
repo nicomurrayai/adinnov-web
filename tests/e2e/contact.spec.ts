@@ -102,7 +102,7 @@ test.describe("formulario de contacto", () => {
           fallback: {
             email: "info@adinnov.com.ar",
             mailto: "mailto:info@adinnov.com.ar",
-            whatsapp: "https://wa.me/5491154789803",
+            whatsapp: "https://wa.me/541141906432",
           },
         }),
       });
@@ -126,6 +126,11 @@ test.describe("formulario de contacto", () => {
       /^https:\/\/wa\.me\//,
     );
     await expect(alert).not.toContainText("fue enviada");
+    const failureEvents = await page.evaluate(() =>
+      ((window as Window & { dataLayer?: { event?: string }[] }).dataLayer ?? [])
+        .filter((item) => item.event === "adinnov_form_success"),
+    );
+    expect(failureEvents).toHaveLength(0);
   });
 
   test("confirma éxito solo frente a una respuesta exitosa", async ({ page }) => {
@@ -145,5 +150,10 @@ test.describe("formulario de contacto", () => {
     await page.getByRole("button", { name: "Enviar consulta" }).click();
 
     await expect(page.getByRole("status")).toContainText("Tu consulta fue enviada");
+    const successEvents = await page.evaluate(() =>
+      ((window as Window & { dataLayer?: { event?: string; contact_intent?: string }[] }).dataLayer ?? [])
+        .filter((item) => item.event === "adinnov_form_success"),
+    );
+    expect(successEvents).toEqual([{ event: "adinnov_form_success", contact_intent: "contacto" }]);
   });
 });

@@ -19,7 +19,7 @@
   display: inline-block;
   margin: 0 0 22px;
   border-radius: 999px;
-  background: #0271af;
+  background: var(--signal);
   padding: 5px 18px;
   color: #fff;
   font-size: 14px;
@@ -32,7 +32,7 @@
   margin: 0;
   color: #112235;
   font-family: var(--font-familjen), sans-serif;
-  font-size: clamp(32px, 3.5vw, 54px);
+  font-size: clamp(28px, 2.8vw, 42px);
   font-weight: 650;
   letter-spacing: -.035em;
   line-height: 1.08;

@@ -118,6 +118,11 @@ export function ContactForm({
 
       setStatus("success");
       setMessage("Tu consulta fue enviada. Nuestro equipo te va a responder a la brevedad.");
+      const trackingWindow = window as Window & { dataLayer?: Array<Record<string, string>> };
+      (trackingWindow.dataLayer ??= []).push({
+        event: "adinnov_form_success",
+        contact_intent: intent,
+      });
       form.reset();
       setIntent(initialIntent);
       setProductSlug(initialProductSlug);

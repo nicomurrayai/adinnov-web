@@ -273,7 +273,10 @@ export function Header({ megaMenuColumns }: { megaMenuColumns: MegaMenuColumn[] 
                           aria-haspopup="true"
                           aria-controls="familias-productos"
                           aria-current={pathname.startsWith("/productos") ? "page" : undefined}
-                          onClick={toggleProductsMenu}
+                          onClick={(event) => {
+                            if (event.detail === 0) toggleProductsMenu();
+                            else openProductsMenu();
+                          }}
                           onFocus={() => {
                             if (!suppressProductFocusOpenRef.current) openProductsMenu();
                           }}
@@ -398,6 +401,13 @@ export function Header({ megaMenuColumns }: { megaMenuColumns: MegaMenuColumn[] 
                                   ) : null}
                                 </div>
                               </div>
+                              <Link
+                                href="/productos"
+                                className="flex min-h-12 shrink-0 items-center justify-center border-t border-border bg-signal px-6 text-sm font-semibold text-white transition-colors hover:bg-signal-dark"
+                                onClick={closeProductsMenu}
+                              >
+                                Ver catálogo completo <span aria-hidden="true" className="ml-3">↗</span>
+                              </Link>
                             </div>
                           </div>
                         ) : null}

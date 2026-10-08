@@ -65,7 +65,7 @@ export function CaseStudyCard({
             ) : null}
           </div>
         ) : null}
-        <Heading className="font-display mt-3text-balance text-[clamp(1.25rem,1.9vw,1.6rem)] font-medium leading-[1.08] tracking-[-0.035em] text-navy">
+        <Heading className="font-display mt-3 text-balance text-[clamp(1.25rem,1.9vw,1.6rem)] font-medium leading-[1.08] tracking-[-0.035em] text-navy">
           <Link
             href={casePath(caseStudy.slug)}
             className="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-signal focus-visible:outline-none"

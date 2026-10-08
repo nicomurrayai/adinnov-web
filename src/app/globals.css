@@ -11,9 +11,10 @@
   --aluminum-light: #e9ecef;
   --line: rgba(7, 23, 43, 0.16);
   --line-light: rgba(255, 255, 255, 0.18);
-  --signal: #164cff;
-  --signal-dark: #0d37c8;
-  --signal-pale: #dfe7ff;
+  --brand-blue: #0075b2;
+  --signal: #00699f;
+  --signal-dark: #005d90;
+  --signal-pale: #dceef8;
   --success: #148456;
 
   /* Backwards-compatible aliases used by catalog and form components. */
@@ -27,8 +28,11 @@
   --accent: var(--signal);
   --background: var(--paper);
   --foreground: var(--ink);
-  --font-outfit: var(--font-familjen);
-  --font-geist-sans: var(--font-instrument);
+  --font-familjen: var(--font-clash);
+  --font-instrument: var(--font-clash);
+  --font-plex-mono: var(--font-clash);
+  --font-outfit: var(--font-clash);
+  --font-geist-sans: var(--font-clash);
 
   --space-section: clamp(5rem, 8vw, 8.5rem);
   --radius-sm: 0.35rem;
@@ -60,9 +64,9 @@
   --color-signal: var(--signal);
   --color-signal-dark: var(--signal-dark);
   --color-signal-pale: var(--signal-pale);
-  --font-sans: var(--font-instrument);
-  --font-display: var(--font-familjen);
-  --font-mono: var(--font-plex-mono);
+  --font-sans: var(--font-clash);
+  --font-display: var(--font-clash);
+  --font-mono: var(--font-clash);
 }
 
 *,
@@ -83,7 +87,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-instrument), sans-serif;
+  font-family: var(--font-clash), sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -109,7 +113,7 @@ select,
 textarea,
 summary {
   touch-action: manipulation;
-  -webkit-tap-highlight-color: rgba(22, 76, 255, 0.16);
+  -webkit-tap-highlight-color: rgba(0, 117, 178, 0.16);
 }
 
 a {
@@ -155,15 +159,15 @@ article[id] {
 }
 
 .font-display {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--font-clash), sans-serif;
 }
 
 .font-mono {
-  font-family: var(--font-plex-mono), monospace;
+  font-family: var(--font-clash), sans-serif;
 }
 
 .eyebrow {
-  font-family: var(--font-plex-mono), monospace;
+  font-family: var(--font-clash), sans-serif;
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.13em;

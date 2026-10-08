@@ -1,15 +1,7 @@
-@font-face {
-  font-family: "Clash Grotesk Source";
-  src: url("/original-home/a-medida/ClashGrotesk-Variable.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
 .section {
   background: #fff;
   padding: 40px 0;
-  font-family: "Clash Grotesk Source", sans-serif;
+  font-family: var(--font-clash), sans-serif;
 }
 
 .container {
@@ -23,7 +15,7 @@
 .eyebrow span {
   display: inline-block;
   border-radius: 999px;
-  background: #0271af;
+  background: var(--signal);
   padding: 4px 16px;
   color: #fff;
   font-size: 16px;

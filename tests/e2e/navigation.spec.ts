@@ -107,6 +107,25 @@ test.describe("navegación pública", () => {
     await expect(trigger).toHaveAttribute("aria-expanded", "false");
   });
 
+  test("el catálogo completo se puede abrir desde la navegación", async ({ page, isMobile }) => {
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await waitForStablePage(page);
+
+    if (isMobile) {
+      await page.getByRole("button", { name: "Abrir menú" }).click();
+      await page.getByRole("navigation", { name: "Navegación móvil" })
+        .getByRole("link", { name: "Productos", exact: true }).click();
+    } else {
+      const trigger = page.getByRole("navigation", { name: "Navegación principal" })
+        .getByRole("button", { name: "Productos" });
+      await trigger.click();
+      await expect(trigger).toHaveAttribute("aria-expanded", "true");
+      await page.getByRole("link", { name: "Ver catálogo completo" }).click();
+    }
+
+    await expect(page).toHaveURL(/\/productos$/);
+  });
+
   test("el mega menú permite acceder a todos los enlaces con viewport bajo", async ({
     page,
     isMobile,

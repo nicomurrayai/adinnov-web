@@ -93,12 +93,6 @@ export const site = {
   whatsapp: [
     {
       label: "WhatsApp",
-      href: "https://wa.me/5491154789803",
-      number: "5491154789803",
-      display: "11 5478-9803",
-    },
-    {
-      label: "WhatsApp alternativo",
       href: "https://wa.me/541141906432",
       number: "541141906432",
       display: "11 4190-6432",

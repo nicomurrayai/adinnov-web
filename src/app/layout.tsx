@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { Footer } from "../components/layout/Footer";
 import { Header } from "../components/layout/Header";
 import { WhatsAppFloat } from "../components/layout/WhatsAppFloat";
@@ -7,34 +8,10 @@ import { getMegaMenuColumns } from "../lib/content";
 import { site } from "@content/site";
 import "./globals.css";
 
-const displayFont = localFont({
-  src: "./fonts/familjen-grotesk-latin.woff2",
-  variable: "--font-familjen",
-  weight: "400 700",
-  display: "swap",
-});
-
-const bodyFont = localFont({
-  src: "./fonts/instrument-sans-latin.woff2",
-  variable: "--font-instrument",
-  weight: "400 700",
-  display: "swap",
-});
-
-const monoFont = localFont({
-  src: [
-    {
-      path: "./fonts/ibm-plex-mono-400-latin.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/ibm-plex-mono-500-latin.woff2",
-      weight: "500",
-      style: "normal",
-    },
-  ],
-  variable: "--font-plex-mono",
+const siteFont = localFont({
+  src: "./fonts/clash-grotesk-variable.ttf",
+  variable: "--font-clash",
+  weight: "100 900",
   display: "swap",
 });
 
@@ -114,7 +91,7 @@ const organizationSchema = {
   logo: `${site.url}/brand/logo.svg`,
   image: `${site.url}/videos/hero-adinnov-poster.webp`,
   email: site.email,
-  telephone: "+54 11 5478-9803",
+  telephone: "+54 11 4190-6432",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Membrillar 74",
@@ -136,9 +113,13 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
     <html
       lang="es-AR"
       data-scroll-behavior="smooth"
-      className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable}`}
+      className={siteFont.variable}
     >
       <body>
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KPTZ2ZL2');`}
+        </Script>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPTZ2ZL2" height="0" width="0" style={{ display: "none", visibility: "hidden" }} title="Google Tag Manager" /></noscript>
         <a className="skip-link" href="#contenido-principal">
           Saltar al contenido
         </a>
