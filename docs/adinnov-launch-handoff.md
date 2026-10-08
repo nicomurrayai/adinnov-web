@@ -5,7 +5,7 @@
 - El sitio público está en este repositorio y se compila con Next.js 16.
 - Los casos de éxito y el catálogo publicados se leen de Supabase.
 - El formulario envía con Resend. El destinatario es `CONTACT_TO`; si no se configura, usa `info@adinnov.com.ar`. En `.env.local` no están definidos `RESEND_API_KEY`, `RESEND_FROM` ni `CONTACT_TO`, por lo que la entrega real no se puede verificar en local. La configuración de producción debe comprobarse en Vercel.
-- Google Tag Manager usa el contenedor `GTM-KPTZ2ZL2`. El formulario emite `adinnov_form_success` con `contact_intent` después de que la API confirma el envío, sin datos personales.
+- Google Tag Manager usa el contenedor `GTM-MZMLHTLG`. El formulario emite `adinnov_form_success` con `contact_intent` después de que la API confirma el envío, sin datos personales.
 - El enlace público de WhatsApp usa `+54 11 4190-6432`.
 
 ## Para publicar en una cuenta de Adinnov
