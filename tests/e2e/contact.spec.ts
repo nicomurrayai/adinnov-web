@@ -55,26 +55,6 @@ test.describe("API de contacto", () => {
       fieldErrors: { productSlug: expect.any(String) },
     });
   });
-
-  test("informa fallback real cuando Resend no está configurado", async ({ request }) => {
-    test.skip(
-      Boolean(process.env.RESEND_API_KEY),
-      "Se evita disparar un correo real cuando RESEND_API_KEY está configurado.",
-    );
-
-    const response = await request.post("/api/contact", { data: validPayload });
-    const body = await response.json();
-
-    expect(response.status()).toBe(503);
-    expect(body).toMatchObject({
-      ok: false,
-      fallback: {
-        email: expect.stringContaining("@"),
-        mailto: expect.stringMatching(/^mailto:/),
-        whatsapp: expect.stringMatching(/^https:\/\/wa\.me\//),
-      },
-    });
-  });
 });
 
 test.describe("formulario de contacto", () => {

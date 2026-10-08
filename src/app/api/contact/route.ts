@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { site } from "@content/site";
 import { getProduct } from "@/lib/content";
+import { saveContactInquiry } from "@/lib/contact-inquiries";
 import { contactSchema, type ContactPayload } from "@/lib/contact-schema";
 
 const MAX_BODY_BYTES = 24_000;
@@ -132,10 +133,23 @@ export async function POST(request: Request) {
     payload.message,
   ].join("\n");
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
+  // La consulta se guarda para el panel (sección Consultas) y además se avisa por email.
+  // Alcanza con que uno de los dos canales funcione para no perder el contacto.
+  const [saved, emailed] = await Promise.all([
+    saveContactInquiry(payload, product),
+    sendContactEmail(payload, text),
+  ]);
+
+  if (!saved && !emailed) {
     return fallbackResponse(text);
   }
+
+  return NextResponse.json({ ok: true }, { headers: { "Cache-Control": "no-store" } });
+}
+
+async function sendContactEmail(payload: ContactPayload, text: string): Promise<boolean> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return false;
 
   try {
     const resend = new Resend(apiKey);
@@ -146,16 +160,8 @@ export async function POST(request: Request) {
       subject: `[Adinnov] ${intentLabels[payload.intent]} · ${payload.name.replace(/\s+/g, " ")}`,
       text,
     });
-
-    if (result.error || !result.data?.id) {
-      return fallbackResponse(text);
-    }
-
-    return NextResponse.json(
-      { ok: true, id: result.data.id },
-      { headers: { "Cache-Control": "no-store" } },
-    );
+    return !result.error && Boolean(result.data?.id);
   } catch {
-    return fallbackResponse(text);
+    return false;
   }
 }
