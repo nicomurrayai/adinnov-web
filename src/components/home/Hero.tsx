@@ -1,7 +1,6 @@
 "use client";
 
 import { getImageProps } from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const posterCommon = {
@@ -85,7 +84,6 @@ export function Hero() {
           <h1 className="font-display max-w-[14ch] text-balance text-[clamp(3.3rem,7.7vw,7.5rem)] font-semibold leading-[0.92] tracking-[-0.055em]">Tecnología al servicio de tu empresa</h1>
           <p className="mt-7 text-base font-medium text-white/90 md:text-lg">+10 años y 200 casos de éxito</p>
         </div>
-        <Link href="/contacto?intent=venta" className="inline-flex min-h-14 shrink-0 items-center justify-center rounded-full bg-signal px-8 text-base font-semibold text-white transition-colors hover:bg-signal-dark focus-visible:outline-white">Cotizar ya <span aria-hidden="true" className="ml-5">↗</span></Link>
       </div>
     </section>
   );
