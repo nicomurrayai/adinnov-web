@@ -5,8 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   startTransition,
+  useLayoutEffect,
   useMemo,
   useOptimistic,
+  useRef,
   useState,
   useSyncExternalStore,
 } from "react";
@@ -156,6 +158,8 @@ function ProductGridState({
   );
   const [query, setOptimisticQuery] = useOptimistic(urlQuery);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const resultsRef = useRef<HTMLElement>(null);
+  const scrollOnFamilyChangeRef = useRef(false);
 
   const legacyCategory = searchParams.get("categoria");
   const requestedFamily = searchParams.get("familia");
@@ -182,11 +186,26 @@ function ProductGridState({
     Boolean,
   ).length;
 
+  // Runs after the new family renders, so the scroll isn't cut short when the
+  // grid shrinks under it.
+  useLayoutEffect(() => {
+    if (!scrollOnFamilyChangeRef.current) return;
+    scrollOnFamilyChangeRef.current = false;
+    const results = resultsRef.current;
+    if (!results) return;
+    if (results.getBoundingClientRect().top >= 0) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    results.scrollIntoView({ block: "start", behavior: reduceMotion ? "instant" : "smooth" });
+  }, [family]);
+
   function updateParam(name: string, value?: string) {
     const params = new URLSearchParams(searchParamsString);
     if (value) params.set(name, value);
     else params.delete(name);
-    if (name === "familia") params.delete("categoria");
+    if (name === "familia") {
+      params.delete("categoria");
+      if (value !== family) scrollOnFamilyChangeRef.current = true;
+    }
     const nextUrl = params.size ? `${pathname}?${params}` : pathname;
     startTransition(() => writeCatalogUrl(nextUrl, "push"));
   }
@@ -205,6 +224,7 @@ function ProductGridState({
 
   function resetFilters() {
     setFiltersOpen(false);
+    if (family) scrollOnFamilyChangeRef.current = true;
     startTransition(() => {
       setOptimisticQuery("");
       writeCatalogUrl(pathname, "push");
@@ -320,7 +340,11 @@ function ProductGridState({
         </div>
       </aside>
 
-      <section aria-labelledby="catalog-results-heading" className="min-w-0">
+      <section
+        ref={resultsRef}
+        aria-labelledby="catalog-results-heading"
+        className="min-w-0"
+      >
         <div className="flex min-h-10 items-end justify-between gap-4 border-b border-border pb-4">
           <h2
             id="catalog-results-heading"
